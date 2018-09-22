@@ -1,10 +1,31 @@
 @import "App.scss";
 @import "colors.scss";
 @import "varialbes.scss";
+@import "auth-module.scss";
+@import "override.scss";
+@import "mixins.scss";
+@import "common.scss";
+
+@font-face {
+  font-family: QuickSandLight;
+  src: url('../assets/fonts/app-fonts/Quicksand-Light.ttf');
+}
+@font-face {
+  font-family: QuickSandRegular;
+  src: url('../assets/fonts/app-fonts/Quicksand-Regular.ttf');
+}
+@font-face {
+  font-family: QuickSandMedium;
+  src: url('../assets/fonts/app-fonts/Quicksand-Medium.ttf');
+}
+@font-face {
+  font-family: QuickSandBold;
+  src: url('../assets/fonts/app-fonts/Quicksand-Bold.ttf');
+}
 
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  color: $default-text-color;
+  overflow-x: auto;
 }

@@ -1,0 +1,37 @@
+.app-btn {
+  width: 130px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #2f3d51;
+  border: solid 1px #2f3d51; }
+
+/* start :: form styles */
+.ui.form .field {
+  width: 100%;
+  margin-bottom: 10px; }
+  .ui.form .field input {
+    height: 50px;
+    letter-spacing: 1px;
+    color: #686B78;
+    font-size: 16px;
+    font-family: QuickSandMedium;
+    line-height: normal;
+    font-weight: normal;
+    text-align: left; }
+
+.ui.form .error-msg-wrapper {
+  text-align: center;
+  position: relative; }
+
+.ui.checkbox label:before,
+.ui.checkbox .box:before {
+  border: 2px solid #2F3D51; }
+
+.ui.checkbox .box:after,
+.ui.checkbox label:after {
+  top: 1px; }
+
+.ui input.highlight-input {
+  border-color: #ff5066 !important; }
+
+/* end :: form styles */

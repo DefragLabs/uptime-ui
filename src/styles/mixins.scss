@@ -1,0 +1,32 @@
+@mixin align-item($display, $justifyContent, $alignItems, $flexDirection){
+  display: $display;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+  flex-direction: $flexDirection;
+}
+
+@mixin set-font($font-family, $font-size, $color, $line-height, $text-align, $font-weight) {
+  color: $color;
+  font-size: $font-size;
+  font-family: $font-family;
+  line-height: $line-height;
+  font-weight: $font-weight;
+  text-align: $text-align;
+}
+
+.app-btn{
+  width: 130px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #2f3d51;
+  border: solid 1px #2f3d51;
+}
+
+@mixin app-btn($width, $height, $backgroundColor, $borderColor){
+  min-width: $width;
+  height: $height;
+  border-radius: 4px;
+  background-color: $backgroundColor;
+  border: 1px solid $borderColor;
+  @include set-font(QuickSandMedium, 14px, #ffffff, normal, center, 500);
+}

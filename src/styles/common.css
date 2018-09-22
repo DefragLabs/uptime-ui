@@ -1,0 +1,19 @@
+.app-btn {
+  width: 130px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #2f3d51;
+  border: solid 1px #2f3d51; }
+
+.error-message-view {
+  padding-top: 5px;
+  margin-bottom: 5px;
+  color: #ff5066;
+  font-size: 12px;
+  font-family: QuickSandLight;
+  line-height: normal;
+  font-weight: normal;
+  text-align: left; }
+  @media screen and (min-width: 768px) {
+    .error-message-view {
+      font-size: 14px; } }

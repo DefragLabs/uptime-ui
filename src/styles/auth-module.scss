@@ -1,0 +1,68 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+@mixin modal-heading{
+  letter-spacing: -0.5px;
+  text-transform: capitalize;
+  @include set-font(QuickSandMedium, $default-font-size*2, $pickled-bluewood, normal, left, normal);
+  @media screen and (min-width: 1024px){
+    font-size: $default-font-size*3;
+  }
+}
+@mixin form-para-text{
+  @include set-font(QuickSandMedium, $default-font-size+4, $pickled-bluewood, normal, left, 500);
+}
+@mixin view-change-link{
+  padding-top: $default-padding*3;
+  cursor: pointer;
+  @include set-font(QuickSandMedium, $default-font-size+4, $pickled-bluewood, normal, center, 500);
+  @media screen and (min-width: 1024px){
+    padding-top: $default-padding*5;
+  }
+}
+    
+/* start :: login view styles */
+.login-view{
+  height: 100vh;
+  background-color: $white;
+  @include align-item(flex, center, center, row);
+  @media screen and (min-width: 1024px){
+    padding: $default-padding*5 !important;
+    padding-bottom: $default-padding*3 !important;
+  }
+  .login-view-form-wrapper{
+    width: 520px !important;
+    padding: $default-padding*3 !important;
+    border-radius: 4px;
+    border: 1px solid $concrete;
+    box-shadow: 0 7px 13px 0 rgba(24,29,58,.05);
+    .heading{
+      padding-bottom: $default-padding*3;
+      @include modal-heading;
+      @media screen and (min-width: 1024px){
+        padding-bottom: $default-padding*5;
+      }
+    }
+    .ui.form{
+      .btn-wrapper{
+        margin-top: $default-padding*3;
+        @include align-item(flex, space-between, center, row);
+        @media screen and (min-width: 1024px){
+          margin-top: $default-padding*5;
+        }
+        .app-btn{
+          @include app-btn(100px, 50px, $pickled-bluewood, $pickled-bluewood);
+        }
+        .forgot-password-link{
+          cursor: pointer;
+          @include set-font(QuickSandMedium, $default-font-size+4, $pickled-bluewood, normal, left, 500);
+        }
+      }
+      .sign-up-here-link{
+        @include view-change-link;
+      }
+    }
+  }
+}
+/* end :: login view styles */

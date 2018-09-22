@@ -1,0 +1,34 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+/* start :: form styles */
+.ui.form{
+  .field{
+    width: 100%;
+    margin-bottom: $default-margin;
+    input{
+      height: 50px;
+      letter-spacing: 1px;
+      @include set-font(QuickSandMedium, $default-font-size+6, $input-place-holder-color, normal, left, normal);
+    }
+  }
+  .error-msg-wrapper{
+    text-align: center;
+    position: relative;
+  }
+}
+
+.ui.checkbox label:before,
+.ui.checkbox .box:before{
+  border: 2px solid $pickled-bluewood;
+}
+.ui.checkbox .box:after,
+.ui.checkbox label:after{
+  top: 1px;
+}
+
+.ui input.highlight-input{
+  border-color: $error-color !important;
+}
+/* end :: form styles */
