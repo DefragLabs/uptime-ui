@@ -102,7 +102,7 @@ class LoginView extends Component {
     const { errors, fields, serverError } = this.state;
 
     console.log("test console");
-    let number=2.2;
+    number=2.2;
     var test = parseInt(number)
     console.log(test)
 
