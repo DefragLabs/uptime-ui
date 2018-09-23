@@ -101,11 +101,6 @@ class LoginView extends Component {
     const { t } = this.props;
     const { errors, fields, serverError } = this.state;
 
-    console.log("test console");
-    var number=2.2;
-    var test = parseInt(number)
-    console.log(test)
-
     return(
       <div className="login-view">
         <div className="login-view-form-wrapper">
