@@ -6,7 +6,10 @@
     "forgotPassword": "Forgot password?",
     "register": "Register",
     "forgotPasswordInfo": "Enter your email so we can send a link to reset your password",
-    "backToLogin": "Back to login"
+    "backToLogin": "Back to login",
+    "resetPassword": "Reset Password",
+    "newPassword": "New Password",
+    "confirmPassword": "Confirm Password"
   },
   "common": {
     "submit": "Submit"

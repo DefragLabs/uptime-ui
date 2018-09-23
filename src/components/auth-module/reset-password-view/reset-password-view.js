@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../../i18n/config';
 import { Button, Form } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
 
 import ErrorMessageView from '../../common/error-message-view';
-import { isValidEmail } from '../../../utils/validation-utils';
+import {isPasswordEqual} from "../../../utils/validation-utils";
 
-class ForgotPasswordView extends Component {
+class ResetPasswordView extends Component {
   /***************************
-   *        CONSTRUCTOR
+   *       CONSTRUCTOR
    ***************************/
   constructor(props) {
     super(props);
 
     this.state={
       fields: {
-        email: ''
+        newPassword: '',
+        confirmPassword: ''
       },
       serverError: "",
       errors: {}
@@ -45,7 +45,8 @@ class ForgotPasswordView extends Component {
     if(formValidationFeedback.isFormValid){
       const fields = this.state.fields;
       const params ={
-        email: fields.email
+        newPassword: fields.newPassword,
+        confirmPassword: fields.confirmPassword
       };
       // API call for login request
     }else{
@@ -58,14 +59,15 @@ class ForgotPasswordView extends Component {
     let formIsValid = true;
     let result = {};
 
-    if(fields['email'] === ''){
+    if(fields["newPassword"] === ''){
       formIsValid = false;
-      errors["email"] = "*This field is required.";
-    } else if(typeof fields["email"] !== "undefined"){
-      if (!isValidEmail(fields["email"])) {
-        formIsValid = false;
-        errors["email"] = "Please provide valid email id.";
-      }
+      errors["newPassword"] = "*This field is required.";
+    } else if(fields["confirmPassword"] === ''){
+      formIsValid = false;
+      errors["confirmPassword"] = "*Please retype new password";
+    } else if(isPasswordEqual(fields["newPassword"], fields["confirmPassword"])){
+      formIsValid = false;
+      errors["confirmPassword"] = "Password mismatch.";
     }
 
     result['errors'] = errors;
@@ -74,7 +76,7 @@ class ForgotPasswordView extends Component {
   }
 
   /***************************
-   *           VIEWS
+   *          VIEWS
    ***************************/
   getFieldErrorView(error){
     return(
@@ -91,26 +93,33 @@ class ForgotPasswordView extends Component {
 
     return(
       <div className="auth-form-view">
-        <div className="forgot-password-view-form-wrapper">
-          <div className="heading">{t('auth.forgotPassword')}</div>
-          <div className="screen-sub-heading">{t('auth.forgotPasswordInfo')}</div>
-          <Form className="forgot-password-form" onSubmit= {this.handleSubmit}>
+        <div className="reset-password-view-form-wrapper">
+          <div className="heading">{t('auth.resetPassword')}</div>
+          <Form className="reset-password-form" onSubmit= {this.handleSubmit}>
             <Form.Field>
               <input
-                name='email'
-                type='email'
-                placeholder={t('auth.emailAddress')}
+                name='New Password'
+                type='password'
+                placeholder={t('auth.newPassword')}
                 onChange={this.handleChange}
-                value={fields["email"]}
-                className={`${errors['email'] && 'highlight-input'}`}
+                value={fields["newPassword"]}
+                className={`${errors['newPassword'] && 'highlight-input'}`}
               />
-              {errors['email'] && this.getFieldErrorView(errors["email"])}
+              {errors['email'] && this.getFieldErrorView(errors["newPassword"])}
+            </Form.Field>
+            <Form.Field>
+              <input
+                name='Confirm Password'
+                type='password'
+                placeholder={t('auth.confirmPassword')}
+                onChange={this.handleChange}
+                value={fields["confirmPassword"]}
+                className={`${errors['confirmPassword'] && 'highlight-input'}`}
+              />
+              {errors['confirmPassword'] && this.getFieldErrorView(errors["confirmPassword"])}
             </Form.Field>
             <div className="error-msg-wrapper">
               { serverError && this.getFieldErrorView(serverError)}
-            </div>
-            <div className="links-wrapper">
-              <Link className="back-to-login-link" to="/">{t('auth.backToLogin')}</Link>
             </div>
             <div className="btn-wrapper">
               <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
@@ -122,4 +131,4 @@ class ForgotPasswordView extends Component {
   }
 }
 
-export default translate(['translations'], translateOptions)(ForgotPasswordView);
+export default translate(['translations'], translateOptions)(ResetPasswordView);
