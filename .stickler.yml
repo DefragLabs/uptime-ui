@@ -1,12 +1,15 @@
 ---
 linters:
   eslint:
-    config: './eslint.config'
+    config: './eslint.json'
   csslint:
     ignore: 'box-model,ids'
 
-fixers:
-  enable: true
+review:
+  # Don't use 'failure' build status when
+  # a pull request contains style errors.
+  fail_on_comments: true
+
 
 files:
   # Ignore the files that match these glob patterns.
