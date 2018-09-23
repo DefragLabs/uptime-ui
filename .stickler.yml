@@ -5,6 +5,9 @@ linters:
   csslint:
     ignore: 'box-model,ids'
 
+fixers:
+  enable: true
+
 files:
   # Ignore the files that match these glob patterns.
   # Be careful to quote strings as `*` has special
