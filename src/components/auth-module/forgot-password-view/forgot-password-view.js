@@ -91,31 +91,37 @@ class ForgotPasswordView extends Component {
 
     return(
       <div className="auth-form-view">
-        <div className="forgot-password-view-form-wrapper">
-          <div className="heading">{t('auth.forgotPassword')}</div>
-          <div className="screen-sub-heading">{t('auth.forgotPasswordInfo')}</div>
-          <Form className="forgot-password-form" onSubmit= {this.handleSubmit}>
-            <Form.Field>
-              <input
-                name='email'
-                type='email'
-                placeholder={t('auth.emailAddress')}
-                onChange={this.handleChange}
-                value={fields["email"]}
-                className={`${errors['email'] && 'highlight-input'}`}
-              />
-              {errors['email'] && this.getFieldErrorView(errors["email"])}
-            </Form.Field>
-            <div className="error-msg-wrapper">
-              { serverError && this.getFieldErrorView(serverError)}
-            </div>
-            <div className="links-wrapper">
-              <Link className="back-to-login-link" to="/">{t('auth.backToLogin')}</Link>
-            </div>
-            <div className="btn-wrapper">
-              <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
-            </div>
-          </Form>
+        <div className="left-section">
+          <div className="brand-name">{t('common.brandName')}</div>
+          <div className="left-section-marker"></div>
+        </div>
+        <div className="right-section">
+          <div className="forgot-password-view-form-wrapper">
+            <div className="heading">{t('auth.forgotPassword')}</div>
+            <div className="screen-sub-heading">{t('auth.forgotPasswordInfo')}</div>
+            <Form className="forgot-password-form" onSubmit= {this.handleSubmit}>
+              <Form.Field>
+                <input
+                  name='email'
+                  type='email'
+                  placeholder={t('auth.emailAddress')}
+                  onChange={this.handleChange}
+                  value={fields["email"]}
+                  className={`${errors['email'] && 'highlight-input'}`}
+                />
+                {errors['email'] && this.getFieldErrorView(errors["email"])}
+              </Form.Field>
+              <div className="error-msg-wrapper">
+                { serverError && this.getFieldErrorView(serverError)}
+              </div>
+              <div className="links-wrapper">
+                <Link className="back-to-login-link" to="/">{t('auth.backToLogin')}</Link>
+              </div>
+              <div className="btn-wrapper">
+                <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
     )

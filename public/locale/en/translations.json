@@ -12,6 +12,7 @@
     "confirmPassword": "Confirm Password"
   },
   "common": {
+    "brandName": "UpTime",
     "submit": "Submit"
   }
 }

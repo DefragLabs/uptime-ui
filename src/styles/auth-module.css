@@ -9,182 +9,223 @@
   height: 100vh;
   background-color: #FFFFFF;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row; }
-  @media screen and (min-width: 1024px) {
-    .auth-form-view {
-      padding: 50px !important;
-      padding-bottom: 30px !important; } }
-  .auth-form-view .login-view-form-wrapper {
-    width: 520px !important;
-    padding: 40px !important;
-    border-radius: 4px;
-    border: 1px solid #F3F3F3;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19); }
-    .auth-form-view .login-view-form-wrapper .heading {
-      padding-bottom: 30px;
-      letter-spacing: -0.5px;
-      text-transform: capitalize;
-      color: #2F3D51;
-      font-size: 20px !important;
-      font-family: QuickSandMedium !important;
+  .auth-form-view .left-section {
+    width: 50%;
+    height: 100%;
+    background: #49b44e; }
+    .auth-form-view .left-section .brand-name {
+      color: #FFFFFF;
+      font-size: 60px !important;
+      font-family: QuickSandBold !important;
       line-height: normal;
       font-weight: normal;
-      text-align: left; }
-      @media screen and (min-width: 1024px) {
-        .auth-form-view .login-view-form-wrapper .heading {
-          font-size: 30px; } }
-    .auth-form-view .login-view-form-wrapper .screen-sub-heading {
-      padding-bottom: 20px;
-      letter-spacing: -0.5px;
-      color: #2F3D51;
-      font-size: 14px !important;
-      font-family: QuickSandMedium !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left; }
-      @media screen and (min-width: 1024px) {
-        .auth-form-view .login-view-form-wrapper .screen-sub-heading {
-          padding-bottom: 40px; } }
-    .auth-form-view .login-view-form-wrapper .ui.form .btn-wrapper {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row; }
-      .auth-form-view .login-view-form-wrapper .ui.form .btn-wrapper .app-btn {
-        min-width: 100px;
-        height: 50px;
-        border-radius: 4px;
-        background-color: #49b44e;
-        border: 1px solid #49b44e;
-        color: #ffffff;
-        font-size: 14px !important;
-        font-family: QuickSandMedium !important;
-        line-height: normal;
-        font-weight: 500;
-        text-align: center; }
-    .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper {
-      margin-top: 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row; }
-      .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper .forgot-password-link, .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper .register-link {
-        cursor: pointer;
+      text-align: left;
+      position: absolute;
+      top: calc(50% - 30px);
+      left: calc(25% - 100px); }
+    .auth-form-view .left-section .left-section-marker {
+      position: relative; }
+      .auth-form-view .left-section .left-section-marker::after {
+        position: absolute;
+        content: '';
+        right: -5px;
+        top: 50vh;
+        width: 20px;
+        height: 20px;
+        background: #49b44e;
+        transform: rotate(45deg); }
+  .auth-form-view .right-section {
+    width: 50%;
+    height: 100%;
+    background: #f0f8f0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row; }
+    .auth-form-view .right-section .login-view-form-wrapper {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 400px !important;
+      padding: 40px !important;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: -1px 1px 4px 0 rgba(0, 0, 0, 0.3); }
+      .auth-form-view .right-section .login-view-form-wrapper .heading {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        letter-spacing: -0.5px;
+        text-transform: capitalize;
         color: #2F3D51;
-        font-size: 14px !important;
+        font-size: 20px !important;
         font-family: QuickSandMedium !important;
         line-height: normal;
-        font-weight: 500;
+        font-weight: normal;
         text-align: left; }
-  .auth-form-view .forgot-password-view-form-wrapper {
-    width: 520px !important;
-    padding: 40px !important;
-    border-radius: 4px;
-    border: 1px solid #F3F3F3;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19); }
-    .auth-form-view .forgot-password-view-form-wrapper .heading {
-      padding-bottom: 30px;
-      letter-spacing: -0.5px;
-      text-transform: capitalize;
-      color: #2F3D51;
-      font-size: 20px !important;
-      font-family: QuickSandMedium !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left; }
-      @media screen and (min-width: 1024px) {
-        .auth-form-view .forgot-password-view-form-wrapper .heading {
-          font-size: 30px; } }
-    .auth-form-view .forgot-password-view-form-wrapper .screen-sub-heading {
-      padding-bottom: 20px;
-      letter-spacing: -0.5px;
-      color: #2F3D51;
-      font-size: 14px !important;
-      font-family: QuickSandMedium !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left; }
-      @media screen and (min-width: 1024px) {
-        .auth-form-view .forgot-password-view-form-wrapper .screen-sub-heading {
-          padding-bottom: 40px; } }
-    .auth-form-view .forgot-password-view-form-wrapper .ui.form .btn-wrapper {
-      margin-top: 20px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row; }
-      .auth-form-view .forgot-password-view-form-wrapper .ui.form .btn-wrapper .app-btn {
-        min-width: 100px;
-        height: 50px;
-        border-radius: 4px;
-        background-color: #49b44e;
-        border: 1px solid #49b44e;
-        color: #ffffff;
-        font-size: 14px !important;
-        font-family: QuickSandMedium !important;
-        line-height: normal;
-        font-weight: 500;
-        text-align: center; }
-    .auth-form-view .forgot-password-view-form-wrapper .ui.form .links-wrapper {
-      margin-top: 40px;
-      text-align: right; }
-      .auth-form-view .forgot-password-view-form-wrapper .ui.form .links-wrapper .back-to-login-link {
-        cursor: pointer;
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .login-view-form-wrapper .heading {
+            font-size: 30px; } }
+      .auth-form-view .right-section .login-view-form-wrapper .screen-sub-heading {
+        padding-bottom: 20px;
+        letter-spacing: -0.5px;
         color: #2F3D51;
         font-size: 14px !important;
         font-family: QuickSandMedium !important;
         line-height: normal;
-        font-weight: 500;
-        text-align: right; }
-  .auth-form-view .reset-password-view-form-wrapper {
-    width: 520px !important;
-    padding: 40px !important;
-    border-radius: 4px;
-    border: 1px solid #F3F3F3;
-    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19); }
-    .auth-form-view .reset-password-view-form-wrapper .heading {
-      padding-bottom: 30px;
-      letter-spacing: -0.5px;
-      text-transform: capitalize;
-      color: #2F3D51;
-      font-size: 20px !important;
-      font-family: QuickSandMedium !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left; }
-      @media screen and (min-width: 1024px) {
-        .auth-form-view .reset-password-view-form-wrapper .heading {
-          font-size: 30px; } }
-    .auth-form-view .reset-password-view-form-wrapper .screen-sub-heading {
-      padding-bottom: 20px;
-      letter-spacing: -0.5px;
-      color: #2F3D51;
-      font-size: 14px !important;
-      font-family: QuickSandMedium !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left; }
-      @media screen and (min-width: 1024px) {
-        .auth-form-view .reset-password-view-form-wrapper .screen-sub-heading {
-          padding-bottom: 40px; } }
-    .auth-form-view .reset-password-view-form-wrapper .ui.form .btn-wrapper {
-      margin-top: 40px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-direction: row; }
-      .auth-form-view .reset-password-view-form-wrapper .ui.form .btn-wrapper .app-btn {
-        min-width: 100px;
-        height: 50px;
-        border-radius: 4px;
-        background-color: #49b44e;
-        border: 1px solid #49b44e;
-        color: #ffffff;
+        font-weight: normal;
+        text-align: left; }
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .login-view-form-wrapper .screen-sub-heading {
+            padding-bottom: 40px; } }
+      .auth-form-view .right-section .login-view-form-wrapper .ui.form .btn-wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; }
+        .auth-form-view .right-section .login-view-form-wrapper .ui.form .btn-wrapper .app-btn {
+          min-width: 100px;
+          height: 50px;
+          border-radius: 4px;
+          background-color: #49b44e;
+          border: 1px solid #49b44e;
+          color: #ffffff;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: center; }
+      .auth-form-view .right-section .login-view-form-wrapper .ui.form .links-wrapper {
+        margin-top: 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; }
+        .auth-form-view .right-section .login-view-form-wrapper .ui.form .links-wrapper .forgot-password-link, .auth-form-view .right-section .login-view-form-wrapper .ui.form .links-wrapper .register-link {
+          cursor: pointer;
+          color: #2F3D51;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: left; }
+    .auth-form-view .right-section .forgot-password-view-form-wrapper {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 400px !important;
+      padding: 40px !important;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: -1px 1px 4px 0 rgba(0, 0, 0, 0.3); }
+      .auth-form-view .right-section .forgot-password-view-form-wrapper .heading {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        letter-spacing: -0.5px;
+        text-transform: capitalize;
+        color: #2F3D51;
+        font-size: 20px !important;
+        font-family: QuickSandMedium !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left; }
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .forgot-password-view-form-wrapper .heading {
+            font-size: 30px; } }
+      .auth-form-view .right-section .forgot-password-view-form-wrapper .screen-sub-heading {
+        padding-bottom: 20px;
+        letter-spacing: -0.5px;
+        color: #2F3D51;
         font-size: 14px !important;
         font-family: QuickSandMedium !important;
         line-height: normal;
-        font-weight: 500;
-        text-align: center; }
+        font-weight: normal;
+        text-align: left; }
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .forgot-password-view-form-wrapper .screen-sub-heading {
+            padding-bottom: 40px; } }
+      .auth-form-view .right-section .forgot-password-view-form-wrapper .ui.form .btn-wrapper {
+        margin-top: 20px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; }
+        .auth-form-view .right-section .forgot-password-view-form-wrapper .ui.form .btn-wrapper .app-btn {
+          min-width: 100px;
+          height: 50px;
+          border-radius: 4px;
+          background-color: #49b44e;
+          border: 1px solid #49b44e;
+          color: #ffffff;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: center; }
+      .auth-form-view .right-section .forgot-password-view-form-wrapper .ui.form .links-wrapper {
+        margin-top: 40px;
+        text-align: right; }
+        .auth-form-view .right-section .forgot-password-view-form-wrapper .ui.form .links-wrapper .back-to-login-link {
+          cursor: pointer;
+          color: #2F3D51;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: right; }
+    .auth-form-view .right-section .reset-password-view-form-wrapper {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 400px !important;
+      padding: 40px !important;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: -1px 1px 4px 0 rgba(0, 0, 0, 0.3); }
+      .auth-form-view .right-section .reset-password-view-form-wrapper .heading {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        letter-spacing: -0.5px;
+        text-transform: capitalize;
+        color: #2F3D51;
+        font-size: 20px !important;
+        font-family: QuickSandMedium !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left; }
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .reset-password-view-form-wrapper .heading {
+            font-size: 30px; } }
+      .auth-form-view .right-section .reset-password-view-form-wrapper .screen-sub-heading {
+        padding-bottom: 20px;
+        letter-spacing: -0.5px;
+        color: #2F3D51;
+        font-size: 14px !important;
+        font-family: QuickSandMedium !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left; }
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .reset-password-view-form-wrapper .screen-sub-heading {
+            padding-bottom: 40px; } }
+      .auth-form-view .right-section .reset-password-view-form-wrapper .ui.form .btn-wrapper {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; }
+        .auth-form-view .right-section .reset-password-view-form-wrapper .ui.form .btn-wrapper .app-btn {
+          min-width: 100px;
+          height: 50px;
+          border-radius: 4px;
+          background-color: #49b44e;
+          border: 1px solid #49b44e;
+          color: #ffffff;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: center; }

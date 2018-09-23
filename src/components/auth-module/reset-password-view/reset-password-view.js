@@ -93,38 +93,44 @@ class ResetPasswordView extends Component {
 
     return(
       <div className="auth-form-view">
-        <div className="reset-password-view-form-wrapper">
-          <div className="heading">{t('auth.resetPassword')}</div>
-          <Form className="reset-password-form" onSubmit= {this.handleSubmit}>
-            <Form.Field>
-              <input
-                name='New Password'
-                type='password'
-                placeholder={t('auth.newPassword')}
-                onChange={this.handleChange}
-                value={fields["newPassword"]}
-                className={`${errors['newPassword'] && 'highlight-input'}`}
-              />
-              {errors['email'] && this.getFieldErrorView(errors["newPassword"])}
-            </Form.Field>
-            <Form.Field>
-              <input
-                name='Confirm Password'
-                type='password'
-                placeholder={t('auth.confirmPassword')}
-                onChange={this.handleChange}
-                value={fields["confirmPassword"]}
-                className={`${errors['confirmPassword'] && 'highlight-input'}`}
-              />
-              {errors['confirmPassword'] && this.getFieldErrorView(errors["confirmPassword"])}
-            </Form.Field>
-            <div className="error-msg-wrapper">
-              { serverError && this.getFieldErrorView(serverError)}
-            </div>
-            <div className="btn-wrapper">
-              <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
-            </div>
-          </Form>
+        <div className="left-section">
+          <div className="brand-name">{t('common.brandName')}</div>
+          <div className="left-section-marker"></div>
+        </div>
+        <div className="right-section">
+          <div className="reset-password-view-form-wrapper">
+            <div className="heading">{t('auth.resetPassword')}</div>
+            <Form className="reset-password-form" onSubmit= {this.handleSubmit}>
+              <Form.Field>
+                <input
+                  name='New Password'
+                  type='password'
+                  placeholder={t('auth.newPassword')}
+                  onChange={this.handleChange}
+                  value={fields["newPassword"]}
+                  className={`${errors['newPassword'] && 'highlight-input'}`}
+                />
+                {errors['email'] && this.getFieldErrorView(errors["newPassword"])}
+              </Form.Field>
+              <Form.Field>
+                <input
+                  name='Confirm Password'
+                  type='password'
+                  placeholder={t('auth.confirmPassword')}
+                  onChange={this.handleChange}
+                  value={fields["confirmPassword"]}
+                  className={`${errors['confirmPassword'] && 'highlight-input'}`}
+                />
+                {errors['confirmPassword'] && this.getFieldErrorView(errors["confirmPassword"])}
+              </Form.Field>
+              <div className="error-msg-wrapper">
+                { serverError && this.getFieldErrorView(serverError)}
+              </div>
+              <div className="btn-wrapper">
+                <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
+              </div>
+            </Form>
+          </div>
         </div>
       </div>
     )
