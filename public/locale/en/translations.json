@@ -1,5 +1,8 @@
 {
-  "common": {
-    "welcomeMessage": "Welcome World!"
+  "auth": {
+    "login": "Login",
+    "emailAddress": "Email Address",
+    "password": "Password",
+    "forgotPassword": "Forgot password?"
   }
 }

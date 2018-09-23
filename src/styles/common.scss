@@ -1,0 +1,12 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.error-message-view{
+  padding-top: ($default-padding - 5);
+  margin-bottom: ($default-margin - 5);
+  @include set-font(QuickSandLight, $default-font-size+2, $error-color, normal, left, normal);
+  @media screen and (min-width: 768px){
+    font-size: $default-font-size+4;
+  }
+}

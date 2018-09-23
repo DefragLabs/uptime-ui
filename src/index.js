@@ -7,7 +7,9 @@ import i18n from './i18n/config';
 import store, { history } from './store/store';
 import AppRoutes from './routes/routes';
 import registerServiceWorker from './registerServiceWorker';
+
 import './styles/index.css';
+import 'semantic-ui-css/semantic.min.css';
 
 const target = document.querySelector('#root');
 
