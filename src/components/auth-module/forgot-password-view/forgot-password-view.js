@@ -1,23 +1,22 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../../i18n/config';
+import { Button, Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
-import { Button, Form, Icon } from 'semantic-ui-react';
 
 import ErrorMessageView from '../../common/error-message-view';
 import { isValidEmail } from '../../../utils/validation-utils';
 
-class LoginView extends Component {
+class ForgotPasswordView extends Component {
   /***************************
-   *       CONSTRUCTOR
+   *        CONSTRUCTOR
    ***************************/
   constructor(props) {
     super(props);
 
     this.state={
       fields: {
-        email: '',
-        password: ''
+        email: ''
       },
       serverError: "",
       errors: {}
@@ -46,8 +45,7 @@ class LoginView extends Component {
     if(formValidationFeedback.isFormValid){
       const fields = this.state.fields;
       const params ={
-        email: fields.email,
-        password: fields.password
+        email: fields.email
       };
       // API call for login request
     }else{
@@ -68,9 +66,6 @@ class LoginView extends Component {
         formIsValid = false;
         errors["email"] = "Please provide valid email id.";
       }
-    } else if(fields["password"] === ''){
-      formIsValid = false;
-      errors["password"] = "*This field is required.";
     }
 
     result['errors'] = errors;
@@ -79,7 +74,7 @@ class LoginView extends Component {
   }
 
   /***************************
-   *          VIEWS
+   *           VIEWS
    ***************************/
   getFieldErrorView(error){
     return(
@@ -101,9 +96,10 @@ class LoginView extends Component {
           <div className="left-section-marker"></div>
         </div>
         <div className="right-section">
-          <div className="login-view-form-wrapper">
-            <div className="heading">{t('auth.login')}</div>
-            <Form className="login-form" onSubmit= {this.handleSubmit}>
+          <div className="forgot-password-view-form-wrapper">
+            <div className="heading">{t('auth.forgotPassword')}</div>
+            <div className="screen-sub-heading">{t('auth.forgotPasswordInfo')}</div>
+            <Form className="forgot-password-form" onSubmit= {this.handleSubmit}>
               <Form.Field>
                 <input
                   name='email'
@@ -115,26 +111,14 @@ class LoginView extends Component {
                 />
                 {errors['email'] && this.getFieldErrorView(errors["email"])}
               </Form.Field>
-              <Form.Field>
-                <input
-                  name='password'
-                  type='password'
-                  placeholder={t('auth.password')}
-                  onChange={this.handleChange}
-                  value={fields["password"]}
-                  className={`${errors['password'] && 'highlight-input'}`}
-                />
-                {errors['password'] && this.getFieldErrorView(errors["password"])}
-              </Form.Field>
               <div className="error-msg-wrapper">
                 { serverError && this.getFieldErrorView(serverError)}
               </div>
               <div className="links-wrapper">
-                <Link className="forgot-password-link" to="/forgot-password">{t('auth.forgotPassword')}</Link>
-                <Link className="register-link" to="/#">{t('auth.register')}</Link>
+                <Link className="back-to-login-link" to="/">{t('auth.backToLogin')}</Link>
               </div>
               <div className="btn-wrapper">
-                <Button className="app-btn" type='submit'>{t('auth.login')}</Button>
+                <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
               </div>
             </Form>
           </div>
@@ -144,4 +128,4 @@ class LoginView extends Component {
   }
 }
 
-export default translate(['translations'], translateOptions)(LoginView);
+export default translate(['translations'], translateOptions)(ForgotPasswordView);
