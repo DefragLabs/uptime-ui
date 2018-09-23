@@ -1,0 +1,15 @@
+server {
+  listen 80;
+  server_name ${SERVER_NAME};
+
+  location ~ ^/(api|backend-static) {
+    resolver 127.0.0.11 ipv6=off;
+    proxy_pass http://${SERVER_NAME}:9001$request_uri;
+  }
+
+  location / {
+    root /app/code/build;
+    index index.html;
+    try_files $uri $uri/ /index.html;
+  }
+}
