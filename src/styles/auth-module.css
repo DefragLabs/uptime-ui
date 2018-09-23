@@ -5,8 +5,7 @@
   background-color: #2f3d51;
   border: solid 1px #2f3d51; }
 
-/* start :: login view styles */
-.login-view {
+.auth-form-view {
   height: 100vh;
   background-color: #FFFFFF;
   display: flex;
@@ -14,16 +13,16 @@
   align-items: center;
   flex-direction: row; }
   @media screen and (min-width: 1024px) {
-    .login-view {
+    .auth-form-view {
       padding: 50px !important;
       padding-bottom: 30px !important; } }
-  .login-view .login-view-form-wrapper {
+  .auth-form-view .login-view-form-wrapper {
     width: 520px !important;
-    padding: 30px !important;
+    padding: 40px !important;
     border-radius: 4px;
     border: 1px solid #F3F3F3;
     box-shadow: 0 7px 13px 0 rgba(24, 29, 58, 0.05); }
-    .login-view .login-view-form-wrapper .heading {
+    .auth-form-view .login-view-form-wrapper .heading {
       padding-bottom: 30px;
       letter-spacing: -0.5px;
       text-transform: capitalize;
@@ -34,21 +33,27 @@
       font-weight: normal;
       text-align: left; }
       @media screen and (min-width: 1024px) {
-        .login-view .login-view-form-wrapper .heading {
+        .auth-form-view .login-view-form-wrapper .heading {
           font-size: 30px; } }
+    .auth-form-view .login-view-form-wrapper .screen-sub-heading {
+      padding-bottom: 20px;
+      letter-spacing: -0.5px;
+      color: #2F3D51;
+      font-size: 14px;
+      font-family: QuickSandMedium;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left; }
       @media screen and (min-width: 1024px) {
-        .login-view .login-view-form-wrapper .heading {
-          padding-bottom: 50px; } }
-    .login-view .login-view-form-wrapper .ui.form .btn-wrapper, .login-view .login-view-form-wrapper .ui.form .links-wrapper {
-      margin-top: 30px;
+        .auth-form-view .login-view-form-wrapper .screen-sub-heading {
+          padding-bottom: 40px; } }
+    .auth-form-view .login-view-form-wrapper .ui.form .btn-wrapper {
+      margin-top: 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
       flex-direction: row; }
-      @media screen and (min-width: 1024px) {
-        .login-view .login-view-form-wrapper .ui.form .btn-wrapper, .login-view .login-view-form-wrapper .ui.form .links-wrapper {
-          margin-top: 50px; } }
-      .login-view .login-view-form-wrapper .ui.form .btn-wrapper .app-btn, .login-view .login-view-form-wrapper .ui.form .links-wrapper .app-btn {
+      .auth-form-view .login-view-form-wrapper .ui.form .btn-wrapper .app-btn {
         min-width: 100px;
         height: 50px;
         border-radius: 4px;
@@ -60,7 +65,13 @@
         line-height: normal;
         font-weight: 500;
         text-align: center; }
-      .login-view .login-view-form-wrapper .ui.form .btn-wrapper .forgot-password-link, .login-view .login-view-form-wrapper .ui.form .btn-wrapper .register-link, .login-view .login-view-form-wrapper .ui.form .links-wrapper .forgot-password-link, .login-view .login-view-form-wrapper .ui.form .links-wrapper .register-link {
+    .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper {
+      margin-top: 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row; }
+      .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper .forgot-password-link, .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper .register-link {
         cursor: pointer;
         color: #2F3D51;
         font-size: 14px;
@@ -68,17 +79,63 @@
         line-height: normal;
         font-weight: 500;
         text-align: left; }
-    .login-view .login-view-form-wrapper .ui.form .sign-up-here-link {
-      padding-top: 30px;
-      cursor: pointer;
+  .auth-form-view .forgot-password-view-form-wrapper {
+    width: 520px !important;
+    padding: 40px !important;
+    border-radius: 4px;
+    border: 1px solid #F3F3F3;
+    box-shadow: 0 7px 13px 0 rgba(24, 29, 58, 0.05); }
+    .auth-form-view .forgot-password-view-form-wrapper .heading {
+      padding-bottom: 20px;
+      letter-spacing: -0.5px;
+      text-transform: capitalize;
+      color: #2F3D51;
+      font-size: 20px;
+      font-family: QuickSandMedium;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left; }
+      @media screen and (min-width: 1024px) {
+        .auth-form-view .forgot-password-view-form-wrapper .heading {
+          font-size: 30px; } }
+    .auth-form-view .forgot-password-view-form-wrapper .screen-sub-heading {
+      padding-bottom: 20px;
+      letter-spacing: -0.5px;
       color: #2F3D51;
       font-size: 14px;
       font-family: QuickSandMedium;
       line-height: normal;
-      font-weight: 500;
-      text-align: center; }
+      font-weight: normal;
+      text-align: left; }
       @media screen and (min-width: 1024px) {
-        .login-view .login-view-form-wrapper .ui.form .sign-up-here-link {
-          padding-top: 50px; } }
-
-/* end :: login view styles */
+        .auth-form-view .forgot-password-view-form-wrapper .screen-sub-heading {
+          padding-bottom: 40px; } }
+    .auth-form-view .forgot-password-view-form-wrapper .ui.form .btn-wrapper {
+      margin-top: 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-direction: row; }
+      .auth-form-view .forgot-password-view-form-wrapper .ui.form .btn-wrapper .app-btn {
+        min-width: 100px;
+        height: 50px;
+        border-radius: 4px;
+        background-color: #2F3D51;
+        border: 1px solid #2F3D51;
+        color: #ffffff;
+        font-size: 14px;
+        font-family: QuickSandMedium;
+        line-height: normal;
+        font-weight: 500;
+        text-align: center; }
+    .auth-form-view .forgot-password-view-form-wrapper .ui.form .links-wrapper {
+      margin-top: 40px;
+      text-align: right; }
+      .auth-form-view .forgot-password-view-form-wrapper .ui.form .links-wrapper .back-to-login-link {
+        cursor: pointer;
+        color: #2F3D51;
+        font-size: 14px;
+        font-family: QuickSandMedium;
+        line-height: normal;
+        font-weight: 500;
+        text-align: right; }
