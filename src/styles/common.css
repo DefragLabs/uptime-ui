@@ -9,8 +9,8 @@
   padding-top: 5px;
   margin-bottom: 5px;
   color: #ff5066;
-  font-size: 12px;
-  font-family: QuickSandLight;
+  font-size: 12px !important;
+  font-family: QuickSandLight !important;
   line-height: normal;
   font-weight: normal;
   text-align: left; }

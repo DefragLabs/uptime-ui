@@ -52,14 +52,14 @@
     padding: 40px !important;
     border-radius: 4px;
     border: 1px solid #F3F3F3;
-    box-shadow: 0 7px 13px 0 rgba(24, 29, 58, 0.05); }
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19); }
     .auth-form-view .login-view-form-wrapper .heading {
       padding-bottom: 30px;
       letter-spacing: -0.5px;
       text-transform: capitalize;
       color: #2F3D51;
-      font-size: 20px;
-      font-family: QuickSandMedium;
+      font-size: 20px !important;
+      font-family: QuickSandMedium !important;
       line-height: normal;
       font-weight: normal;
       text-align: left; }
@@ -70,8 +70,8 @@
       padding-bottom: 20px;
       letter-spacing: -0.5px;
       color: #2F3D51;
-      font-size: 14px;
-      font-family: QuickSandMedium;
+      font-size: 14px !important;
+      font-family: QuickSandMedium !important;
       line-height: normal;
       font-weight: normal;
       text-align: left; }
@@ -91,8 +91,8 @@
         background-color: #2F3D51;
         border: 1px solid #2F3D51;
         color: #ffffff;
-        font-size: 14px;
-        font-family: QuickSandMedium;
+        font-size: 14px !important;
+        font-family: QuickSandMedium !important;
         line-height: normal;
         font-weight: 500;
         text-align: center; }
@@ -105,8 +105,8 @@
       .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper .forgot-password-link, .auth-form-view .login-view-form-wrapper .ui.form .links-wrapper .register-link {
         cursor: pointer;
         color: #2F3D51;
-        font-size: 14px;
-        font-family: QuickSandMedium;
+        font-size: 14px !important;
+        font-family: QuickSandMedium !important;
         line-height: normal;
         font-weight: 500;
         text-align: left; }
@@ -115,14 +115,14 @@
     padding: 40px !important;
     border-radius: 4px;
     border: 1px solid #F3F3F3;
-    box-shadow: 0 7px 13px 0 rgba(24, 29, 58, 0.05); }
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19); }
     .auth-form-view .forgot-password-view-form-wrapper .heading {
       padding-bottom: 30px;
       letter-spacing: -0.5px;
       text-transform: capitalize;
       color: #2F3D51;
-      font-size: 20px;
-      font-family: QuickSandMedium;
+      font-size: 20px !important;
+      font-family: QuickSandMedium !important;
       line-height: normal;
       font-weight: normal;
       text-align: left; }
@@ -133,8 +133,8 @@
       padding-bottom: 20px;
       letter-spacing: -0.5px;
       color: #2F3D51;
-      font-size: 14px;
-      font-family: QuickSandMedium;
+      font-size: 14px !important;
+      font-family: QuickSandMedium !important;
       line-height: normal;
       font-weight: normal;
       text-align: left; }
@@ -154,8 +154,8 @@
         background-color: #2F3D51;
         border: 1px solid #2F3D51;
         color: #ffffff;
-        font-size: 14px;
-        font-family: QuickSandMedium;
+        font-size: 14px !important;
+        font-family: QuickSandMedium !important;
         line-height: normal;
         font-weight: 500;
         text-align: center; }
@@ -165,8 +165,8 @@
       .auth-form-view .forgot-password-view-form-wrapper .ui.form .links-wrapper .back-to-login-link {
         cursor: pointer;
         color: #2F3D51;
-        font-size: 14px;
-        font-family: QuickSandMedium;
+        font-size: 14px !important;
+        font-family: QuickSandMedium !important;
         line-height: normal;
         font-weight: 500;
         text-align: right; }
@@ -175,14 +175,14 @@
     padding: 40px !important;
     border-radius: 4px;
     border: 1px solid #F3F3F3;
-    box-shadow: 0 7px 13px 0 rgba(24, 29, 58, 0.05); }
+    box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19); }
     .auth-form-view .reset-password-view-form-wrapper .heading {
       padding-bottom: 30px;
       letter-spacing: -0.5px;
       text-transform: capitalize;
       color: #2F3D51;
-      font-size: 20px;
-      font-family: QuickSandMedium;
+      font-size: 20px !important;
+      font-family: QuickSandMedium !important;
       line-height: normal;
       font-weight: normal;
       text-align: left; }
@@ -193,8 +193,8 @@
       padding-bottom: 20px;
       letter-spacing: -0.5px;
       color: #2F3D51;
-      font-size: 14px;
-      font-family: QuickSandMedium;
+      font-size: 14px !important;
+      font-family: QuickSandMedium !important;
       line-height: normal;
       font-weight: normal;
       text-align: left; }
@@ -214,8 +214,8 @@
         background-color: #2F3D51;
         border: 1px solid #2F3D51;
         color: #ffffff;
-        font-size: 14px;
-        font-family: QuickSandMedium;
+        font-size: 14px !important;
+        font-family: QuickSandMedium !important;
         line-height: normal;
         font-weight: 500;
         text-align: center; }
@@ -235,8 +235,8 @@
     height: 50px;
     letter-spacing: 1px;
     color: #686B78;
-    font-size: 16px;
-    font-family: QuickSandMedium;
+    font-size: 16px !important;
+    font-family: QuickSandMedium !important;
     line-height: normal;
     font-weight: normal;
     text-align: left; }
@@ -275,8 +275,8 @@
   padding-top: 5px;
   margin-bottom: 5px;
   color: #ff5066;
-  font-size: 12px;
-  font-family: QuickSandLight;
+  font-size: 12px !important;
+  font-family: QuickSandLight !important;
   line-height: normal;
   font-weight: normal;
   text-align: left; }

@@ -13,8 +13,8 @@
     height: 50px;
     letter-spacing: 1px;
     color: #686B78;
-    font-size: 16px;
-    font-family: QuickSandMedium;
+    font-size: 16px !important;
+    font-family: QuickSandMedium !important;
     line-height: normal;
     font-weight: normal;
     text-align: left; }
