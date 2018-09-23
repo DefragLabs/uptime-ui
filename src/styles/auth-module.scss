@@ -45,7 +45,7 @@
       }
     }
     .ui.form{
-      .btn-wrapper{
+      .btn-wrapper, .links-wrapper{
         margin-top: $default-padding*3;
         @include align-item(flex, space-between, center, row);
         @media screen and (min-width: 1024px){
@@ -54,7 +54,7 @@
         .app-btn{
           @include app-btn(100px, 50px, $pickled-bluewood, $pickled-bluewood);
         }
-        .forgot-password-link{
+        .forgot-password-link, .register-link{
           cursor: pointer;
           @include set-font(QuickSandMedium, $default-font-size+4, $pickled-bluewood, normal, left, 500);
         }

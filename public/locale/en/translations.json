@@ -3,6 +3,7 @@
     "login": "Login",
     "emailAddress": "Email Address",
     "password": "Password",
-    "forgotPassword": "Forgot password?"
+    "forgotPassword": "Forgot password?",
+    "register": "Register"
   }
 }
