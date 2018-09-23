@@ -1,8 +1,8 @@
 {
   "auth": {
     "login": "Login",
-    "emailAddress": "EMAIL ADDRESS",
-    "password": "PASSWORD",
+    "emailAddress": "Email Address",
+    "password": "Password",
     "forgotPassword": "Forgot password?"
   }
 }
