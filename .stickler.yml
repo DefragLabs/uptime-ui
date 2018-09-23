@@ -1,0 +1,14 @@
+---
+linters:
+  eslint:
+    config: 'eslint.json'
+  csslint:
+    ignore: 'box-model,ids'
+
+files:
+  # Ignore the files that match these glob patterns.
+  # Be careful to quote strings as `*` has special
+  # meaning in YAML files.
+  ignore:
+  - 'src/generated/*'
+  - 'node_modules/*'

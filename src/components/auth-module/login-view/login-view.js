@@ -100,6 +100,7 @@ class LoginView extends Component {
   render(){
     const { t } = this.props;
     const { errors, fields, serverError } = this.state;
+
     return(
       <div className="login-view">
         <div className="login-view-form-wrapper">
