@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { receiveSampleDataResponse, revieveRegisterNewUser } from '../actions/app-actions';
+import { receiveSampleDataResponse, revieveRegisterResponse } from '../actions/app-actions';
 
 export function apiEndPoint() {
   // return `${window.location.protocol}//${window.location.hostname}:9999`;
@@ -37,7 +37,7 @@ export function getSampleData(dispatch) {
   });
 };
 
-export function registerNewUser(dispatch, params) {
+export function register(dispatch, params) {
   let url = "";
   axios.post(
     url,
@@ -46,12 +46,12 @@ export function registerNewUser(dispatch, params) {
     })
   .then(response => {
     const successResponse = response.data;
-    dispatch(revieveRegisterNewUser(successResponse));
+    dispatch(revieveRegisterResponse(successResponse));
   })
   .catch(error => {
     if (error) {
       const errorResponse = error.response;
-      dispatch(revieveRegisterNewUser(errorResponse));
+      dispatch(revieveRegisterResponse(errorResponse));
     }
   });
 };

@@ -1,6 +1,6 @@
 import ActionTypes from '../constants/action-type';
 
-import { getSampleData, registerNewUser } from '../utils/app-api-utils';
+import { getSampleData, register } from '../utils/app-api-utils';
 
 export function fetchSampleData() {
   return(dispatch)=> {
@@ -15,13 +15,13 @@ export function receiveSampleDataResponse(response) {
   }
 }
 
-export function requestRegisterNewUser(params) {
+export function requestRegister(params) {
   return(dispatch) => {
-    registerNewUser(dispatch, params);
+    register(dispatch, params);
   }
 }
 
-export function revieveRegisterNewUser(response) {
+export function revieveRegisterResponse(response) {
   if (response.data.hasOwnProperty('success') && !response.data.success){
     response.isSuccess = false;
     response.isError = true;
@@ -32,7 +32,7 @@ export function revieveRegisterNewUser(response) {
     response.response = response.data;
   }
   return{
-    type: ActionTypes.RECEIVE_REGISTER_NEW_USER_RESPONSE,
+    type: ActionTypes.RECEIVE_REGISTER_RESPONSE,
     response
   }
 }
