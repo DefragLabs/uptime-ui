@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import LoginView from '../components/auth-module/login-view/login-view';
 import ForgotPasswordView from '../components/auth-module/forgot-password-view/forgot-password-view';
 import ResetPasswordView from '../components/auth-module/reset-password-view/reset-password-view';
+import RegisterView from '../components/auth-module/register-view/register-view';
 
 export default () => {
   return (
@@ -12,6 +13,7 @@ export default () => {
         <Route exact path='/' component={LoginView} />
         <Route exact path='/forgot-password' component={ForgotPasswordView} />
         <Route exact path='/reset/:uid/:token' component={ResetPasswordView} />
+        <Route exact path='/register' component={RegisterView} />
       </Switch>
     </BrowserRouter>
   )

@@ -131,7 +131,7 @@ class LoginView extends Component {
               </div>
               <div className="links-wrapper">
                 <Link className="forgot-password-link" to="/forgot-password">{t('auth.forgotPassword')}</Link>
-                <Link className="register-link" to="/#">{t('auth.register')}</Link>
+                <Link className="register-link" to="/register">{t('auth.register')}</Link>
               </div>
               <div className="btn-wrapper">
                 <Button className="app-btn" type='submit'>{t('auth.login')}</Button>

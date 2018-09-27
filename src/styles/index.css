@@ -260,6 +260,83 @@
           line-height: normal;
           font-weight: 500;
           text-align: center; }
+    .auth-form-view .right-section .register-view-form-wrapper {
+      margin: 0 auto;
+      width: 100%;
+      max-width: 400px !important;
+      padding: 40px !important;
+      border-radius: 4px;
+      background-color: #FFFFFF;
+      box-shadow: -1px 1px 4px 0 rgba(0, 0, 0, 0.3); }
+      .auth-form-view .right-section .register-view-form-wrapper .heading {
+        padding-top: 20px;
+        padding-bottom: 30px;
+        letter-spacing: -0.5px;
+        text-transform: capitalize;
+        color: #2F3D51;
+        font-size: 20px !important;
+        font-family: QuickSandMedium !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left; }
+        @media screen and (min-width: 1024px) {
+          .auth-form-view .right-section .register-view-form-wrapper .heading {
+            font-size: 30px; } }
+      .auth-form-view .right-section .register-view-form-wrapper .ui.form .btn-wrapper {
+        margin-top: 40px;
+        margin-bottom: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: row; }
+        .auth-form-view .right-section .register-view-form-wrapper .ui.form .btn-wrapper .app-btn {
+          min-width: 100px;
+          height: 50px;
+          border-radius: 4px;
+          background-color: #49b44e;
+          border: 1px solid #49b44e;
+          color: #ffffff;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: center; }
+      .auth-form-view .right-section .register-view-form-wrapper .ui.form .register-footer-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center; }
+      .auth-form-view .right-section .register-view-form-wrapper .register-success-form .sucess-msg, .auth-form-view .right-section .register-view-form-wrapper .register-success-form .error-msg {
+        font-size: 26px;
+        text-align: center;
+        padding: 30px 0px;
+        line-height: 1.4em; }
+      .auth-form-view .right-section .register-view-form-wrapper .register-success-form .register-msg-footer-wrapper {
+        display: flex;
+        justify-content: center; }
+        .auth-form-view .right-section .register-view-form-wrapper .register-success-form .register-msg-footer-wrapper .back-to-login-link button {
+          min-width: 100px;
+          height: 50px;
+          border-radius: 4px;
+          background-color: #49b44e;
+          border: 1px solid #49b44e;
+          color: #ffffff;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: center; }
+        .auth-form-view .right-section .register-view-form-wrapper .register-success-form .register-msg-footer-wrapper .back-to-register {
+          min-width: 100px;
+          height: 50px;
+          border-radius: 4px;
+          background-color: #ff5066;
+          border: 1px solid #ff5066;
+          color: #ffffff;
+          font-size: 14px !important;
+          font-family: QuickSandMedium !important;
+          line-height: normal;
+          font-weight: 500;
+          text-align: center; }
 
 .app-btn {
   width: 130px;
