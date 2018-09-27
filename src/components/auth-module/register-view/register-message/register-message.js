@@ -13,27 +13,21 @@ class RegisterMessageView extends Component {
   }
 
   /***************************
-   *          METHODS
-   ***************************/
-  /***************************
-   *           VIEWS
-   ***************************/
-  /***************************
    *         LIFECYCLE
    ***************************/
   render(){
-    const { t } = this.props;
+    const { t, registerSuccess, registerError } = this.props;
 
     return(
       <Form className="register-success-form">
         {
-          this.props.registerSuccess &&
+          registerSuccess &&
           <div className="sucess-msg">
             {t('auth.registerSuccessMsg')}
           </div>
         }
         {
-          this.props.registerError &&
+          registerError &&
           <div className="error-msg">
             {t('auth.registerFailureMsg')}
           </div>
@@ -41,13 +35,13 @@ class RegisterMessageView extends Component {
         <div className="register-msg-footer-wrapper">
           <div className="links-wrapper">
             {
-              this.props.registerSuccess &&
+              registerSuccess &&
               <Link className="back-to-login-link" to="/">
                 <Button className="app-btn" type='button'>{t('auth.login')}</Button>
               </Link>
             }
             {
-              this.props.registerError &&
+              registerError &&
               <Button className="app-btn back-to-register" type='button' onClick={()=>this.props.handleClearError()}>{t('auth.register')}</Button>
             }
           </div>

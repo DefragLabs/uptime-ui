@@ -312,7 +312,9 @@
         line-height: 1.4em; }
       .auth-form-view .right-section .register-view-form-wrapper .register-success-form .register-msg-footer-wrapper {
         display: flex;
-        justify-content: center; }
+        justify-content: center;
+        align-items: center;
+        flex-direction: row; }
         .auth-form-view .right-section .register-view-form-wrapper .register-success-form .register-msg-footer-wrapper .back-to-login-link button {
           min-width: 100px;
           height: 50px;

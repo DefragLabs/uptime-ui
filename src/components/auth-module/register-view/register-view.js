@@ -20,7 +20,9 @@ class RegisterView extends Component {
         email: '',
         firstName: '',
         lastName: '',
-        phoneNumber: ''
+        phoneNumber: '',
+        companyName: '',
+        password: '',
       },
       serverError: "",
       errors: {}
@@ -78,6 +80,13 @@ class RegisterView extends Component {
       formIsValid = false;
       errors["phoneNumber"] = "*This field is required.";
     }
+    if(fields['password'] === '') {
+      formIsValid = false;
+      errors["password"] = "*This field is required.";
+    } else if(fields['password'].length < 8) {
+      formIsValid = false;
+      errors["password"] = "*Password should contain minimum 8 characters.";
+    }
 
     result['errors'] = errors;
     result['isFormValid'] = formIsValid;
@@ -97,12 +106,109 @@ class RegisterView extends Component {
     )
   }
 
+  getRegisterResponseMessage(showSuccessMessage, showErrorMessage) {
+    return (
+      <RegisterMessageView
+      registerSuccess={showSuccessMessage}
+      registerError={showErrorMessage}
+      handleClearError={()=>this.handleClearError()}/>
+    );
+  }
+
+  getRegisterView() {
+    const { t } = this.props;
+    const { errors, fields, serverError } = this.state;
+    return(
+      <Form className="register-form" onSubmit= {this.handleSubmit}>
+        <Form.Field>
+          <input
+            name='companyName'
+            type='text'
+            placeholder={t('auth.companyName')}
+            onChange={this.handleChange}
+            value={fields["companyName"]}
+            className={`${errors['companyName'] && 'highlight-input'}`}
+          />
+          {errors['companyName'] && this.getFieldErrorView(errors["companyName"])}
+        </Form.Field>
+        <Form.Field>
+          <input
+            name='firstName'
+            type='text'
+            placeholder={t('auth.firstName')}
+            onChange={this.handleChange}
+            value={fields["firstName"]}
+            className={`${errors['email'] && 'highlight-input'}`}
+          />
+          {errors['firstName'] && this.getFieldErrorView(errors["firstName"])}
+        </Form.Field>
+        <Form.Field>
+          <input
+            name='lastName'
+            type='text'
+            placeholder={t('auth.lastName')}
+            onChange={this.handleChange}
+            value={fields["lastName"]}
+            className={`${errors['lastName'] && 'highlight-input'}`}
+          />
+          {errors['lastName'] && this.getFieldErrorView(errors["lastName"])}
+        </Form.Field>
+        <Form.Field>
+          <input
+            name='phoneNumber'
+            type='number'
+            placeholder={t('auth.phoneNumber')}
+            onChange={this.handleChange}
+            value={fields["phoneNumber"]}
+            className={`${errors['phoneNumber'] && 'highlight-input'}`}
+          />
+          {errors['phoneNumber'] && this.getFieldErrorView(errors["phoneNumber"])}
+        </Form.Field>
+        <Form.Field>
+          <input
+            name='email'
+            type='email'
+            placeholder={t('auth.emailAddress')}
+            onChange={this.handleChange}
+            value={fields["email"]}
+            className={`${errors['email'] && 'highlight-input'}`}
+          />
+          {errors['email'] && this.getFieldErrorView(errors["email"])}
+        </Form.Field>
+        <Form.Field>
+          <input
+            name='password'
+            type='password'
+            placeholder={t('auth.password')}
+            onChange={this.handleChange}
+            value={fields["password"]}
+            className={`${errors['password'] && 'highlight-input'}`}
+          />
+          {errors['password'] && this.getFieldErrorView(errors["password"])}
+        </Form.Field>
+        <div className="error-msg-wrapper">
+          { serverError && this.getFieldErrorView(serverError)}
+        </div>
+        <div className="register-footer-wrapper">
+          <div className="links-wrapper">
+            {t('auth.accountExists')}
+            <Link className="back-to-login-link" to="/">
+              <Button className="app-btn" type='button'>{t('auth.login')}</Button>
+            </Link>
+          </div>
+          <div className="btn-wrapper">
+            <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
+          </div>
+        </div>
+      </Form>
+    )
+  }
   /***************************
    *         LIFECYCLE
    ***************************/
   render(){
     const { t } = this.props;
-    const { errors, fields, serverError } = this.state;
+    const { showErrorMessage, showSuccessMessage } = this.state;
 
     return(
       <div className="auth-form-view">
@@ -114,90 +220,16 @@ class RegisterView extends Component {
           <div className="register-view-form-wrapper">
             <div className="heading">{t('auth.registerHeading')}</div>
             {
-              this.state.showSuccessMessage &&
-              <RegisterMessageView
-              registerSuccess={this.state.showSuccessMessage}
-              handleClearError={()=>this.handleClearError()}/>
+              showSuccessMessage &&
+              this.getRegisterResponseMessage(showSuccessMessage,showErrorMessage)
             }
             {
-              this.state.showErrorMessage &&
-              <RegisterMessageView
-              registerError={this.state.showErrorMessage}
-              handleClearError={()=>this.handleClearError()}/>
+              showErrorMessage &&
+              this.getRegisterResponseMessage(showSuccessMessage,showErrorMessage)
             }
             {
-              !this.state.showSuccessMessage && !this.state.showErrorMessage &&
-              <Form className="register-form" onSubmit= {this.handleSubmit}>
-                <Form.Field>
-                  <input
-                    name='companyName'
-                    type='text'
-                    placeholder={t('auth.companyName')}
-                    onChange={this.handleChange}
-                    value={fields["companyName"]}
-                    className={`${errors['companyName'] && 'highlight-input'}`}
-                  />
-                  {errors['companyName'] && this.getFieldErrorView(errors["companyName"])}
-                </Form.Field>
-                <Form.Field>
-                  <input
-                    name='firstName'
-                    type='text'
-                    placeholder={t('auth.firstName')}
-                    onChange={this.handleChange}
-                    value={fields["firstName"]}
-                    className={`${errors['email'] && 'highlight-input'}`}
-                  />
-                  {errors['firstName'] && this.getFieldErrorView(errors["firstName"])}
-                </Form.Field>
-                <Form.Field>
-                  <input
-                    name='lastName'
-                    type='text'
-                    placeholder={t('auth.lastName')}
-                    onChange={this.handleChange}
-                    value={fields["lastName"]}
-                    className={`${errors['lastName'] && 'highlight-input'}`}
-                  />
-                  {errors['lastName'] && this.getFieldErrorView(errors["lastName"])}
-                </Form.Field>
-                <Form.Field>
-                  <input
-                    name='email'
-                    type='email'
-                    placeholder={t('auth.emailAddress')}
-                    onChange={this.handleChange}
-                    value={fields["email"]}
-                    className={`${errors['email'] && 'highlight-input'}`}
-                  />
-                  {errors['email'] && this.getFieldErrorView(errors["email"])}
-                </Form.Field>
-                <Form.Field>
-                  <input
-                    name='phoneNumber'
-                    type='number'
-                    placeholder={t('auth.phoneNumber')}
-                    onChange={this.handleChange}
-                    value={fields["phoneNumber"]}
-                    className={`${errors['phoneNumber'] && 'highlight-input'}`}
-                  />
-                  {errors['phoneNumber'] && this.getFieldErrorView(errors["phoneNumber"])}
-                </Form.Field>
-                <div className="error-msg-wrapper">
-                  { serverError && this.getFieldErrorView(serverError)}
-                </div>
-                <div className="register-footer-wrapper">
-                  <div className="links-wrapper">
-                    {t('auth.accountExists')}
-                    <Link className="back-to-login-link" to="/">
-                      <Button className="app-btn" type='button'>{t('auth.login')}</Button>
-                    </Link>
-                  </div>
-                  <div className="btn-wrapper">
-                    <Button className="app-btn" type='submit'>{t('common.submit')}</Button>
-                  </div>
-                </div>
-              </Form>
+              !showSuccessMessage && !showErrorMessage &&
+              this.getRegisterView()
             }
           </div>
         </div>

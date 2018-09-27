@@ -187,14 +187,13 @@
       }
       .register-success-form {
         .sucess-msg, .error-msg {
-          font-size: 26px;
+          font-size: $default-font-size+16;
           text-align: center;
-          padding: 30px 0px;
+          padding: $default-padding*3 0px;
           line-height: 1.4em;
         }
         .register-msg-footer-wrapper {
-          display: flex;
-          justify-content: center;
+          @include align-item(flex, center, center, row);
           .back-to-login-link {
             button {
               @include app-btn(100px, 50px, $theme-color, $theme-color);
