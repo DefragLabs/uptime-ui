@@ -70,7 +70,7 @@ class RegisterView extends Component {
     if(fields['email'] === ''){
       formIsValid = false;
       errors["email"] = "*This field is required.";
-    } else if(typeof fields["email"] !== "undefined"){
+    } else if(typeof fields["email"] !== undefined){
       if (!isValidEmail(fields["email"])) {
         formIsValid = false;
         errors["email"] = "Please provide valid email id.";
