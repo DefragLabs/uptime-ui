@@ -9,7 +9,15 @@
     "backToLogin": "Back to login",
     "resetPassword": "Reset Password",
     "newPassword": "New Password",
-    "confirmPassword": "Confirm Password"
+    "confirmPassword": "Confirm Password",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "phoneNumber": "Phone Number",
+    "companyName": "Company Name",
+    "registerHeading": "Register",
+    "accountExists": "Account already exists?",
+    "registerSuccessMsg": "Successfully registered. Login to continue.",
+    "registerFailureMsg": "Registeration failed. Please try again."
   },
   "common": {
     "brandName": "UpTime",

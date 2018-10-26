@@ -160,6 +160,51 @@
         }
       }
     }
+
+    //Register
+    .register-view-form-wrapper{
+      margin: 0 auto;
+      @include auth-form-wrapper;
+      .heading{
+        padding-top: $default-padding*2;
+        padding-bottom: $default-padding*3;
+        @include screen-heading;
+      }
+      .ui.form{
+        .btn-wrapper{
+          margin-top: $default-margin*4;
+          margin-bottom: $default-margin*2;
+          @include align-item(flex, space-between, center, row);
+          .app-btn{
+            @include app-btn(100px, 50px, $theme-color, $theme-color);
+          }
+        }
+        .register-footer-wrapper {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+      .register-success-form {
+        .sucess-msg, .error-msg {
+          font-size: $default-font-size+16;
+          text-align: center;
+          padding: $default-padding*3 0px;
+          line-height: 1.4em;
+        }
+        .register-msg-footer-wrapper {
+          @include align-item(flex, center, center, row);
+          .back-to-login-link {
+            button {
+              @include app-btn(100px, 50px, $theme-color, $theme-color);
+            }
+          }
+          .back-to-register{
+            @include app-btn(100px, 50px, $error-color, $error-color);
+          }
+        }
+      }
+    }
   }
   
 }
