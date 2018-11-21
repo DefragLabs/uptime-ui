@@ -2,16 +2,16 @@ import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../i18n/config';
 
-class DashboardView extends Component {
+class IntegrationsView extends Component {
   /***************************
    *       CONSTRUCTOR
    ***************************/
   constructor(props) {
     super(props);
-    
+
     this.state={};
   }
-
+  
   /***************************
    *         LIFECYCLE
    ***************************/
@@ -19,11 +19,11 @@ class DashboardView extends Component {
     const { t } = this.props;
 
     return(
-      <div className="dashboard-view">
-        Dashboard view
+      <div className="integrations-view">
+        Integrations view
       </div>
     )
   }
 }
 
-export default translate(['translations'], translateOptions)(DashboardView);
+export default translate(['translations'], translateOptions)(IntegrationsView);
