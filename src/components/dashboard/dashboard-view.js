@@ -16,8 +16,7 @@ class DashboardView extends Component {
    *         LIFECYCLE
    ***************************/
   render(){
-    const { t } = this.props;
-
+    
     return(
       <div className="dashboard-view">
         Dashboard view

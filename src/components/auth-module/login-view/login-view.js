@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../../i18n/config';
 import { Link } from 'react-router-dom';
-import { Button, Form, Icon } from 'semantic-ui-react';
+import { Button, Form } from 'semantic-ui-react';
 
 import ErrorMessageView from '../../common/error-message-view';
 import { isValidEmail } from '../../../utils/validation-utils';

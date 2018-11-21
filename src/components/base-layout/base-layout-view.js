@@ -6,28 +6,11 @@ import HeaderView from '../common/header-view';
 import SideBarView from '../common/side-bar-view';
 
 class BaseLayoutView extends Component {
-  /***************************
-   *       CONSTRUCTOR
-   ***************************/
-  constructor(props) {
-    super(props);
-
-    this.state={};
-  }
-
-  /***************************
-   *          METHODS
-   ***************************/
-
-  /***************************
-   *          VIEWS
-   ***************************/
 
   /***************************
    *         LIFECYCLE
    ***************************/
   render(){
-    const { t } = this.props;
     return(
       <div className="base-layout-view">
         <HeaderView />
