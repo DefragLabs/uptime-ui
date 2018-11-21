@@ -14,7 +14,7 @@ export default class HeaderView extends Component {
       <div className="user-profile-popup-content-view">
         <div className="user-name">Pravin Parkhi</div>
         <Link to="/profile" className="popup-link profile-link">Profile</Link>
-        <div className="popup-link logout-link">Logout</div>
+        <Link to="/" className="popup-link logout-link">Logout</Link>
       </div>
     )
   }
