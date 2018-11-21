@@ -1,3 +1,7 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
 .App {
   text-align: center;
 }
@@ -27,6 +31,11 @@
   width: 100%;
   background-color: wheat;
   display: flex
+}
+
+.main-content{
+  margin-top: $default-margin;
+  margin-left: $default-margin * 24;
 }
 
 @keyframes App-logo-spin {

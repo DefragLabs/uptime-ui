@@ -51,7 +51,8 @@ class LoginView extends Component {
       };
       // API call for login request
     }else{
-      this.setState({errors:formValidationFeedback.errors});
+      // this.setState({errors:formValidationFeedback.errors});
+      this.props.history.push('/dashboard')
     }
   }
 

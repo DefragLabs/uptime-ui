@@ -1,0 +1,53 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.header-view{
+    height: 70px;
+    background-color: $white;
+    box-shadow: rgb(204, 204, 204) 0px 1px 2px;
+    @include align-item(flex, flex-end, center, row);
+
+    .user-info-wrapper{
+        @include align-item(flex, flex-end, center, row);
+        img{
+            width: 40px;
+            height: auto;
+        }
+    }
+}
+
+.user-profile-popup-content-view{
+    .user-name{
+        padding: $default-padding - 3;
+        @include set-font(
+            QuickSandMedium, 
+            $default-font-size+6,
+            $shuttle-gray, 
+            bold, 
+            left, 
+            normal
+        );
+        border-bottom: 1px solid $silver;
+    }
+    .popup-link{
+        padding: $default-padding $default-padding - 3;
+        display: block;
+        @include set-font(
+            QuickSandMedium,
+            $default-font-size+4,
+            $shuttle-gray,
+            normal,
+            left,
+            normal
+        );
+    }
+
+    .profile-link{
+
+    }
+
+    .logout-btn{
+
+    }
+}
