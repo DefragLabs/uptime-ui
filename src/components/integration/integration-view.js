@@ -20,7 +20,7 @@ class IntegrationsView extends Component {
 
     return(
       <div className="integrations-view">
-        Integrations view
+        Integration view
       </div>
     )
   }

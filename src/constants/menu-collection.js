@@ -15,8 +15,8 @@ export const SIDEBAR_MENUS = [
         url: "/monitor"
     },
     {
-        name: "Notification",
+        name: "Integration",
         icon: "bell outline",
-        url: "/notification"
+        url: "/integration"
     }
 ]

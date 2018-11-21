@@ -8,6 +8,9 @@ import RegisterView from '../components/auth-module/register-view/register-view'
 
 import BaseLayout from '../components/base-layout/base-layout-view';
 import DashboardView from '../components/dashboard/dashboard-view';
+import UpTimeView from '../components/uptime/uptime-view';
+import MonitorView from '../components/monitor/monitor-view';
+import IntegrationView from '../components/integrations/integrations-view';
 
 // const PrivateRoute = ({ component: Component, ...rest }) => (
 //   <Route {...rest} render={(props) => (
@@ -32,6 +35,9 @@ export default () => {
         
         <BaseLayout>
           <PrivateRoute exact path='/dashboard' component={DashboardView} />
+          <PrivateRoute exact path='/uptime' component={UpTimeView} />
+          <PrivateRoute exact path='/monitor' component={MonitorView} />
+          <PrivateRoute exact path='/integration' component={IntegrationView} />
         </BaseLayout>
       </Switch>
     </BrowserRouter>
