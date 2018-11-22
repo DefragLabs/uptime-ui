@@ -1,0 +1,43 @@
+.app-btn {
+  width: 130px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #2f3d51;
+  border: solid 1px #2f3d51; }
+
+.header-view {
+  height: 70px;
+  background-color: #FFFFFF;
+  box-shadow: #cccccc 0px 1px 2px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: row; }
+  .header-view .user-info-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    flex-direction: row; }
+    .header-view .user-info-wrapper img {
+      width: 40px;
+      height: auto; }
+
+.user-profile-popup-content-view .user-name {
+  padding: 7px;
+  color: #686B78;
+  font-size: 16px !important;
+  font-family: QuickSandMedium !important;
+  line-height: bold;
+  font-weight: normal;
+  text-align: left;
+  border-bottom: 1px solid #cccccc; }
+
+.user-profile-popup-content-view .popup-link {
+  padding: 10px 7px;
+  display: block;
+  color: #686B78;
+  font-size: 14px !important;
+  font-family: QuickSandMedium !important;
+  line-height: normal;
+  font-weight: normal;
+  text-align: left; }

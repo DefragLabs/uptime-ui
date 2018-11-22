@@ -5,13 +5,7 @@ import { Button, Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 class RegisterMessageView extends Component {
-  /***************************
-   *        CONSTRUCTOR
-   ***************************/
-  constructor(props) {
-    super(props);
-  }
-
+  
   /***************************
    *         LIFECYCLE
    ***************************/
