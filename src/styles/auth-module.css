@@ -15,7 +15,7 @@
   .auth-form-view .left-section {
     width: 50%;
     height: 100%;
-    background: #49b44e; }
+    background: #111111; }
     .auth-form-view .left-section .brand-name {
       color: #FFFFFF;
       font-size: 60px !important;
@@ -35,12 +35,12 @@
         top: 50vh;
         width: 20px;
         height: 20px;
-        background: #49b44e;
+        background: #111111;
         transform: rotate(45deg); }
   .auth-form-view .right-section {
     width: 50%;
     height: 100%;
-    background: #f0f8f0;
+    background: #FFFFFF;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -90,8 +90,8 @@
           min-width: 100px;
           height: 50px;
           border-radius: 4px;
-          background-color: #49b44e;
-          border: 1px solid #49b44e;
+          background-color: #111111;
+          border: 1px solid #111111;
           color: #ffffff;
           font-size: 14px !important;
           font-family: QuickSandMedium !important;
@@ -157,8 +157,8 @@
           min-width: 100px;
           height: 50px;
           border-radius: 4px;
-          background-color: #49b44e;
-          border: 1px solid #49b44e;
+          background-color: #111111;
+          border: 1px solid #111111;
           color: #ffffff;
           font-size: 14px !important;
           font-family: QuickSandMedium !important;
@@ -221,8 +221,8 @@
           min-width: 100px;
           height: 50px;
           border-radius: 4px;
-          background-color: #49b44e;
-          border: 1px solid #49b44e;
+          background-color: #111111;
+          border: 1px solid #111111;
           color: #ffffff;
           font-size: 14px !important;
           font-family: QuickSandMedium !important;
@@ -262,8 +262,8 @@
           min-width: 100px;
           height: 50px;
           border-radius: 4px;
-          background-color: #49b44e;
-          border: 1px solid #49b44e;
+          background-color: #111111;
+          border: 1px solid #111111;
           color: #ffffff;
           font-size: 14px !important;
           font-family: QuickSandMedium !important;
@@ -288,8 +288,8 @@
           min-width: 100px;
           height: 50px;
           border-radius: 4px;
-          background-color: #49b44e;
-          border: 1px solid #49b44e;
+          background-color: #111111;
+          border: 1px solid #111111;
           color: #ffffff;
           font-size: 14px !important;
           font-family: QuickSandMedium !important;

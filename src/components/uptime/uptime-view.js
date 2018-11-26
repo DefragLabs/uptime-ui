@@ -11,7 +11,8 @@ class UpTimeView extends Component {
 
     return(
       <div className="uptime-view">
-        Uptime view
+        <div className="main-heading">Uptime Monitoring</div>
+        
       </div>
     )
   }

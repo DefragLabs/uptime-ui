@@ -5,7 +5,7 @@
 .side-bar-view{
     width: 220px;
     height: 100%;
-    background-color: $chateau-green;
+    background-color: $theme-color;
     position: fixed;
     top: 70px;
 }
@@ -29,16 +29,18 @@
         }
 
         &:hover{
-            background-color: $everglade;
+            background-color: $black;
             .name{
                 font-weight: bold;
             }
         }
     }
     .active{
-        background-color: $everglade;
-        .name{
-            font-weight: bold;
+        background-color: $black;
+        .name-wrapper{
+            .name{
+                font-weight: bold;
+            }
         }
     }
 }

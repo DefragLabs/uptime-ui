@@ -1,0 +1,14 @@
+.app-btn {
+  width: 130px;
+  height: 50px;
+  border-radius: 4px;
+  background-color: #2f3d51;
+  border: solid 1px #2f3d51; }
+
+.uptime-view .main-heading {
+  color: #111111;
+  font-size: 30px !important;
+  font-family: QuickSandBold !important;
+  line-height: normal;
+  font-weight: normal;
+  text-align: left; }

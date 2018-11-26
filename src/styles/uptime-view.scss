@@ -1,0 +1,9 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.uptime-view{
+  .main-heading{
+    @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
+  }
+}
