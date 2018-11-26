@@ -4,7 +4,7 @@ server {
 
   location ~ ^/(api|backend-static) {
     resolver 127.0.0.11 ipv6=off;
-    proxy_pass http://${SERVER_NAME}:9001$request_uri;
+    proxy_pass http://${SERVER_NAME}:8080$request_uri;
   }
 
   location / {
