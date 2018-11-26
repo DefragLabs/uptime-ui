@@ -17,7 +17,10 @@
     "registerHeading": "Register",
     "accountExists": "Account already exists?",
     "registerSuccessMsg": "Successfully registered. Login to continue.",
-    "registerFailureMsg": "Registeration failed. Please try again."
+    "registerFailureMsg": "Registration failed. Please try again."
+  },
+  "uptime": {
+    "uptimeMonitoring": "Uptime Monitoring"
   },
   "common": {
     "brandName": "UpTime",
