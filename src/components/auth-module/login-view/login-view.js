@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../../i18n/config';
 import { Link } from 'react-router-dom';
@@ -6,6 +8,9 @@ import { Button, Form } from 'semantic-ui-react';
 
 import ErrorMessageView from '../../common/error-message-view';
 import { isValidEmail } from '../../../utils/validation-utils';
+import { requestLogin } from '../../../actions/app-actions'
+import { isUserSessionActive } from '../../../helpers/auth-helpers';
+import ButtonLoaderView from '../../common/button-loader-view';
 
 class LoginView extends Component {
   /***************************
@@ -49,10 +54,9 @@ class LoginView extends Component {
         email: fields.email,
         password: fields.password
       };
-      // API call for login request
+      this.props.requestLogin(params);
     }else{
-      // this.setState({errors:formValidationFeedback.errors});
-      this.props.history.push('/dashboard')
+      this.setState({errors:formValidationFeedback.errors});
     }
   }
 
@@ -91,8 +95,14 @@ class LoginView extends Component {
   /***************************
    *         LIFECYCLE
    ***************************/
+  componentWillReceiveProps = (newProps) => {
+    if (isUserSessionActive(newProps.userSession) !== isUserSessionActive(this.props.userSession)){
+      this.props.history.push(`/dashboard`);
+    }
+  }
+
   render(){
-    const { t } = this.props;
+    const { t, isLoading } = this.props;
     const { errors, fields, serverError } = this.state;
 
     return(
@@ -135,7 +145,9 @@ class LoginView extends Component {
                 <Link className="register-link" to="/register">{t('auth.register')}</Link>
               </div>
               <div className="btn-wrapper">
-                <Button className="app-btn" type='submit'>{t('auth.login')}</Button>
+                <Button className="app-btn" type='submit'>
+                  {isLoading ? <ButtonLoaderView /> : t('auth.login')}
+                </Button>
               </div>
             </Form>
           </div>
@@ -145,4 +157,17 @@ class LoginView extends Component {
   }
 }
 
-export default translate(['translations'], translateOptions)(LoginView);
+function mapStateToProps(state) {
+  return {
+    userSession: state.auth.userSession,
+    isLoading: state.auth.isLoading
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    requestLogin: requestLogin
+  },dispatch)
+}
+
+export default translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(LoginView));

@@ -1,19 +1,7 @@
 import ActionTypes from '../constants/action-type';
 
-import { getSampleData, register } from '../utils/app-api-utils';
-
-export function fetchSampleData() {
-  return(dispatch)=> {
-    getSampleData(dispatch);
-  }
-}
-
-export function receiveSampleDataResponse(response) {
-  return {
-    type: ActionTypes.SAMPLE_DATA_RESPONSE,
-    response
-  }
-}
+import { register, login , logout } from '../utils/app-api-utils';
+import { getErrorMessage } from '../utils/string-utils';
 
 export function requestRegister(params) {
   return(dispatch) => {
@@ -33,6 +21,54 @@ export function revieveRegisterResponse(response) {
   }
   return{
     type: ActionTypes.RECEIVE_REGISTER_RESPONSE,
+    response
+  }
+}
+
+// Login
+export function requestLogin(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.LOGIN_REQUEST_ATTEMPTED,
+    })
+    login(dispatch, params);
+  }
+}
+
+export function receiveLoginSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_LOGIN_REQUEST_SUCCESS,
+    response
+  }
+}
+
+export function receiveLoginFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_LOGIN_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Logout
+export function requestLogout(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.LOGOUT_REQUEST_ATTEMPTED,
+    })
+    logout(dispatch, params);
+  }
+}
+
+export function receiveLogoutSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_LOGOUT_REQUEST_SUCCESS,
+    response
+  }
+}
+
+export function receiveLogoutFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_LOGOUT_REQUEST_FAILURE,
     response
   }
 }

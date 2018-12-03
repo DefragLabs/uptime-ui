@@ -1,13 +1,13 @@
 import { createStore, applyMiddleware, compose } from 'redux';
 import { routerMiddleware } from 'react-router-redux';
 import thunk from 'redux-thunk';
+import { isEqual } from 'lodash';
 import createHistory from 'history/createBrowserHistory';
 import rootReducer from '../reducer/root';
-import { fromJS } from 'immutable';
+import { getStateFromLocalStorage, setStateToLocalStorage } from '../helpers/auth-helpers'
 
 export const history = createHistory();
 
-const initialState = fromJS({});
 const enhancers = [];
 const middleware = [
   thunk,
@@ -16,7 +16,6 @@ const middleware = [
 
 if (process.env.NODE_ENV === 'development') {
   const devToolsExtension = window.devToolsExtension;
-
   if (typeof devToolsExtension === 'function') {
     enhancers.push(devToolsExtension());
   }
@@ -27,10 +26,27 @@ const composedEnhancers = compose(
   ...enhancers
 )
 
+const persistedState = getStateFromLocalStorage();
+
 const store = createStore(
   rootReducer,
-  initialState,
+  persistedState,
   composedEnhancers
 );
+
+store.subscribe(() => {
+  if(store.getState().auth.userSession != null) {
+    if(!persistedState) {
+      setStateToLocalStorage({
+        auth: store.getState().auth,
+      });
+    }
+    else if(!isEqual(persistedState.auth.userSession, store.getState().auth.userSession)) {
+      setStateToLocalStorage({
+        auth: store.getState().auth,
+      });
+    }
+  }
+});
 
 export default store;
