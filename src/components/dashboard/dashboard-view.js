@@ -5,20 +5,11 @@ import { translate } from 'react-i18next';
 import { translateOptions } from '../../i18n/config';
 
 class DashboardView extends Component {
-  /***************************
-   *       CONSTRUCTOR
-   ***************************/
-  constructor(props) {
-    super(props);
-    
-    this.state={};
-  }
 
   /***************************
    *         LIFECYCLE
    ***************************/
   render(){
-    
     return(
       <div className="dashboard-view">
         Dashboard view
@@ -27,16 +18,4 @@ class DashboardView extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-    
-  };
-}
-
-function mapDispatchToProps(dispatch){
-  return bindActionCreators({
-    
-  },dispatch)
-}
-
-export default translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(DashboardView));
+export default translate(['translations'], translateOptions)(connect(null, null)(DashboardView));

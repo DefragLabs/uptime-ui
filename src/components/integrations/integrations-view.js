@@ -8,7 +8,6 @@ class IntegrationsView extends Component {
    *         LIFECYCLE
    ***************************/
   render(){
-
     return(
       <div className="integrations-view">
         Integration view

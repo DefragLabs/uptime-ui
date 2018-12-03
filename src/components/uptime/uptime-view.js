@@ -8,7 +8,6 @@ class UpTimeView extends Component {
    *         LIFECYCLE
    ***************************/
   render(){
-
     return(
       <div className="uptime-view">
         <div className="main-heading">Uptime Monitoring</div>

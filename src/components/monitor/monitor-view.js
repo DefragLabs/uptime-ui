@@ -8,7 +8,6 @@ class MonitorView extends Component {
    *         LIFECYCLE
    ***************************/
   render(){
-    
     return(
       <div className="monitor-view">
         Monitor view
