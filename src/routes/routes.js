@@ -11,16 +11,17 @@ import DashboardView from '../components/dashboard/dashboard-view';
 import UpTimeView from '../components/uptime/uptime-view';
 import MonitorView from '../components/monitor/monitor-view';
 import IntegrationView from '../components/integrations/integrations-view';
-
-// const PrivateRoute = ({ component: Component, ...rest }) => (
-//   <Route {...rest} render={(props) => (
-//     isUserActive() ? <Component {...props} /> : <Redirect to={getRedirectionUrl({...rest}, props)} />
-//   )} />
-// );
+import { isUserActive } from '../helpers/auth-helpers';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
   <Route {...rest} render={(props) => (
-    true ? <Component {...props} /> : <Redirect to='/' />
+    isUserActive() ? <Component {...props} /> : <Redirect to="/" />
+  )} />
+);
+
+const PublicRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={(props) => (
+    isUserActive() ? <Redirect to="/dashboard" /> : <Component {...props} />
   )} />
 );
 
@@ -28,12 +29,12 @@ export default () => {
   return (
     <BrowserRouter>
       <Switch>
-        <Route exact path='/' component={LoginView} />
-        <Route exact path='/forgot-password' component={ForgotPasswordView} />
-        <Route exact path='/reset/:uid/:token' component={ResetPasswordView} />
-        <Route exact path='/register' component={RegisterView} />
+        <PublicRoute exact path='/' component={LoginView} />
+        <PublicRoute exact path='/forgot-password' component={ForgotPasswordView} />
+        <PublicRoute exact path='/reset/:uid/:token' component={ResetPasswordView} />
+        <PublicRoute exact path='/register' component={RegisterView} />
         
-        <BaseLayout>
+        <BaseLayout >
           <PrivateRoute exact path='/dashboard' component={DashboardView} />
           <PrivateRoute exact path='/uptime' component={UpTimeView} />
           <PrivateRoute exact path='/monitor' component={MonitorView} />

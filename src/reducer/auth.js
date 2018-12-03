@@ -1,9 +1,8 @@
-import ActionType from '../constants/action-type';
-import { Map as makeMap } from 'immutable';
+import ActionTypes from '../constants/action-type';
 
-export const initialState =  makeMap({
-
-});
+export const initialState =  {
+  isLoading: false
+};
 
 const auth = (state=initialState, action)=> {
 
@@ -13,9 +12,40 @@ const auth = (state=initialState, action)=> {
 
   switch (action.type) {
 
-    case ActionType.SAMPLE_DATA_RESPONSE: {
-      state = state.set('sampleDataResponse', action.response);
-      return state;
+    case ActionTypes.LOGIN_REQUEST_ATTEMPTED: {
+      return {
+        ...state, 
+        isLoading: true
+      };
+    }
+
+    case ActionTypes.RECEIVE_LOGIN_REQUEST_SUCCESS: {
+      const userSession = {
+        token: action.response.data.token
+      };
+      return { ...state, userSession };
+    }
+
+    case ActionTypes.RECEIVE_LOGIN_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
+    case ActionTypes.LOGOUT_REQUEST_ATTEMPTED: {
+      return {
+        ...state,
+        isLoading: true
+      }
+    }
+
+    case ActionTypes.RECEIVE_LOGOUT_REQUEST_SUCCESS: {
+      return {
+        ...state,
+        userSession: null,
+        isLoading: false
+       };
     }
 
     default:{

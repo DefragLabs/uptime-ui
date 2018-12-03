@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../i18n/config';
+import { withRouter, Link } from 'react-router-dom';
 
 import HeaderView from '../common/header-view';
 import SideBarView from '../common/side-bar-view';
@@ -13,7 +14,7 @@ class BaseLayoutView extends Component {
   render(){
     return(
       <div className="base-layout-view">
-        <HeaderView />
+        <HeaderView {...this.props} />
 
         <div className="main-content-wrapper">
           <SideBarView {...this.props} />
@@ -27,4 +28,4 @@ class BaseLayoutView extends Component {
   }
 }
 
-export default translate(['translations'], translateOptions)(BaseLayoutView);
+export default withRouter(translate(['translations'], translateOptions)(BaseLayoutView));
