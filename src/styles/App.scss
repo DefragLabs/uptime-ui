@@ -35,7 +35,8 @@
 
 .main-content{
   margin-top: $default-margin;
-  margin-left: $default-margin * 24;
+  margin-left: $default-margin*24;
+  margin-right: $default-margin*2;
 }
 
 @keyframes App-logo-spin {

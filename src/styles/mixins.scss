@@ -14,19 +14,12 @@
   text-align: $text-align;
 }
 
-.app-btn{
-  width: 130px;
-  height: 50px;
-  border-radius: 4px;
-  background-color: #2f3d51;
-  border: solid 1px #2f3d51;
-}
-
 @mixin app-btn($width, $height, $backgroundColor, $borderColor){
   min-width: $width;
   height: $height;
   border-radius: 4px;
   background-color: $backgroundColor;
   border: 1px solid $borderColor;
+  padding: $default-padding - 5;
   @include set-font(QuickSandMedium, 14px, #ffffff, normal, center, 500);
 }

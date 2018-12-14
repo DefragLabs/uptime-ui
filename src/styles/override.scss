@@ -8,7 +8,7 @@
     width: 100%;
     margin-bottom: $default-margin;
     input{
-      height: 50px;
+      // height: 50px;
       letter-spacing: 1px;
       @include set-font(QuickSandMedium, $default-font-size+6, $input-place-holder-color, normal, left, normal);
     }
