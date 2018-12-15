@@ -12,6 +12,7 @@ const auth = (state=initialState, action)=> {
 
   switch (action.type) {
 
+    // Login
     case ActionTypes.LOGIN_REQUEST_ATTEMPTED: {
       return {
         ...state, 
@@ -23,7 +24,11 @@ const auth = (state=initialState, action)=> {
       const userSession = {
         token: action.response.data.token
       };
-      return { ...state, userSession };
+      return { 
+        ...state,
+        userSession,
+        isLoading: false
+      };
     }
 
     case ActionTypes.RECEIVE_LOGIN_REQUEST_FAILURE: {
@@ -33,6 +38,7 @@ const auth = (state=initialState, action)=> {
       };
     }
 
+    // Logout
     case ActionTypes.LOGOUT_REQUEST_ATTEMPTED: {
       return {
         ...state,

@@ -1,16 +1,8 @@
-.app-btn {
-  width: 130px;
-  height: 50px;
-  border-radius: 4px;
-  background-color: #2f3d51;
-  border: solid 1px #2f3d51; }
-
 /* start :: form styles */
 .ui.form .field {
   width: 100%;
   margin-bottom: 10px; }
   .ui.form .field input {
-    height: 50px;
     letter-spacing: 1px;
     color: #686B78;
     font-size: 16px !important;

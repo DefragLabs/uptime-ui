@@ -1,10 +1,3 @@
-.app-btn {
-  width: 130px;
-  height: 50px;
-  border-radius: 4px;
-  background-color: #2f3d51;
-  border: solid 1px #2f3d51; }
-
 .error-message-view {
   padding-top: 5px;
   margin-bottom: 5px;
@@ -17,3 +10,9 @@
   @media screen and (min-width: 768px) {
     .error-message-view {
       font-size: 14px; } }
+
+.uppercase {
+  text-transform: uppercase !important; }
+
+.cursor {
+  cursor: pointer; }

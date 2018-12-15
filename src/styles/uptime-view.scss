@@ -6,4 +6,38 @@
   .main-heading{
     @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
   }
+
+  .section-header{
+    padding: $default-padding*2 0px;
+    .section-header-content{
+      padding: $default-padding;
+      border: 1px solid grey;
+      text-align: right;
+
+      .add-monitoring-url-btn{
+        @include app-btn(100px, 40px, $theme-color, $theme-color);
+      }
+    }
+  }
+
+  .section-content-wrapper{
+    .section-content{
+      margin-bottom: $default-margin*2;
+
+
+      .status-icon{
+        font-size: 20px;
+        margin-left: 10px
+      }
+      .up{
+        color: green!important;
+      }
+      .down{
+        color: red!important;
+      }
+      .unknown{
+        color: grey;
+      }
+    }
+  }
 }

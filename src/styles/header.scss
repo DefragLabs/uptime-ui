@@ -13,6 +13,7 @@
         img{
             width: 40px;
             height: auto;
+            cursor: pointer;
         }
     }
 }
@@ -33,6 +34,7 @@
     .popup-link{
         padding: $default-padding $default-padding - 3;
         display: block;
+        cursor: pointer;
         @include set-font(
             QuickSandMedium,
             $default-font-size+4,

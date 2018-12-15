@@ -3,13 +3,19 @@ import {
   revieveRegisterResponse,
   receiveLoginSuccess , 
   receiveLoginFailure, 
-  receiveLogoutSuccess
+  receiveLogoutSuccess, 
+  receiveMonitoringUrlsSuccess,
+  receiveMonitoringUrlsFailure, 
+  receiveAddMonitoringUrlsSuccess, 
+  receiveAddMonitoringUrlsFailure, 
+  receiveDeleteMonitoringUrlsSuccess, 
+  receiveDeleteMonitoringUrlsFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
 export function apiEndPoint() {
   // return `${window.location.protocol}//${window.location.hostname}:9999`;
-  return "http://18.235.105.251/api/auth"
+  return "http://18.235.105.251/api"
 }
 
 export function getHeaders(authToken) {
@@ -46,7 +52,7 @@ export function register(dispatch, params) {
 };
 
 export function login(dispatch, params) {
-  let url = `${apiEndPoint()}/login`;
+  let url = `${apiEndPoint()}/auth/login`;
   axios.post(
     url,
     params,{
@@ -66,7 +72,7 @@ export function login(dispatch, params) {
 }
 
 export function logout(dispatch) {
-  let url = `${apiEndPoint()}/logout`;
+  let url = `${apiEndPoint()}/auth/logout`;
   axios.delete(
     url,{
       headers: {
@@ -81,6 +87,86 @@ export function logout(dispatch) {
   .catch(error => {
     if (error.response.status === 401) {
       logout(dispatch);
+    }
+  });
+};
+
+export function getMonitoringUrls(dispatch, params) {
+  let url = `${apiEndPoint()}/monitoring-urls`;
+  axios.get(
+    url,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      },
+    })
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveMonitoringUrlsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveMonitoringUrlsFailure(errorResponse));
+      }
+    }
+  });
+}
+
+export function addMonitoringUrls(dispatch, params) {
+  let url = `${apiEndPoint()}/monitoring-urls`;
+  axios.post(
+    url,
+    params,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      }
+    }
+  )
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveAddMonitoringUrlsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveAddMonitoringUrlsFailure(errorResponse));
+      }
+    }
+  })
+}
+
+export function deleteMonitoringURL(dispatch, urlId) {
+  let url = `${apiEndPoint()}/monitoring-urls/${urlId}`;
+  axios.delete(
+    url,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      },
+    })
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveDeleteMonitoringUrlsSuccess(successResponse, urlId));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveDeleteMonitoringUrlsFailure(errorResponse));
+      }
     }
   });
 };
