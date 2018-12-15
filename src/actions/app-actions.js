@@ -114,7 +114,6 @@ export function requestAddMonitoringUrls(params){
 } 
 
 export function receiveAddMonitoringUrlsSuccess(response) {
-  debugger
   return{
     type: ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_SUCCESS,
     response

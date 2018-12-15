@@ -118,7 +118,6 @@ export function getMonitoringUrls(dispatch, params) {
 }
 
 export function addMonitoringUrls(dispatch, params) {
-  debugger
   let url = `${apiEndPoint()}/monitoring-urls`;
   axios.post(
     url,
@@ -160,7 +159,6 @@ export function deleteMonitoringURL(dispatch, urlId) {
     dispatch(receiveDeleteMonitoringUrlsSuccess(successResponse, urlId));
   })
   .catch(error => {
-    debugger
     if (error) {
       if (error.response.status === 401) {
         logout(dispatch);
