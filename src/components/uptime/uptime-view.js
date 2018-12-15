@@ -82,6 +82,7 @@ class UpTimeView extends Component {
               <Input
                 name='url'
                 label={<Dropdown defaultValue='https' options={protocolOptions} onChange={this.handleProtocolChange} />}
+                aria-label="URL"
                 labelPosition='left'
                 placeholder='Add URL'
                 onChange={this.handleChange}
