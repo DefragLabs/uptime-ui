@@ -11,6 +11,8 @@ import DashboardView from '../components/dashboard/dashboard-view';
 import UpTimeView from '../components/uptime/uptime-view';
 import MonitorView from '../components/monitor/monitor-view';
 import IntegrationView from '../components/integrations/integrations-view';
+import MonitorUrlDetailsView from '../components/uptime/url-details-view';
+
 import { isUserActive } from '../helpers/auth-helpers';
 
 const PrivateRoute = ({ component: Component, ...rest }) => (
@@ -39,6 +41,8 @@ export default () => {
           <PrivateRoute exact path='/uptime' component={UpTimeView} />
           <PrivateRoute exact path='/monitor' component={MonitorView} />
           <PrivateRoute exact path='/integration' component={IntegrationView} />
+
+          <PrivateRoute exact path='/monitoring-url/:urlId' component={MonitorUrlDetailsView} />
         </BaseLayout>
       </Switch>
     </BrowserRouter>

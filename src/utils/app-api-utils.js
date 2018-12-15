@@ -9,7 +9,9 @@ import {
   receiveAddMonitoringUrlsSuccess, 
   receiveAddMonitoringUrlsFailure, 
   receiveDeleteMonitoringUrlsSuccess, 
-  receiveDeleteMonitoringUrlsFailure
+  receiveDeleteMonitoringUrlsFailure, 
+  receiveGetUrlDetailsSuccess,
+  receiveGetUrlDetailsFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
@@ -170,3 +172,29 @@ export function deleteMonitoringURL(dispatch, urlId) {
     }
   });
 };
+
+export function getMonitoringUrlDetails(dispatch, params) {
+  let url = `${apiEndPoint()}/monitoring-urls/${params.urlId}`;
+  axios.get(
+    url,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      },
+    })
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveGetUrlDetailsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveGetUrlDetailsFailure(errorResponse));
+      }
+    }
+  });
+}

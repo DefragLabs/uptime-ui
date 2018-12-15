@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import { withRouter } from 'react-router-dom';
 import { translateOptions } from '../../i18n/config';
 
 import { Button, Table, Modal, Form, Select, Input, Dropdown, Icon } from 'semantic-ui-react';
@@ -165,7 +166,7 @@ class UpTimeView extends Component {
 
   getTableBodyRowView = (URLDetails) => {
     return(
-      <Table.Row key={URLDetails.id}>
+      <Table.Row className="cursor" key={URLDetails.id} onClick={()=> this.navigateToUrlDetailView(URLDetails.id)}>
         <Table.Cell>{URLDetails.protocol}</Table.Cell>
         <Table.Cell>{URLDetails.url}</Table.Cell>
         <Table.Cell>{URLDetails.frequency}</Table.Cell>
@@ -258,6 +259,11 @@ class UpTimeView extends Component {
       fields
     })
   }
+
+  navigateToUrlDetailView = (urlId) => {
+    this.props.history.push(`/monitoring-url/${urlId}`)
+  }
+
   /***************************
    *         LIFECYCLE
    ***************************/
@@ -307,4 +313,4 @@ function mapDispatchToProps(dispatch){
   },dispatch)
 }
 
-export default translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(UpTimeView));
+export default withRouter(translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(UpTimeView)));

@@ -507,6 +507,17 @@
   .uptime-view .section-content-wrapper .section-content .unknown {
     color: grey; }
 
+.uptime-details-view .main-heading {
+  color: #111111;
+  font-size: 30px !important;
+  font-family: QuickSandBold !important;
+  line-height: normal;
+  font-weight: normal;
+  text-align: left; }
+
+.uptime-details-view .section-content-wrapper .section-content {
+  margin-bottom: 20px; }
+
 .lds-ellipsis {
   display: inline-block;
   position: relative;
