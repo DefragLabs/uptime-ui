@@ -132,7 +132,7 @@ class UpTimeView extends Component {
   getSectionContentView = () => {
     const { monitoringURLs } = this.props.monitoringURLs;
     // Take first url object to extra all possible headers.
-    const headers = this.getHeaders(monitoringURLs[0]);
+    const headers = this.getTableHeaders(monitoringURLs[0]);
 
     return(
       <div className="section-content">
@@ -194,7 +194,7 @@ class UpTimeView extends Component {
     this.props.requestMonitoringUrls();
   }
 
-  getHeaders = (object) => {
+  getTableHeaders = (object) => {
     let headers = [];
     for (var property in object) {
       if (object.hasOwnProperty(property)) {
