@@ -72,7 +72,7 @@ class UpTimeView extends Component {
   getAddMonitoringUrlModalView = () => {
     const { open, dimmer, fields, errors, serverError } = this.state;
     return(
-      <Modal dimmer={dimmer} open={open} onClose={this.close} size="tiny">
+      <Modal dimmer={dimmer} open={open} onClose={this.closeModal} size="tiny">
           <Modal.Header>Add Monitoring URL</Modal.Header>
           <Modal.Content>
 
@@ -118,7 +118,7 @@ class UpTimeView extends Component {
 
           </Modal.Content>
           <Modal.Actions>
-            <Button color='black' onClick={this.close}>Cancel</Button>
+            <Button color='black' onClick={this.closeModal}>Cancel</Button>
             <Button
               positive
               content="Save"
@@ -213,7 +213,7 @@ class UpTimeView extends Component {
 
   show = dimmer => () => this.setState({ dimmer, open: true })
 
-  close = () => this.setState({ open: false })
+  closeModal = () => this.setState({ open: false })
 
   addMonitoringUrls = () => {
     const { fields } = this.state
@@ -267,7 +267,7 @@ class UpTimeView extends Component {
 
   componentWillReceiveProps(newProps){
     if(!isEqual(newProps.monitoringURLs, this.monitoringURLs)){
-      this.close();
+      this.closeModal();
     }
   }
 
