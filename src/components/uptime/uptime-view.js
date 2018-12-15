@@ -50,7 +50,7 @@ class UpTimeView extends Component {
       errors: {}
     }
 
-    this.handleChange = this.handleChange.bind(this);
+    this.handleUrlChange = this.handleUrlChange.bind(this);
     this.handleProtocolChange = this.handleProtocolChange.bind(this);
     this.handleFrequencyChange = this.handleFrequencyChange.bind(this);
     this.handleUnitChange = this.handleUnitChange.bind(this);
@@ -85,7 +85,7 @@ class UpTimeView extends Component {
                 aria-label="URL"
                 labelPosition='left'
                 placeholder='Add URL'
-                onChange={this.handleChange}
+                onChange={this.handleUrlChange}
                 value={fields["url"]}
                 className={`${errors['url'] && 'highlight-input'}`}
               />
@@ -224,7 +224,7 @@ class UpTimeView extends Component {
     this.props.requestDeleteMonitoringUrls(urlId)
   }
 
-  handleChange(e){
+  handleUrlChange(e){
     let fields = this.state.fields;
     const field = e.target.name;
     fields[field] = e.target.value;
