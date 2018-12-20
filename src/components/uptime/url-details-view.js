@@ -7,7 +7,7 @@ import { Icon } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { requestGetUrlDetails , requestGetUrlResults} from '../../actions/app-actions';
 
-import LineChartView from '../common/line-chart-view';
+import LineChartView from '../common/line-chart/line-chart-view';
 
 class MonitorUrlDetailsView extends Component {
   

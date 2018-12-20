@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label} from 'recharts';
 
+import CustomizedXAxisTickView from './customized-xAxis-tick';
+
 class LineChartView extends Component {
   /***************************
    *       CONSTRUCTOR
@@ -10,10 +12,6 @@ class LineChartView extends Component {
     this.state = {}
   }
 
-  /***************************
-   *         METHODS
-   ***************************/
-  
   /***************************
    *         LIFECYCLE
    ***************************/
@@ -28,12 +26,12 @@ class LineChartView extends Component {
         margin={{top: 20, right: 30, left: 10, bottom: 10}}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time">
+        <XAxis dataKey="time" tick={<CustomizedXAxisTickView />}>
           <Label value="Pages of my website" offset={1} position="insideBottom" />
         </XAxis>
-        <YAxis dataKey="responseTime" tickFormatter="test">
+        <YAxis dataKey="responseTime">
           <Label
-            value="Response time in milliseconds"
+            value="Response time (millisecond)"
             angle="-90"
             position='insideBottomLeft'
           />
