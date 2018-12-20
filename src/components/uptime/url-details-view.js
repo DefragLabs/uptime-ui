@@ -3,9 +3,11 @@ import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { translateOptions } from '../../i18n/config';
-import LineChartView from '../common/line-chart-view';
-
+import { Icon } from 'semantic-ui-react';
+import { Link } from 'react-router-dom';
 import { requestGetUrlDetails , requestGetUrlResults} from '../../actions/app-actions';
+
+import LineChartView from '../common/line-chart-view';
 
 class MonitorUrlDetailsView extends Component {
   
@@ -29,7 +31,14 @@ class MonitorUrlDetailsView extends Component {
     const { monitoringURLResults } = this.props;
     return(
       <div className="uptime-details-view">
+      <div className="heading-wrapper">
+        <div className="back-btn-wrapper">
+          <Link to="/uptime">
+            <Icon name="arrow left" />
+          </Link>
+        </div>
         <div className="main-heading">Monitoring URL Details</div>
+      </div>
         
         <div className="section-content-wrapper">
           <div className="chart-wrapper">

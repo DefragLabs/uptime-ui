@@ -46,13 +46,29 @@
 // UPTIME DETAILS VIEW
 .uptime-details-view{
   
-  .main-heading{
-    @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
+  .heading-wrapper{
+    @include align-item(flex, flex-start, center, row);
+    margin: $default-margin*2 auto;
+    .back-btn-wrapper{
+      @include align-item(flex, center, center, row);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      margin-right: $default-margin*2;
+      box-shadow: 0 5px 11px 0 rgba(0,0,0,.18), 0 4px 15px 0 rgba(0,0,0,.15);
+      color: $black;
+      font-size: $default-font-size*2;
+    }
+    .main-heading{
+      @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
+    }
   }
 
   .section-content-wrapper{
-    .section-content{
-      margin-bottom: $default-margin*2;
+    .chart-wrapper{
+      .recharts-wrapper{
+        margin: 0 auto;
+      }
     }
   }
 

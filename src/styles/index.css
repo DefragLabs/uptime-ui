@@ -507,16 +507,34 @@
   .uptime-view .section-content-wrapper .section-content .unknown {
     color: grey; }
 
-.uptime-details-view .main-heading {
-  color: #111111;
-  font-size: 30px !important;
-  font-family: QuickSandBold !important;
-  line-height: normal;
-  font-weight: normal;
-  text-align: left; }
+.uptime-details-view .heading-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin: 20px auto; }
+  .uptime-details-view .heading-wrapper .back-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    color: #000000;
+    font-size: 20px; }
+  .uptime-details-view .heading-wrapper .main-heading {
+    color: #111111;
+    font-size: 30px !important;
+    font-family: QuickSandBold !important;
+    line-height: normal;
+    font-weight: normal;
+    text-align: left; }
 
-.uptime-details-view .section-content-wrapper .section-content {
-  margin-bottom: 20px; }
+.uptime-details-view .section-content-wrapper .chart-wrapper .recharts-wrapper {
+  margin: 0 auto; }
 
 .lds-ellipsis {
   display: inline-block;
