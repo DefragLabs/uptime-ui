@@ -6,7 +6,9 @@ import {
   logout, 
   getMonitoringUrls, 
   addMonitoringUrls, 
-  deleteMonitoringURL
+  deleteMonitoringURL, 
+  getMonitoringUrlDetails, 
+  getMonitoringUrlResults
 } from '../utils/app-api-utils';
 
 export function requestRegister(params) {
@@ -148,6 +150,56 @@ export function receiveDeleteMonitoringUrlsSuccess(response, urlId) {
 export function receiveDeleteMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_DELETE_MONITORING_URLS_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Get monitoring url details
+export function requestGetUrlDetails(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.GET_URL_DETAILS_REQUEST_ATTEMPTED,
+    })
+
+    getMonitoringUrlDetails(dispatch, params);
+  }
+}
+
+export function receiveGetUrlDetailsSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_SUCCESS,
+    response
+  }
+}
+
+export function receiveGetUrlDetailsFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Get monitoring url results
+export function requestGetUrlResults(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.GET_URL_RESULTS_REQUEST_ATTEMPTED,
+    })
+
+    getMonitoringUrlResults(dispatch, params);
+  }
+}
+
+export function receiveGetUrlResultsSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_SUCCESS,
+    response
+  }
+}
+
+export function receiveGetUrlResultsFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE,
     response
   }
 }
