@@ -7,7 +7,8 @@ import {
   getMonitoringUrls, 
   addMonitoringUrls, 
   deleteMonitoringURL, 
-  getMonitoringUrlDetails
+  getMonitoringUrlDetails, 
+  getMonitoringUrlResults
 } from '../utils/app-api-utils';
 
 export function requestRegister(params) {
@@ -174,6 +175,31 @@ export function receiveGetUrlDetailsSuccess(response) {
 export function receiveGetUrlDetailsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Get monitoring url results
+export function requestGetUrlResults(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.GET_URL_RESULTS_REQUEST_ATTEMPTED,
+    })
+
+    getMonitoringUrlResults(dispatch, params);
+  }
+}
+
+export function receiveGetUrlResultsSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_SUCCESS,
+    response
+  }
+}
+
+export function receiveGetUrlResultsFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE,
     response
   }
 }

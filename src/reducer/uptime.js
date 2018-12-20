@@ -119,6 +119,29 @@ const uptime = (state=initialState, action)=> {
       };
     }
 
+    // Get monitoring results
+    case ActionTypes.GET_URL_RESULTS_REQUEST_ATTEMPTED: {
+      return {
+        ...state, 
+        isLoading: true
+      };
+    }
+
+    case ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_SUCCESS: {
+      return {
+        ...state, 
+        isLoading: false,
+        monitoringURLResults: action.response.data
+      };
+    }
+
+    case ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
     default:{
       return state;
     }
