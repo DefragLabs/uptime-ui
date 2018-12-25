@@ -5,21 +5,23 @@ import { withRouter } from 'react-router-dom';
 import { translateOptions } from '../../i18n/config';
 import { Button, Modal, Form, Select, Input, Dropdown } from 'semantic-ui-react';
 
+import ErrorMessageView from '../common/error-message-view'
+
 const protocolOptions = [
   { key: 'http', text: 'http', value: 'http' },
   { key: 'https', text: 'https', value: 'https' },
 ]
 
 const frequencyOptions = [
-  { key: '5', text: '5', value: '5' },
-  { key: '10', text: '10', value: '10' },
-  { key: '15', text: '15', value: '15' }
+  { key: '1', text: '1', value: '1', disabled: false },
+  { key: '5', text: '5', value: '5', disabled: false },
+  { key: '15', text: '15', value: '15', disabled: false },
+  { key: '30', text: '30', value: '30', disabled: false },
 ]
 
 const unitOptions = [
-  { key: 'seconds', text: 'seconds', value: 'second' },
-  { key: 'minute', text: 'minute', value: 'minute' },
-  { key: 'hour', text: 'hour', value: 'hour' }
+  { key: 'seconds', text: 'seconds', value: 'second', disabled: false },
+  { key: 'minute', text: 'minute', value: 'minute', disabled: false }
 ]
 
 class ModalView extends Component {
@@ -36,7 +38,7 @@ class ModalView extends Component {
       fields: {
         protocol: 'https',
         url: '',
-        frequency: '5',
+        frequency: '30',
         unit: 'second'
       },
 
@@ -77,13 +79,27 @@ class ModalView extends Component {
   closeModal = () => this.setState({ open: false })
 
   addMonitoringUrls = () => {
-    const { fields } = this.state
-    this.props.addMonitoringUrls(fields);
+    const { fields } = this.state;
+    const formValidationFeedback = this.handleFormValidation(fields);
+    if(formValidationFeedback.isFormValid){
+      this.props.addMonitoringUrls(fields); 
+    } else {
+      this.setState({
+        errors: formValidationFeedback.errors
+      });
+    }
   }
 
   updateMonitoringUrls = () => {
     const { fields, urlId } = this.state;
-    this.props.updateMonitoringUrls(fields, urlId);
+    const formValidationFeedback = this.handleFormValidation(fields);
+    if(formValidationFeedback.isFormValid){
+      this.props.updateMonitoringUrls(fields, urlId);
+    } else {
+      this.setState({
+        errors: formValidationFeedback.errors
+      });
+    }
   }
 
   handleUrlChange(e){
@@ -108,6 +124,11 @@ class ModalView extends Component {
   handleFrequencyChange(e, { value }){
     let fields = this.state.fields;
     fields['frequency'] = value;
+    if(value !== "30"){
+      unitOptions[0]['disabled'] = true;
+    } else {
+      unitOptions[0]['disabled'] = false;
+    }
     this.setState({
       fields
     })
@@ -119,6 +140,25 @@ class ModalView extends Component {
     this.setState({
       fields
     })
+  }
+
+  handleFormValidation(fields){
+    let errors = {};
+    let formIsValid = true;
+    let result = {};
+
+    if(fields['url'] === ''){
+      formIsValid = false;
+      errors["url"] = "*This field is required.";
+    } else if((fields["frequency"] !== '30') && 
+      (fields["unit"] === 'second')){
+      formIsValid = false;
+      errors["frequency"] = "*Please select valid unit/frequency.";
+    }
+
+    result['errors'] = errors;
+    result['isFormValid'] = formIsValid;
+    return result;
   }
 
   /***************************
@@ -133,6 +173,12 @@ class ModalView extends Component {
         options={protocolOptions}
         onChange={this.handleProtocolChange}
       />
+    )
+  }
+
+  getFieldErrorView(error){
+    return(
+      <ErrorMessageView error={error} />
     )
   }
 
@@ -193,6 +239,7 @@ class ModalView extends Component {
                   onChange={this.handleUnitChange}
                 />
               </Form.Group>
+              {errors['frequency'] && this.getFieldErrorView(errors["frequency"])}
               
               <div className="error-msg-wrapper">
                 { serverError && this.getFieldErrorView(serverError)}
