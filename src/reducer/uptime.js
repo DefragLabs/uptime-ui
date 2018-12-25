@@ -63,6 +63,39 @@ const uptime = (state=initialState, action)=> {
       };
     }
 
+    // Add monitoring URL.
+    case ActionTypes.UPDATE_MONITORING_URLS_REQUEST_ATTEMPTED: {
+      return {
+        ...state, 
+        isLoading: true
+      };
+    }
+
+    case ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_SUCCESS: {
+      let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
+      // Insert new url object at 0th index.
+      debugger
+      for(let urlIndx=0; urlIndx<urlsCopy.monitoringURLs.length; urlIndx++){
+        let urlDetails = urlsCopy.monitoringURLs[urlIndx];
+        if(urlDetails.id === action.response.data.id){
+          debugger
+          urlsCopy['monitoringURLs'][urlIndx] = action.response.data;
+        }
+      }
+      return {
+        ...state, 
+        isLoading: false,
+        monitoringURLs: urlsCopy
+      };
+    }
+
+    case ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
     // Delete monitoring URL.
     case ActionTypes.DELETE_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {

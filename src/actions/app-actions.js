@@ -8,7 +8,8 @@ import {
   addMonitoringUrls, 
   deleteMonitoringURL, 
   getMonitoringUrlDetails, 
-  getMonitoringUrlResults
+  getMonitoringUrlResults, 
+  updateMonitoringUrls
 } from '../utils/app-api-utils';
 
 export function requestRegister(params) {
@@ -125,6 +126,30 @@ export function receiveAddMonitoringUrlsSuccess(response) {
 export function receiveAddMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Update monitoring urls
+export function requestUpdateMonitoringUrls(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.UPDATE_MONITORING_URLS_REQUEST_ATTEMPTED,
+    })
+    updateMonitoringUrls(dispatch, params);
+  }
+} 
+
+export function receiveUpdateMonitoringUrlsSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_SUCCESS,
+    response
+  }
+}
+
+export function receiveUpdateMonitoringUrlsFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_FAILURE,
     response
   }
 }

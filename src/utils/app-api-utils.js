@@ -13,7 +13,9 @@ import {
   receiveGetUrlDetailsSuccess,
   receiveGetUrlDetailsFailure, 
   receiveGetUrlResultsSuccess, 
-  receiveGetUrlResultsFailure
+  receiveGetUrlResultsFailure, 
+  receiveUpdateMonitoringUrlsSuccess, 
+  receiveUpdateMonitoringUrlsFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
@@ -144,6 +146,34 @@ export function addMonitoringUrls(dispatch, params) {
       else {
         const errorResponse = error.response;
         dispatch(receiveAddMonitoringUrlsFailure(errorResponse));
+      }
+    }
+  })
+}
+
+export function updateMonitoringUrls(dispatch, params) {
+  let url = `${apiEndPoint()}/monitoring-urls`;
+  axios.put(
+    url,
+    params,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      }
+    }
+  )
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveUpdateMonitoringUrlsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveUpdateMonitoringUrlsFailure(errorResponse));
       }
     }
   })

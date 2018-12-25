@@ -28,6 +28,8 @@
 
 .uptime-view .section-content-wrapper .section-content {
   margin-bottom: 20px; }
+  .uptime-view .section-content-wrapper .section-content .table .table-body .table-row .action-icons-wrapper .delete-icon {
+    margin-right: 10px; }
   .uptime-view .section-content-wrapper .section-content .status-icon {
     font-size: 20px;
     margin-left: 10px; }
