@@ -73,13 +73,12 @@ const uptime = (state=initialState, action)=> {
 
     case ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_SUCCESS: {
       let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
-      // Insert new url object at 0th index.
-      debugger
+      // Replace old url details with new one.
       for(let urlIndx=0; urlIndx<urlsCopy.monitoringURLs.length; urlIndx++){
         let urlDetails = urlsCopy.monitoringURLs[urlIndx];
         if(urlDetails.id === action.response.data.id){
-          debugger
           urlsCopy['monitoringURLs'][urlIndx] = action.response.data;
+          break;
         }
       }
       return {

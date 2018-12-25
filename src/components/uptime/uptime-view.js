@@ -68,7 +68,7 @@ class UpTimeView extends Component {
 
   getTableBodyRowView = (URLDetails) => {
     return(
-      <Table.Row className="table-row cursor" key={URLDetails.id}>
+      <Table.Row className="table-row cursor" key={URLDetails.id} onClick={()=> this.navigateToUrlDetailView(URLDetails.id)}>
         <Table.Cell>{URLDetails.protocol}</Table.Cell>
         <Table.Cell>{URLDetails.url}</Table.Cell>
         <Table.Cell>{URLDetails.frequency}</Table.Cell>
@@ -134,11 +134,12 @@ class UpTimeView extends Component {
 
   handleUpdateUrl(params, urlId){
     params['id']= urlId;
+    params['frequency']= parseInt(params.frequency);
     this.props.requestUpdateMonitoringUrls(params);
   }
 
-  navigateToUrlDetailView = (e, urlId) => {
-    // this.props.history.push(`/monitoring-url/${urlId}`)
+  navigateToUrlDetailView = (urlId) => {
+    // this.props.history.push(`/monitoring-url/${urlId}`);
   }
 
   /***************************
@@ -150,7 +151,7 @@ class UpTimeView extends Component {
 
   componentWillReceiveProps(newProps){
     if(!isEqual(newProps.monitoringURLs, this.monitoringURLs)){
-      // this.closeModal();
+      this.child.closeModal();
     }
   }
 

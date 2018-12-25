@@ -152,7 +152,7 @@ export function addMonitoringUrls(dispatch, params) {
 }
 
 export function updateMonitoringUrls(dispatch, params) {
-  let url = `${apiEndPoint()}/monitoring-urls`;
+  let url = `${apiEndPoint()}/monitoring-urls/${params.id}`;
   axios.put(
     url,
     params,{

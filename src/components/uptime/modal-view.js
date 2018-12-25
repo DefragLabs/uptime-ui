@@ -159,47 +159,45 @@ class ModalView extends Component {
       <Modal open={open} onClose={this.closeModal} size="tiny">
           <Modal.Header>{t('uptime.addMonitoringUrl')}</Modal.Header>
           <Modal.Content>
-
-          <Form className="login-form" onSubmit= {this.handleSubmit}>
-            <Form.Field>
-              <label>{t('uptime.url')}</label>
-              <Input
-                name='url'
-                label={this.getProtocolOptionsView()}
-                aria-label="URL"
-                labelPosition='left'
-                placeholder='Add URL'
-                onChange={this.handleUrlChange}
-                value={fields["url"]}
-                className={`${errors['url'] && 'highlight-input'}`}
-              />
-                {errors['url'] && this.getFieldErrorView(errors["url"])}
-              </Form.Field>
-            
-            <Form.Group widths='equal'>
-              <Form.Field
-                control={Select}
-                label='Frequency' 
-                options={frequencyOptions} 
-                placeholder='Frequency'
-                value={fields["frequency"]}
-                onChange={this.handleFrequencyChange}
-              />
-              <Form.Field
-                control={Select}
-                label='Unit' 
-                options={unitOptions} 
-                placeholder='Unit'
-                value={fields["unit"]}
-                onChange={this.handleUnitChange}
-              />
-            </Form.Group>
-            
-            <div className="error-msg-wrapper">
-              { serverError && this.getFieldErrorView(serverError)}
-            </div>
-          </Form>
-
+            <Form className="login-form" onSubmit= {this.handleSubmit}>
+              <Form.Field>
+                <label>{t('uptime.url')}</label>
+                <Input
+                  name='url'
+                  label={this.getProtocolOptionsView()}
+                  aria-label="URL"
+                  labelPosition='left'
+                  placeholder='Add URL'
+                  onChange={this.handleUrlChange}
+                  value={fields["url"]}
+                  className={`${errors['url'] && 'highlight-input'}`}
+                />
+                  {errors['url'] && this.getFieldErrorView(errors["url"])}
+                </Form.Field>
+              
+              <Form.Group widths='equal'>
+                <Form.Field
+                  control={Select}
+                  label='Frequency' 
+                  options={frequencyOptions} 
+                  placeholder='Frequency'
+                  value={fields["frequency"]}
+                  onChange={this.handleFrequencyChange}
+                />
+                <Form.Field
+                  control={Select}
+                  label='Unit' 
+                  options={unitOptions} 
+                  placeholder='Unit'
+                  value={fields["unit"]}
+                  onChange={this.handleUnitChange}
+                />
+              </Form.Group>
+              
+              <div className="error-msg-wrapper">
+                { serverError && this.getFieldErrorView(serverError)}
+              </div>
+            </Form>
           </Modal.Content>
           <Modal.Actions>
             <Button color='black' onClick={this.closeModal}>{t('common.cancel')}</Button>
