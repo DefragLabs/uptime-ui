@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {
-  revieveRegisterResponse,
-  receiveLoginSuccess , 
+  receiveLoginSuccess, 
   receiveLoginFailure, 
   receiveLogoutSuccess, 
   receiveMonitoringUrlsSuccess,
@@ -15,7 +14,9 @@ import {
   receiveGetUrlResultsSuccess, 
   receiveGetUrlResultsFailure, 
   receiveUpdateMonitoringUrlsSuccess, 
-  receiveUpdateMonitoringUrlsFailure
+  receiveUpdateMonitoringUrlsFailure, 
+  receiveRegisterSuccess, 
+  receiveRegisterFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
@@ -39,7 +40,7 @@ export function getHeaders(authToken) {
 }
 
 export function register(dispatch, params) {
-  let url = "";
+  let url = `${apiEndPoint()}/auth/register`;
   axios.post(
     url,
     params,{
@@ -47,12 +48,12 @@ export function register(dispatch, params) {
     })
   .then(response => {
     const successResponse = response.data;
-    dispatch(revieveRegisterResponse(successResponse));
+    dispatch(receiveRegisterSuccess(successResponse));
   })
   .catch(error => {
     if (error) {
       const errorResponse = error.response;
-      dispatch(revieveRegisterResponse(errorResponse));
+      dispatch(receiveRegisterFailure(errorResponse));
     }
   });
 };

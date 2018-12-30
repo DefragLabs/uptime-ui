@@ -1,5 +1,4 @@
 import ActionTypes from '../constants/action-type';
-import { getErrorMessage } from '../utils/string-utils';
 import { 
   register, 
   login, 
@@ -12,24 +11,21 @@ import {
   updateMonitoringUrls
 } from '../utils/app-api-utils';
 
+// Register
 export function requestRegister(params) {
   return(dispatch) => {
     register(dispatch, params);
   }
 }
-
-export function revieveRegisterResponse(response) {
-  if (response.data.hasOwnProperty('success') && !response.data.success){
-    response.isSuccess = false;
-    response.isError = true;
-    response.response = getErrorMessage(response.data.error);
-  } else {
-    response.isSuccess = true;
-    response.isError = false;
-    response.response = response.data;
-  }
+export function receiveRegisterSuccess(response) {
   return{
-    type: ActionTypes.RECEIVE_REGISTER_RESPONSE,
+    type: ActionTypes.RECEIVE_REGISTER_REQUEST_SUCCESS,
+    response
+  }
+}
+export function receiveRegisterFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_REGISTER_REQUEST_FAILURE,
     response
   }
 }

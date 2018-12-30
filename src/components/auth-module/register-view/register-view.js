@@ -1,12 +1,16 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../../i18n/config';
 import { Button, Form } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import { isValidEmail } from '../../../utils/validation-utils';
+import { requestRegister } from '../../../actions/app-actions';
 
 import ErrorMessageView from '../../common/error-message-view';
-import { isValidEmail } from '../../../utils/validation-utils';
 import RegisterMessageView from './register-message/register-message';
+import {isUserSessionActive} from '../../../helpers/auth-helpers'
 
 class RegisterView extends Component {
   /***************************
@@ -22,7 +26,7 @@ class RegisterView extends Component {
         lastName: '',
         phoneNumber: '',
         companyName: '',
-        password: '',
+        password: ''
       },
       serverError: "",
       errors: {}
@@ -51,8 +55,8 @@ class RegisterView extends Component {
     e.preventDefault();
     const formValidationFeedback = this.handleFormValidation(this.state.fields);
     if(formValidationFeedback.isFormValid){
-      // API call for register request
-      this.setState({showErrorMessage: true});
+      const { fields } = this.state;
+      this.props.requestRegister(fields);
     }else{
       this.setState({errors:formValidationFeedback.errors});
     }
@@ -109,9 +113,10 @@ class RegisterView extends Component {
   getRegisterResponseMessage(showSuccessMessage, showErrorMessage) {
     return (
       <RegisterMessageView
-      registerSuccess={showSuccessMessage}
-      registerError={showErrorMessage}
-      handleClearError={()=>this.handleClearError()}/>
+        registerSuccess={showSuccessMessage}
+        registerError={showErrorMessage}
+        handleClearError={()=>this.handleClearError()}
+      />
     );
   }
 
@@ -203,9 +208,16 @@ class RegisterView extends Component {
       </Form>
     )
   }
+
   /***************************
    *         LIFECYCLE
    ***************************/
+  componentWillReceiveProps = (newProps) => {
+    if (isUserSessionActive(newProps.userSession) !== isUserSessionActive(this.props.userSession)){
+      this.props.history.push(`/dashboard`);
+    }
+  }
+
   render(){
     const { t } = this.props;
     const { showErrorMessage, showSuccessMessage } = this.state;
@@ -238,4 +250,17 @@ class RegisterView extends Component {
   }
 }
 
-export default translate(['translations'], translateOptions)(RegisterView);
+function mapStateToProps(state) {
+  return {
+    userSession: state.auth.userSession,
+    isLoading: state.auth.isLoading
+  };
+}
+
+function mapDispatchToProps(dispatch){
+  return bindActionCreators({
+    requestRegister: requestRegister
+  },dispatch)
+}
+
+export default translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(RegisterView));
