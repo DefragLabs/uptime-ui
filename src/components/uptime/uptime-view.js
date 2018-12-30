@@ -160,7 +160,7 @@ class UpTimeView extends Component {
   }
 
   navigateToUrlDetailView = (urlId) => {
-    // this.props.history.push(`/monitoring-url/${urlId}`);
+    this.props.history.push(`/monitoring-url/${urlId}`);
   }
 
   handleSearchQuery = (searchQuery) => {

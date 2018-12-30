@@ -23,13 +23,15 @@
     "uptimeMonitoring": "Uptime Monitoring",
     "addMonitoringUrl": "Add Monitoring URL",
     "addURL": "Add URL",
-    "url": "URL"
+    "url": "URL",
+    "monitoringDetailsViewHeading": "Monitoring details for "
   },
   "common": {
     "brandName": "UpTime",
     "submit": "Submit",
     "actions": "Actions",
     "cancel": "Cancel",
-    "searchBarPlaceholder": "Search..."
+    "searchBarPlaceholder": "Search...",
+    "summaryHeading": "URL Summary"
   }
 }

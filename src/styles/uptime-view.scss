@@ -80,8 +80,30 @@
 
   .section-content-wrapper{
     .chart-wrapper{
+      min-height: 270px;
       .recharts-wrapper{
         margin: 0 auto;
+      }
+    }
+    .summary-wrapper{
+      .summary-heading{
+        @include set-font(QuickSandBold, $default-font-size*2+5, $pickled-bluewood, normal, left, normal);
+      }
+      .summary{
+        margin-top: $default-margin*3;
+        .summary-row{
+          @include align-item(flex, flex-start, center, row);
+          margin-bottom: $default-margin;
+          .summary-key{
+            width: 200px;
+            @include align-item(flex, flex-start, center, row);
+            @include set-font(QuickSandBold, $default-font-size+6, $shuttle-gray, normal, left, normal);
+            text-transform: uppercase;
+          }
+          .summary-value{
+            @include set-font(QuickSandLight, $default-font-size+6, $shuttle-gray, normal, left, normal);
+          }
+        }
       }
     }
   }
