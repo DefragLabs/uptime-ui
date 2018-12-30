@@ -10,7 +10,6 @@
   padding: 20px 0px; }
   .uptime-view .section-header .section-header-content {
     padding: 10px;
-    border: 1px solid grey;
     text-align: right; }
     .uptime-view .section-header .section-header-content .add-monitoring-url-btn {
       min-width: 100px;

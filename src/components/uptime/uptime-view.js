@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { translateOptions } from '../../i18n/config';
-
 import { Button, Table, Icon } from 'semantic-ui-react';
 import { 
   requestMonitoringUrls,
@@ -13,6 +12,8 @@ import {
   requestDeleteMonitoringUrls
 } from '../../actions/app-actions';
 import { isEqual } from 'lodash';
+import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
+
 import ModalView from './modal-view';
 
 class UpTimeView extends Component {
@@ -147,11 +148,25 @@ class UpTimeView extends Component {
    ***************************/
   componentDidMount(){
     this.getMonitoringUrls();
+    
+    let interval = setInterval(()=>{
+      this.getMonitoringUrls();
+    }, MONITORING_STATUS_POLLING_DURATION*1000);
+    this.setState({
+      intervalObj : interval
+    });
   }
 
   componentWillReceiveProps(newProps){
     if(!isEqual(newProps.monitoringURLs, this.monitoringURLs)){
       this.child.closeModal();
+    }
+  }
+
+  componentWillUnmount(){
+    const { intervalObj } = this.state;
+    if(intervalObj){
+      clearInterval(intervalObj);
     }
   }
 
