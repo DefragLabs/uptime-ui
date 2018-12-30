@@ -76,39 +76,40 @@
   .uptime-details-view .section-content-wrapper .chart-wrapper .recharts-wrapper {
     margin: 0 auto; }
 
-.uptime-details-view .section-content-wrapper .summary-wrapper .summary-heading {
-  color: #2F3D51;
-  font-size: 25px !important;
-  font-family: QuickSandBold !important;
-  line-height: normal;
-  font-weight: normal;
-  text-align: left; }
-
-.uptime-details-view .section-content-wrapper .summary-wrapper .summary {
-  margin-top: 30px; }
-  .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row {
-    display: flex;
-    justify-content: flex-start;
-    align-items: center;
-    flex-direction: row;
-    margin-bottom: 10px; }
-    .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row .summary-key {
-      width: 200px;
+.uptime-details-view .section-content-wrapper .summary-wrapper {
+  margin-left: 60px; }
+  .uptime-details-view .section-content-wrapper .summary-wrapper .summary-heading {
+    color: #2F3D51;
+    font-size: 25px !important;
+    font-family: QuickSandBold !important;
+    line-height: normal;
+    font-weight: normal;
+    text-align: left; }
+  .uptime-details-view .section-content-wrapper .summary-wrapper .summary {
+    margin-top: 30px; }
+    .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row {
       display: flex;
       justify-content: flex-start;
       align-items: center;
       flex-direction: row;
-      color: #686B78;
-      font-size: 16px !important;
-      font-family: QuickSandBold !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left;
-      text-transform: uppercase; }
-    .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row .summary-value {
-      color: #686B78;
-      font-size: 16px !important;
-      font-family: QuickSandLight !important;
-      line-height: normal;
-      font-weight: normal;
-      text-align: left; }
+      margin-bottom: 10px; }
+      .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row .summary-key {
+        width: 200px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        color: #686B78;
+        font-size: 16px !important;
+        font-family: QuickSandBold !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left;
+        text-transform: uppercase; }
+      .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row .summary-value {
+        color: #686B78;
+        font-size: 16px !important;
+        font-family: QuickSandLight !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left; }
