@@ -15,7 +15,7 @@ const uptime = (state=initialState, action)=> {
     case ActionTypes.GET_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {
         ...state, 
-        isLoading: true
+        // isLoading: true
       };
     }
 
@@ -26,14 +26,14 @@ const uptime = (state=initialState, action)=> {
       return { 
         ...state,
         monitoringURLs,
-        isLoading: false
+        // isLoading: false
       };
     }
 
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_FAILURE: {
       return {
         ...state, 
-        isLoading: false
+        // isLoading: false
       };
     }
 

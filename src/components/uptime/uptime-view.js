@@ -196,8 +196,7 @@ class UpTimeView extends Component {
 
 function mapStateToProps(state) {
   return {
-    monitoringURLs: state.uptime.monitoringURLs,
-    isLoading: state.uptime.isLoading
+    monitoringURLs: state.uptime.monitoringURLs
   };
 }
 
