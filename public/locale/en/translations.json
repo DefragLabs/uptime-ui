@@ -29,6 +29,7 @@
     "brandName": "UpTime",
     "submit": "Submit",
     "actions": "Actions",
-    "cancel": "Cancel"
+    "cancel": "Cancel",
+    "searchBarPlaceholder": "Search..."
   }
 }

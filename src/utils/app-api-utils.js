@@ -108,7 +108,7 @@ export function getMonitoringUrls(dispatch, params) {
     })
   .then(response => {
     const successResponse = response.data;
-    dispatch(receiveMonitoringUrlsSuccess(successResponse));
+    dispatch(receiveMonitoringUrlsSuccess(successResponse, params));
   })
   .catch(error => {
     if (error) {

@@ -43,14 +43,12 @@ export function requestLogin(params){
     login(dispatch, params);
   }
 }
-
 export function receiveLoginSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_LOGIN_REQUEST_SUCCESS,
     response
   }
 }
-
 export function receiveLoginFailure(response) {
   return{
     type: ActionTypes.RECEIVE_LOGIN_REQUEST_FAILURE,
@@ -67,14 +65,12 @@ export function requestLogout(params){
     logout(dispatch, params);
   }
 }
-
 export function receiveLogoutSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_LOGOUT_REQUEST_SUCCESS,
     response
   }
 }
-
 export function receiveLogoutFailure(response) {
   return{
     type: ActionTypes.RECEIVE_LOGOUT_REQUEST_FAILURE,
@@ -91,18 +87,27 @@ export function requestMonitoringUrls(params){
     getMonitoringUrls(dispatch, params);
   }
 }
-
-export function receiveMonitoringUrlsSuccess(response) {
+export function receiveMonitoringUrlsSuccess(response, searchQuery) {
   return{
     type: ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS,
-    response
+    response,
+    searchQuery
   }
 }
-
 export function receiveMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_FAILURE,
     response
+  }
+}
+
+// Search
+export function requestFilteredMonitoringUrls(searchQuery){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS,
+      searchQuery
+    })
   }
 }
 
@@ -115,14 +120,12 @@ export function requestAddMonitoringUrls(params){
     addMonitoringUrls(dispatch, params);
   }
 } 
-
 export function receiveAddMonitoringUrlsSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_SUCCESS,
     response
   }
 }
-
 export function receiveAddMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_FAILURE,
@@ -139,14 +142,12 @@ export function requestUpdateMonitoringUrls(params){
     updateMonitoringUrls(dispatch, params);
   }
 } 
-
 export function receiveUpdateMonitoringUrlsSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_SUCCESS,
     response
   }
 }
-
 export function receiveUpdateMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_FAILURE,
@@ -163,7 +164,6 @@ export function requestDeleteMonitoringUrls(urlId){
     deleteMonitoringURL(dispatch, urlId);
   }
 }
-
 export function receiveDeleteMonitoringUrlsSuccess(response, urlId) {
   return{
     type: ActionTypes.RECEIVE_DELETE_MONITORING_URLS_REQUEST_SUCCESS,
@@ -171,7 +171,6 @@ export function receiveDeleteMonitoringUrlsSuccess(response, urlId) {
     urlId
   }
 }
-
 export function receiveDeleteMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_DELETE_MONITORING_URLS_REQUEST_FAILURE,
@@ -189,14 +188,12 @@ export function requestGetUrlDetails(params){
     getMonitoringUrlDetails(dispatch, params);
   }
 }
-
 export function receiveGetUrlDetailsSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_SUCCESS,
     response
   }
 }
-
 export function receiveGetUrlDetailsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_FAILURE,
@@ -214,14 +211,12 @@ export function requestGetUrlResults(params){
     getMonitoringUrlResults(dispatch, params);
   }
 }
-
 export function receiveGetUrlResultsSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_SUCCESS,
     response
   }
 }
-
 export function receiveGetUrlResultsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE,

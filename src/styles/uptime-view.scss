@@ -11,10 +11,15 @@
   .section-header{
     padding: $default-padding*2 0px;
     .section-header-content{
-      padding: $default-padding;
-      // border: 1px solid grey;
+      @include align-item(flex, space-between, center, row);
+      padding: $default-padding 0px;
       text-align: right;
 
+      .search-bar-wrapper{
+        input{
+          min-width: 300px;
+        }
+      }
       .add-monitoring-url-btn{
         @include app-btn(100px, 40px, $theme-color, $theme-color);
       }

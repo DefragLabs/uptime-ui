@@ -9,14 +9,26 @@ import {
   requestMonitoringUrls,
   requestAddMonitoringUrls,
   requestUpdateMonitoringUrls,
-  requestDeleteMonitoringUrls
+  requestDeleteMonitoringUrls, 
+  requestFilteredMonitoringUrls
 } from '../../actions/app-actions';
 import { isEqual } from 'lodash';
 import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
 
 import ModalView from './modal-view';
+import SearchBarView from '../common/search-bar-view';
 
 class UpTimeView extends Component {
+  /***************************
+   *         CONSTRUCTOR
+   ***************************/
+  constructor(){
+    super();
+
+    this.state = {
+      searchQuery: ""
+    }
+  }
 
   /***************************
    *         VIEWS
@@ -25,7 +37,15 @@ class UpTimeView extends Component {
     const { t } = this.props;
     return(
       <div className="section-header-content">
-        <Button className="app-btn add-monitoring-url-btn" type='button' onClick={()=> this.child.show()}>
+        <SearchBarView
+          {...this.props}
+          searchQueryCallback={(searchQuery)=> this.handleSearchQuery(searchQuery)}
+        />
+        <Button
+          className="app-btn add-monitoring-url-btn"
+          type='button'
+          onClick={()=> this.child.show()}
+        >
           {t('uptime.addURL')}
         </Button>
       </div>
@@ -103,8 +123,8 @@ class UpTimeView extends Component {
   /***************************
    *         METHODS
    ***************************/
-  getMonitoringUrls = () => {
-    this.props.requestMonitoringUrls();
+  getMonitoringUrls = (searchQuery) => {
+    this.props.requestMonitoringUrls(searchQuery);
   }
 
   getTableHeaders = (object) => {
@@ -143,18 +163,22 @@ class UpTimeView extends Component {
     // this.props.history.push(`/monitoring-url/${urlId}`);
   }
 
+  handleSearchQuery = (searchQuery) => {
+    // this.setState({searchQuery: searchQuery}, ()=> {
+    //   this.props.requestFilteredMonitoringUrls(searchQuery);
+    // })
+  }
   /***************************
    *         LIFECYCLE
    ***************************/
   componentDidMount(){
-    this.getMonitoringUrls();
+    const { searchQuery } = this.state;
+    this.getMonitoringUrls(searchQuery);
     
     let interval = setInterval(()=>{
-      this.getMonitoringUrls();
+      this.getMonitoringUrls(searchQuery);
     }, MONITORING_STATUS_POLLING_DURATION*1000);
-    this.setState({
-      intervalObj : interval
-    });
+    this.setState({intervalObj : interval});
   }
 
   componentWillReceiveProps(newProps){
@@ -205,7 +229,8 @@ function mapDispatchToProps(dispatch){
     requestAddMonitoringUrls: requestAddMonitoringUrls,
     requestUpdateMonitoringUrls: requestUpdateMonitoringUrls,
     requestMonitoringUrls: requestMonitoringUrls,
-    requestDeleteMonitoringUrls: requestDeleteMonitoringUrls
+    requestDeleteMonitoringUrls: requestDeleteMonitoringUrls,
+    requestFilteredMonitoringUrls: requestFilteredMonitoringUrls
   },dispatch)
 }
 

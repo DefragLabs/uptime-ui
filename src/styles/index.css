@@ -478,8 +478,14 @@
 .uptime-view .section-header {
   padding: 20px 0px; }
   .uptime-view .section-header .section-header-content {
-    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 0px;
     text-align: right; }
+    .uptime-view .section-header .section-header-content .search-bar-wrapper input {
+      min-width: 300px; }
     .uptime-view .section-header .section-header-content .add-monitoring-url-btn {
       min-width: 100px;
       height: 40px;
