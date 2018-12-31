@@ -83,27 +83,16 @@ export function requestMonitoringUrls(params){
     getMonitoringUrls(dispatch, params);
   }
 }
-export function receiveMonitoringUrlsSuccess(response, searchQuery) {
+export function receiveMonitoringUrlsSuccess(response) {
   return{
     type: ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS,
-    response,
-    searchQuery
+    response
   }
 }
 export function receiveMonitoringUrlsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_FAILURE,
     response
-  }
-}
-
-// Search
-export function requestFilteredMonitoringUrls(searchQuery){
-  return(dispatch) => {
-    dispatch({
-      type: ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS,
-      searchQuery
-    })
   }
 }
 

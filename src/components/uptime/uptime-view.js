@@ -9,8 +9,7 @@ import {
   requestMonitoringUrls,
   requestAddMonitoringUrls,
   requestUpdateMonitoringUrls,
-  requestDeleteMonitoringUrls, 
-  requestFilteredMonitoringUrls
+  requestDeleteMonitoringUrls
 } from '../../actions/app-actions';
 import { isEqual } from 'lodash';
 import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
@@ -164,19 +163,18 @@ class UpTimeView extends Component {
   }
 
   handleSearchQuery = (searchQuery) => {
-    // this.setState({searchQuery: searchQuery}, ()=> {
-    //   this.props.requestFilteredMonitoringUrls(searchQuery);
-    // })
+    this.setState({searchQuery}, ()=> {
+      this.getMonitoringUrls(this.state.searchQuery);
+    })
   }
   /***************************
    *         LIFECYCLE
    ***************************/
   componentDidMount(){
-    const { searchQuery } = this.state;
-    this.getMonitoringUrls(searchQuery);
+    this.getMonitoringUrls(this.state.searchQuery);
     
     let interval = setInterval(()=>{
-      this.getMonitoringUrls(searchQuery);
+      this.getMonitoringUrls(this.state.searchQuery);
     }, MONITORING_STATUS_POLLING_DURATION*1000);
     this.setState({intervalObj : interval});
   }
@@ -229,8 +227,7 @@ function mapDispatchToProps(dispatch){
     requestAddMonitoringUrls: requestAddMonitoringUrls,
     requestUpdateMonitoringUrls: requestUpdateMonitoringUrls,
     requestMonitoringUrls: requestMonitoringUrls,
-    requestDeleteMonitoringUrls: requestDeleteMonitoringUrls,
-    requestFilteredMonitoringUrls: requestFilteredMonitoringUrls
+    requestDeleteMonitoringUrls: requestDeleteMonitoringUrls
   },dispatch)
 }
 

@@ -19,31 +19,6 @@ const uptime = (state=initialState, action)=> {
       };
     }
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS: {
-      // let query = action.searchQuery, monitoringURLs;
-      // let results={}, filteredResult;
-      // if(query.length > SEARCH_CHARACTER_LIMIT){
-      //   let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
-      //   if(urlsCopy.hasOwnProperty('monitoringURLs')){
-      //     filteredResult = urlsCopy.monitoringURLs.filter(urlObj => urlObj.url.toLowerCase().includes(action.query.toLowerCase()));
-      //   }
-      // } else{
-      //   monitoringURLs = {
-      //     monitoringURLs: action.response.data.monitoringURLs
-      //   };
-      // }
-      // if(filteredResult && filteredResult.length){
-      //   results['monitoringURLs'] = filteredResult
-      //   const mockResponse = results;
-      //   return {
-      //     ...state,
-      //     monitoringURLs: mockResponse
-      //   }
-      // } else{
-      //   return{
-      //     ...state,
-      //     monitoringURLs : monitoringURLs
-      //   }
-      // }
       const monitoringURLs = {
         monitoringURLs: action.response.data.monitoringURLs
       };
@@ -58,30 +33,7 @@ const uptime = (state=initialState, action)=> {
         ...state
       };
     }
-    // case ActionTypes.FILTER_MONITORING_URLS_SUCCESS: {
-    //   let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
-    //   let results={}, filteredResult;
-    //   if(urlsCopy.hasOwnProperty('monitoringURLs')){
-    //     filteredResult = urlsCopy.monitoringURLs.filter(
-    //       urlObj => urlObj.url.toLowerCase().includes(action.query.toLowerCase())
-    //     );
-    //   }
-    //   if(filteredResult && filteredResult.length){
-    //     results['monitoringURLs'] = filteredResult
-    //     const mockResponse = results;
-    //     console.log(mockResponse)
-    //     return {
-    //       ...state,
-    //       monitoringURLs: mockResponse
-    //     }
-    //   } else{
-    //     return{
-    //       ...state,
-    //       monitoringURLs : urlsCopy
-    //     }
-    //   }
-    // }
-
+    
     // Add monitoring URL.
     case ActionTypes.ADD_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {

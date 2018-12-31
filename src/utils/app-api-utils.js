@@ -98,8 +98,11 @@ export function logout(dispatch) {
   });
 };
 
-export function getMonitoringUrls(dispatch, params) {
+export function getMonitoringUrls(dispatch, searchQuery) {
   let url = `${apiEndPoint()}/monitoring-urls`;
+  if(searchQuery.length > 2){
+    url = `${url}?search=${searchQuery}`;
+  }
   axios.get(
     url,{
       headers: {
@@ -109,7 +112,7 @@ export function getMonitoringUrls(dispatch, params) {
     })
   .then(response => {
     const successResponse = response.data;
-    dispatch(receiveMonitoringUrlsSuccess(successResponse, params));
+    dispatch(receiveMonitoringUrlsSuccess(successResponse));
   })
   .catch(error => {
     if (error) {
