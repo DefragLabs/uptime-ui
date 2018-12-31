@@ -23,9 +23,7 @@ export default class SearchBarView extends Component {
     const searchQuery = event.target.value;
     this.setState({searchTerm: searchQuery}, ()=> {
       const { searchTerm } = this.state;
-      if(searchTerm.length > SEARCH_CHARACTER_LIMIT){
-        this.props.searchQueryCallback(searchTerm);
-      }
+      this.props.searchQueryCallback(searchTerm);
     });
   }
 
