@@ -16,7 +16,6 @@ import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
 
 import ModalView from './modal-view';
 import SearchBarView from '../common/search-bar-view';
-import EmptyStateView from '../common/empty-state-view';
 
 class UpTimeView extends Component {
   /***************************
@@ -105,12 +104,14 @@ class UpTimeView extends Component {
           <Icon
             name="times rectangle"
             className="delete-icon cursor"
-            onClick={(e) => this.deleteMonitoringUrl(e, URLDetails.id)}
+            data-id={URLDetails.id}
+            onClick={this.deleteMonitoringUrl}
           />
           <Icon
             name="edit outline"
             className="cursor"
-            onClick={(e) => this.child.show(URLDetails)}
+            data-id={URLDetails.id}
+            onClick={this.handleEdit}
           />
         </Table.Cell>
       </Table.Row>
@@ -165,9 +166,27 @@ class UpTimeView extends Component {
     this.props.requestAddMonitoringUrls(params);
   }
 
-  deleteMonitoringUrl = (event, urlId) => {
-    event.preventDefault();
+  deleteMonitoringUrl = (event) => {
+    event.stopPropagation();
+    const urlId = event.currentTarget.dataset.id;
     this.props.requestDeleteMonitoringUrls(urlId);
+  }
+
+  handleEdit = (event) => {
+    event.stopPropagation();
+    const { monitoringURLs } = this.props.monitoringURLs;
+    const urlId = event.currentTarget.dataset.id;
+    let details;
+    
+    for(let urlIndx=0; urlIndx<monitoringURLs.length; urlIndx){
+      const URLDetails = monitoringURLs[urlIndx];
+      if(URLDetails.id === urlId){
+        details = URLDetails;
+        break;
+      }
+    }
+
+    this.child.show(details);
   }
 
   handleUpdateUrl(params, urlId){
