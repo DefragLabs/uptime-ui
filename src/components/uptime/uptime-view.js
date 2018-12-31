@@ -16,6 +16,7 @@ import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
 
 import ModalView from './modal-view';
 import SearchBarView from '../common/search-bar-view';
+import EmptyStateView from '../common/empty-state-view';
 
 class UpTimeView extends Component {
   /***************************
@@ -63,18 +64,24 @@ class UpTimeView extends Component {
             { this.getTableHeaderView(headers) }
           </Table.Header>
           <Table.Body className="table-body">
-            { monitoringURLs.map((URLDetails) => { return this.getTableBodyRowView(URLDetails) }) }
+            { monitoringURLs.length ? 
+                monitoringURLs.map((URLDetails) => { return this.getTableBodyRowView(URLDetails) }) : 
+                this.getEmptyStateView() }
           </Table.Body>
         </Table>
       </div>
     )
   }
 
-  getTableHeaderView = (columnHeadings) => {
+  getTableHeaderView = () => {
     const { t } = this.props;
     return(
       <Table.Row>
-        { columnHeadings.map((column, index) => { return this.getHeaderCellView(column, index) })}
+        <Table.HeaderCell className="uppercase" key="protocol">{t('common.protocol')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="url">{t('common.url')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="frequency">{t('common.frequency')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="unit">{t('common.unit')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="status">{t('common.status')}</Table.HeaderCell>
         <Table.HeaderCell className="uppercase" key="action">{t('common.actions')}</Table.HeaderCell>
       </Table.Row>
     )
@@ -119,6 +126,17 @@ class UpTimeView extends Component {
     return <Icon className="status-icon unknown" name="times circle" />
   }
 
+  getEmptyStateView = () => {
+    const { t } = this.props;
+
+    return(
+      <Table.Row className="empty-state-wrapper">
+        <Table.Cell style={Styles.alignCenter}>
+          {t('common.emptyStateMessage')}
+        </Table.Cell>
+      </Table.Row>
+    )
+  }
   /***************************
    *         METHODS
    ***************************/
@@ -167,6 +185,7 @@ class UpTimeView extends Component {
       this.getMonitoringUrls(this.state.searchQuery);
     })
   }
+
   /***************************
    *         LIFECYCLE
    ***************************/
@@ -231,4 +250,10 @@ function mapDispatchToProps(dispatch){
   },dispatch)
 }
 
+const Styles = {
+  alignCenter: {
+    position: 'absolute',
+    left: '50%'
+  }
+}
 export default withRouter(translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(UpTimeView)));
