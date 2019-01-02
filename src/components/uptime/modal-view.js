@@ -5,24 +5,8 @@ import { withRouter } from 'react-router-dom';
 import { translateOptions } from '../../i18n/config';
 import { Button, Modal, Form, Select, Input, Dropdown } from 'semantic-ui-react';
 
-import ErrorMessageView from '../common/error-message-view'
-
-const protocolOptions = [
-  { key: 'http', text: 'http', value: 'http' },
-  { key: 'https', text: 'https', value: 'https' },
-]
-
-const frequencyOptions = [
-  { key: '1', text: '1', value: '1', disabled: false },
-  { key: '5', text: '5', value: '5', disabled: false },
-  { key: '15', text: '15', value: '15', disabled: false },
-  { key: '30', text: '30', value: '30', disabled: false },
-]
-
-const unitOptions = [
-  { key: 'seconds', text: 'seconds', value: 'second', disabled: false },
-  { key: 'minute', text: 'minute', value: 'minute', disabled: false }
-]
+import ErrorMessageView from '../common/error-message-view';
+import {PROTOCOL_OPTIONS, FREQUENCY_OPTIONS, UNIT_OPTIONS} from '../../constants/menu-collection'
 
 class ModalView extends Component {
   
@@ -36,10 +20,10 @@ class ModalView extends Component {
       isEdit: false,
       
       fields: {
-        protocol: 'https',
-        url: '',
-        frequency: '30',
-        unit: 'second'
+        protocol: PROTOCOL_OPTIONS[1],
+        frequency: FREQUENCY_OPTIONS[3],
+        unit: UNIT_OPTIONS[0],
+        url: ''
       },
 
       serverError: "",
