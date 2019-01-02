@@ -1,4 +1,5 @@
 import ActionTypes from '../constants/action-type';
+import { SEARCH_CHARACTER_LIMIT } from '../constants/misc';
 
 export const initialState =  {
   isLoading: false
@@ -14,29 +15,25 @@ const uptime = (state=initialState, action)=> {
     // Get monitoring urls
     case ActionTypes.GET_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {
-        ...state, 
-        isLoading: true
+        ...state
       };
     }
-
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS: {
       const monitoringURLs = {
         monitoringURLs: action.response.data.monitoringURLs
       };
-      return { 
+      return{
         ...state,
-        monitoringURLs,
-        isLoading: false
-      };
-    }
+        monitoringURLs : monitoringURLs
+      }
 
+    }
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_FAILURE: {
       return {
-        ...state, 
-        isLoading: false
+        ...state
       };
     }
-
+    
     // Add monitoring URL.
     case ActionTypes.ADD_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {
@@ -44,7 +41,6 @@ const uptime = (state=initialState, action)=> {
         isLoading: true
       };
     }
-
     case ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_SUCCESS: {
       let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
       // Insert new url object at 0th index.
@@ -55,8 +51,37 @@ const uptime = (state=initialState, action)=> {
         monitoringURLs: urlsCopy
       };
     }
-
     case ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
+    // Add monitoring URL.
+    case ActionTypes.UPDATE_MONITORING_URLS_REQUEST_ATTEMPTED: {
+      return {
+        ...state, 
+        isLoading: true
+      };
+    }
+    case ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_SUCCESS: {
+      let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
+      // Replace old url details with new one.
+      for(let urlIndx=0; urlIndx<urlsCopy.monitoringURLs.length; urlIndx++){
+        let urlDetails = urlsCopy.monitoringURLs[urlIndx];
+        if(urlDetails.id === action.response.data.id){
+          urlsCopy['monitoringURLs'][urlIndx] = action.response.data;
+          break;
+        }
+      }
+      return {
+        ...state, 
+        isLoading: false,
+        monitoringURLs: urlsCopy
+      };
+    }
+    case ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_FAILURE: {
       return {
         ...state, 
         isLoading: false
@@ -70,7 +95,6 @@ const uptime = (state=initialState, action)=> {
         isLoading: true
       };
     }
-
     case ActionTypes.RECEIVE_DELETE_MONITORING_URLS_REQUEST_SUCCESS: {
       let urlsCopy = JSON.parse(JSON.stringify(state.monitoringURLs));
       const urlsCopyLen = urlsCopy.monitoringURLs.length;
@@ -81,14 +105,12 @@ const uptime = (state=initialState, action)=> {
           break;
         }
       }
-
       return {
         ...state, 
         isLoading: false,
         monitoringURLs: urlsCopy
       };
     }
-
     case ActionTypes.RECEIVE_DELETE_MONITORING_URLS_REQUEST_FAILURE: {
       return {
         ...state, 
@@ -103,7 +125,6 @@ const uptime = (state=initialState, action)=> {
         isLoading: true
       };
     }
-
     case ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_SUCCESS: {
       return {
         ...state, 
@@ -111,7 +132,6 @@ const uptime = (state=initialState, action)=> {
         monitoringURLDetails: action.response.data
       };
     }
-
     case ActionTypes.RECEIVE_GET_URL_DETAILS_REQUEST_FAILURE: {
       return {
         ...state, 
@@ -126,7 +146,6 @@ const uptime = (state=initialState, action)=> {
         isLoading: true
       };
     }
-
     case ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_SUCCESS: {
       return {
         ...state, 
@@ -134,7 +153,6 @@ const uptime = (state=initialState, action)=> {
         monitoringURLResults: action.response.data
       };
     }
-
     case ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE: {
       return {
         ...state, 

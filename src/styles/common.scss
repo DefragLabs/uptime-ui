@@ -18,3 +18,9 @@
 .cursor{
   cursor: pointer;
 }
+
+// Empty state view component
+.empty-state-wrapper{
+  height: 200px;
+  @include align-item(flex, center, center, row);
+}

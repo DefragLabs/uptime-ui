@@ -1,7 +1,6 @@
 import axios from 'axios';
 import {
-  revieveRegisterResponse,
-  receiveLoginSuccess , 
+  receiveLoginSuccess, 
   receiveLoginFailure, 
   receiveLogoutSuccess, 
   receiveMonitoringUrlsSuccess,
@@ -13,7 +12,11 @@ import {
   receiveGetUrlDetailsSuccess,
   receiveGetUrlDetailsFailure, 
   receiveGetUrlResultsSuccess, 
-  receiveGetUrlResultsFailure
+  receiveGetUrlResultsFailure, 
+  receiveUpdateMonitoringUrlsSuccess, 
+  receiveUpdateMonitoringUrlsFailure, 
+  receiveRegisterSuccess, 
+  receiveRegisterFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
@@ -37,7 +40,7 @@ export function getHeaders(authToken) {
 }
 
 export function register(dispatch, params) {
-  let url = "";
+  let url = `${apiEndPoint()}/auth/register`;
   axios.post(
     url,
     params,{
@@ -45,12 +48,12 @@ export function register(dispatch, params) {
     })
   .then(response => {
     const successResponse = response.data;
-    dispatch(revieveRegisterResponse(successResponse));
+    dispatch(receiveRegisterSuccess(successResponse));
   })
   .catch(error => {
     if (error) {
       const errorResponse = error.response;
-      dispatch(revieveRegisterResponse(errorResponse));
+      dispatch(receiveRegisterFailure(errorResponse));
     }
   });
 };
@@ -95,8 +98,11 @@ export function logout(dispatch) {
   });
 };
 
-export function getMonitoringUrls(dispatch, params) {
+export function getMonitoringUrls(dispatch, searchQuery) {
   let url = `${apiEndPoint()}/monitoring-urls`;
+  if(searchQuery.length > 2){
+    url = `${url}?search=${searchQuery}`;
+  }
   axios.get(
     url,{
       headers: {
@@ -144,6 +150,34 @@ export function addMonitoringUrls(dispatch, params) {
       else {
         const errorResponse = error.response;
         dispatch(receiveAddMonitoringUrlsFailure(errorResponse));
+      }
+    }
+  })
+}
+
+export function updateMonitoringUrls(dispatch, params) {
+  let url = `${apiEndPoint()}/monitoring-urls/${params.id}`;
+  axios.put(
+    url,
+    params,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      }
+    }
+  )
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveUpdateMonitoringUrlsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveUpdateMonitoringUrlsFailure(errorResponse));
       }
     }
   })

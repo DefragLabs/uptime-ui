@@ -20,10 +20,24 @@
     "registerFailureMsg": "Registration failed. Please try again."
   },
   "uptime": {
-    "uptimeMonitoring": "Uptime Monitoring"
+    "uptimeMonitoring": "Uptime Monitoring",
+    "addMonitoringUrl": "Add Monitoring URL",
+    "addURL": "Add URL",
+    "url": "URL",
+    "monitoringDetailsViewHeading": "Monitoring details for "
   },
   "common": {
     "brandName": "UpTime",
-    "submit": "Submit"
+    "submit": "Submit",
+    "actions": "Actions",
+    "cancel": "Cancel",
+    "searchBarPlaceholder": "Search...",
+    "summaryHeading": "URL Summary",
+    "protocol": "Protocol",
+    "url": "URL",
+    "frequency": "Frequency",
+    "unit": "Unit",
+    "status": "Status",
+    "emptyStateMessage": "No data available.."
   }
 }

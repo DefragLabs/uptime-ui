@@ -9,9 +9,14 @@
 .uptime-view .section-header {
   padding: 20px 0px; }
   .uptime-view .section-header .section-header-content {
-    padding: 10px;
-    border: 1px solid grey;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    padding: 10px 0px;
     text-align: right; }
+    .uptime-view .section-header .section-header-content .search-bar-wrapper input {
+      min-width: 300px; }
     .uptime-view .section-header .section-header-content .add-monitoring-url-btn {
       min-width: 100px;
       height: 40px;
@@ -28,6 +33,8 @@
 
 .uptime-view .section-content-wrapper .section-content {
   margin-bottom: 20px; }
+  .uptime-view .section-content-wrapper .section-content .table .table-body .table-row .action-icons-wrapper .delete-icon {
+    margin-right: 10px; }
   .uptime-view .section-content-wrapper .section-content .status-icon {
     font-size: 20px;
     margin-left: 10px; }
@@ -38,13 +45,71 @@
   .uptime-view .section-content-wrapper .section-content .unknown {
     color: grey; }
 
-.uptime-details-view .main-heading {
-  color: #111111;
-  font-size: 30px !important;
-  font-family: QuickSandBold !important;
-  line-height: normal;
-  font-weight: normal;
-  text-align: left; }
+.uptime-details-view .heading-wrapper {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+  margin: 20px auto; }
+  .uptime-details-view .heading-wrapper .back-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    margin-right: 20px;
+    box-shadow: 0 5px 11px 0 rgba(0, 0, 0, 0.18), 0 4px 15px 0 rgba(0, 0, 0, 0.15);
+    color: #000000;
+    font-size: 20px; }
+  .uptime-details-view .heading-wrapper .main-heading {
+    color: #111111;
+    font-size: 30px !important;
+    font-family: QuickSandBold !important;
+    line-height: normal;
+    font-weight: normal;
+    text-align: left; }
 
-.uptime-details-view .section-content-wrapper .section-content {
-  margin-bottom: 20px; }
+.uptime-details-view .section-content-wrapper .chart-wrapper {
+  min-height: 270px; }
+  .uptime-details-view .section-content-wrapper .chart-wrapper .recharts-wrapper {
+    margin: 0 auto; }
+
+.uptime-details-view .section-content-wrapper .summary-wrapper {
+  margin-left: 60px; }
+  .uptime-details-view .section-content-wrapper .summary-wrapper .summary-heading {
+    color: #2F3D51;
+    font-size: 25px !important;
+    font-family: QuickSandBold !important;
+    line-height: normal;
+    font-weight: normal;
+    text-align: left; }
+  .uptime-details-view .section-content-wrapper .summary-wrapper .summary {
+    margin-top: 30px; }
+    .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: row;
+      margin-bottom: 10px; }
+      .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row .summary-key {
+        width: 200px;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+        color: #686B78;
+        font-size: 16px !important;
+        font-family: QuickSandBold !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left;
+        text-transform: uppercase; }
+      .uptime-details-view .section-content-wrapper .summary-wrapper .summary .summary-row .summary-value {
+        color: #686B78;
+        font-size: 16px !important;
+        font-family: QuickSandLight !important;
+        line-height: normal;
+        font-weight: normal;
+        text-align: left; }

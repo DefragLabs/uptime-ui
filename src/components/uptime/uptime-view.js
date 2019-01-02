@@ -4,129 +4,50 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { withRouter } from 'react-router-dom';
 import { translateOptions } from '../../i18n/config';
-
-import { Button, Table, Modal, Form, Select, Input, Dropdown, Icon } from 'semantic-ui-react';
+import { Button, Table, Icon } from 'semantic-ui-react';
 import { 
-  requestMonitoringUrls, 
-  requestAddMonitoringUrls, 
+  requestMonitoringUrls,
+  requestAddMonitoringUrls,
+  requestUpdateMonitoringUrls,
   requestDeleteMonitoringUrls
 } from '../../actions/app-actions';
 import { isEqual } from 'lodash';
+import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
 
-const protocolOptions = [
-  { key: 'http', text: 'http', value: 'http' },
-  { key: 'https', text: 'https', value: 'https' },
-]
-
-const frequencyOptions = [
-  { key: '5', text: '5', value: 5 },
-  { key: '10', text: '10', value: 10 },
-  { key: '15', text: '15', value: 15 }
-]
-
-const unitOptions = [
-  { key: 'seconds', text: 'seconds', value: 'second' },
-  { key: 'minute', text: 'minute', value: 'minute' },
-  { key: 'hour', text: 'hour', value: 'hour' }
-]
+import ModalView from './modal-view';
+import SearchBarView from '../common/search-bar-view';
 
 class UpTimeView extends Component {
-  
   /***************************
    *         CONSTRUCTOR
    ***************************/
   constructor(){
     super();
+
     this.state = {
-      open: false,
-      
-      fields: {
-        protocol: 'https',
-        url: '',
-        frequency: 5,
-        unit: 'second'
-      },
-
-      serverError: "",
-      errors: {}
+      searchQuery: ""
     }
-
-    this.handleUrlChange = this.handleUrlChange.bind(this);
-    this.handleProtocolChange = this.handleProtocolChange.bind(this);
-    this.handleFrequencyChange = this.handleFrequencyChange.bind(this);
-    this.handleUnitChange = this.handleUnitChange.bind(this);
   }
 
   /***************************
    *         VIEWS
    ***************************/
   getSectionHeaderView = () => {
+    const { t } = this.props;
     return(
       <div className="section-header-content">
-        <Button className="app-btn add-monitoring-url-btn" type='button' onClick={this.show(true)}>
-          Add URL
+        <SearchBarView
+          {...this.props}
+          searchQueryCallback={(searchQuery)=> this.handleSearchQuery(searchQuery)}
+        />
+        <Button
+          className="app-btn add-monitoring-url-btn"
+          type='button'
+          onClick={()=> this.child.show()}
+        >
+          {t('uptime.addURL')}
         </Button>
       </div>
-    )
-  }
-
-  getAddMonitoringUrlModalView = () => {
-    const { open, dimmer, fields, errors, serverError } = this.state;
-    return(
-      <Modal dimmer={dimmer} open={open} onClose={this.closeModal} size="tiny">
-          <Modal.Header>Add Monitoring URL</Modal.Header>
-          <Modal.Content>
-
-          <Form className="login-form" onSubmit= {this.handleSubmit}>
-            <Form.Field>
-              <label>URL</label>
-              <Input
-                name='url'
-                label={<Dropdown defaultValue='https' options={protocolOptions} onChange={this.handleProtocolChange} />}
-                aria-label="URL"
-                labelPosition='left'
-                placeholder='Add URL'
-                onChange={this.handleUrlChange}
-                value={fields["url"]}
-                className={`${errors['url'] && 'highlight-input'}`}
-              />
-                {errors['url'] && this.getFieldErrorView(errors["url"])}
-              </Form.Field>
-            
-            <Form.Group widths='equal'>
-              <Form.Field
-                control={Select}
-                label='Frequency' 
-                options={frequencyOptions} 
-                placeholder='Frequency'
-                defaultValue={5}
-                onChange={this.handleFrequencyChange}
-              />
-              <Form.Field
-                control={Select}
-                label='Unit' 
-                options={unitOptions} 
-                placeholder='Unit'
-                defaultValue="second"
-                onChange={this.handleUnitChange}
-              />
-            </Form.Group>
-            
-            <div className="error-msg-wrapper">
-              { serverError && this.getFieldErrorView(serverError)}
-            </div>
-          </Form>
-
-          </Modal.Content>
-          <Modal.Actions>
-            <Button color='black' onClick={this.closeModal}>Cancel</Button>
-            <Button
-              positive
-              content="Save"
-              onClick={()=> this.addMonitoringUrls()}
-            />
-          </Modal.Actions>
-        </Modal>
     )
   }
 
@@ -141,19 +62,26 @@ class UpTimeView extends Component {
           <Table.Header>
             { this.getTableHeaderView(headers) }
           </Table.Header>
-          <Table.Body>
-            { monitoringURLs.map((URLDetails) => { return this.getTableBodyRowView(URLDetails) }) }
+          <Table.Body className="table-body">
+            { monitoringURLs.length ? 
+                monitoringURLs.map((URLDetails) => { return this.getTableBodyRowView(URLDetails) }) : 
+                this.getEmptyStateView() }
           </Table.Body>
         </Table>
       </div>
     )
   }
 
-  getTableHeaderView = (columnHeadings) => {
+  getTableHeaderView = () => {
+    const { t } = this.props;
     return(
       <Table.Row>
-        { columnHeadings.map((column, index) => { return this.getHeaderCellView(column, index) })}
-        <Table.HeaderCell className="uppercase" key="action">ACTION</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="protocol">{t('common.protocol')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="url">{t('common.url')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="frequency">{t('common.frequency')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="unit">{t('common.unit')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="status">{t('common.status')}</Table.HeaderCell>
+        <Table.HeaderCell className="uppercase" key="action">{t('common.actions')}</Table.HeaderCell>
       </Table.Row>
     )
   }
@@ -166,14 +94,25 @@ class UpTimeView extends Component {
 
   getTableBodyRowView = (URLDetails) => {
     return(
-      <Table.Row className="cursor" key={URLDetails.id} onClick={()=> this.navigateToUrlDetailView(URLDetails.id)}>
+      <Table.Row className="table-row cursor" key={URLDetails.id} onClick={()=> this.navigateToUrlDetailView(URLDetails.id)}>
         <Table.Cell>{URLDetails.protocol}</Table.Cell>
         <Table.Cell>{URLDetails.url}</Table.Cell>
         <Table.Cell>{URLDetails.frequency}</Table.Cell>
         <Table.Cell>{URLDetails.unit}</Table.Cell>
         <Table.Cell>{this.getStatusIcon(URLDetails.status)}</Table.Cell>
-        <Table.Cell>
-          <Icon name="times rectangle" className="cursor" onClick={()=> this.deleteMonitoringUrl(URLDetails.id)} />
+        <Table.Cell className="action-icons-wrapper">
+          <Icon
+            name="times rectangle"
+            className="delete-icon cursor"
+            data-id={URLDetails.id}
+            onClick={this.deleteMonitoringUrl}
+          />
+          <Icon
+            name="edit outline"
+            className="cursor"
+            data-id={URLDetails.id}
+            onClick={this.handleEdit}
+          />
         </Table.Cell>
       </Table.Row>
     )
@@ -188,11 +127,22 @@ class UpTimeView extends Component {
     return <Icon className="status-icon unknown" name="times circle" />
   }
 
+  getEmptyStateView = () => {
+    const { t } = this.props;
+
+    return(
+      <Table.Row className="empty-state-wrapper">
+        <Table.Cell style={Styles.alignCenter}>
+          {t('common.emptyStateMessage')}
+        </Table.Cell>
+      </Table.Row>
+    )
+  }
   /***************************
    *         METHODS
    ***************************/
-  getMonitoringUrls = () => {
-    this.props.requestMonitoringUrls();
+  getMonitoringUrls = (searchQuery) => {
+    this.props.requestMonitoringUrls(searchQuery);
   }
 
   getTableHeaders = (object) => {
@@ -212,76 +162,79 @@ class UpTimeView extends Component {
     return headers;
   }
 
-  show = dimmer => () => this.setState({ dimmer, open: true })
-
-  closeModal = () => this.setState({ open: false })
-
-  addMonitoringUrls = () => {
-    const { fields } = this.state
-    this.props.requestAddMonitoringUrls(fields);
+  handleAddUrl = (params) => {
+    this.props.requestAddMonitoringUrls(params);
   }
 
-  deleteMonitoringUrl = (urlId) => {
-    this.props.requestDeleteMonitoringUrls(urlId)
+  deleteMonitoringUrl = (event) => {
+    event.stopPropagation();
+    const urlId = event.currentTarget.dataset.id;
+    this.props.requestDeleteMonitoringUrls(urlId);
   }
 
-  handleUrlChange(e){
-    let fields = this.state.fields;
-    const field = e.target.name;
-    fields[field] = e.target.value;
-    this.setState({
-      fields,
-      errors: {},
-      serverError: ""
-    })
+  handleEdit = (event) => {
+    event.stopPropagation();
+    const { monitoringURLs } = this.props.monitoringURLs;
+    const urlId = event.currentTarget.dataset.id;
+    let details;
+    
+    for(let urlIndx=0; urlIndx<monitoringURLs.length; urlIndx){
+      const URLDetails = monitoringURLs[urlIndx];
+      if(URLDetails.id === urlId){
+        details = URLDetails;
+        break;
+      }
+    }
+
+    this.child.show(details);
   }
 
-  handleProtocolChange(e, { value }){
-    let fields = this.state.fields;
-    fields['protocol'] = value;
-    this.setState({
-      fields
-    })
-  }
-
-  handleFrequencyChange(e, { value }){
-    let fields = this.state.fields;
-    fields['frequency'] = value;
-    this.setState({
-      fields
-    })
-  }
-
-  handleUnitChange(e, { value }){
-    let fields = this.state.fields;
-    fields['unit'] = value;
-    this.setState({
-      fields
-    })
+  handleUpdateUrl(params, urlId){
+    params['id']= urlId;
+    params['frequency']= parseInt(params.frequency);
+    this.props.requestUpdateMonitoringUrls(params);
   }
 
   navigateToUrlDetailView = (urlId) => {
-    this.props.history.push(`/monitoring-url/${urlId}`)
+    this.props.history.push(`/monitoring-url/${urlId}`);
+  }
+
+  handleSearchQuery = (searchQuery) => {
+    this.setState({searchQuery}, ()=> {
+      this.getMonitoringUrls(this.state.searchQuery);
+    })
   }
 
   /***************************
    *         LIFECYCLE
    ***************************/
   componentDidMount(){
-    this.getMonitoringUrls();
+    this.getMonitoringUrls(this.state.searchQuery);
+    
+    let interval = setInterval(()=>{
+      this.getMonitoringUrls(this.state.searchQuery);
+    }, MONITORING_STATUS_POLLING_DURATION*1000);
+    this.setState({intervalObj : interval});
   }
 
   componentWillReceiveProps(newProps){
     if(!isEqual(newProps.monitoringURLs, this.monitoringURLs)){
-      this.closeModal();
+      this.child.closeModal();
+    }
+  }
+
+  componentWillUnmount(){
+    const { intervalObj } = this.state;
+    if(intervalObj){
+      clearInterval(intervalObj);
     }
   }
 
   render(){
-    const { monitoringURLs } = this.props;
+    const { monitoringURLs, t } = this.props;
     return(
       <div className="uptime-view">
-        <div className="main-heading">Uptime Monitoring</div>
+        <div className="main-heading">{t('uptime.uptimeMonitoring')}</div>
 
         <div className="section-header">
           { this.getSectionHeaderView() }
@@ -291,7 +244,11 @@ class UpTimeView extends Component {
           { monitoringURLs && this.getSectionContentView() }
         </div>
 
-        { this.getAddMonitoringUrlModalView() }
+        <ModalView
+          onRef={ref => (this.child = ref)}
+          addMonitoringUrls={(params)=> this.handleAddUrl(params)}
+          updateMonitoringUrls={(params, urlId)=> this.handleUpdateUrl(params, urlId)}
+        />
       </div>
     )
   }
@@ -299,18 +256,23 @@ class UpTimeView extends Component {
 
 function mapStateToProps(state) {
   return {
-    monitoringURLs: state.uptime.monitoringURLs,
-    addMonitoringURLs: state.uptime.addMonitoringURLs,
-    isLoading: state.uptime.isLoading
+    monitoringURLs: state.uptime.monitoringURLs
   };
 }
 
 function mapDispatchToProps(dispatch){
   return bindActionCreators({
     requestAddMonitoringUrls: requestAddMonitoringUrls,
+    requestUpdateMonitoringUrls: requestUpdateMonitoringUrls,
     requestMonitoringUrls: requestMonitoringUrls,
     requestDeleteMonitoringUrls: requestDeleteMonitoringUrls
   },dispatch)
 }
 
+const Styles = {
+  alignCenter: {
+    position: 'absolute',
+    left: '50%'
+  }
+}
 export default withRouter(translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(UpTimeView)));
