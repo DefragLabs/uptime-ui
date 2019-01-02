@@ -4,9 +4,13 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { translateOptions } from '../../i18n/config';
 import { Button, Modal, Form, Select, Input, Dropdown } from 'semantic-ui-react';
+import {
+  PROTOCOL_OPTIONS,
+  FREQUENCY_OPTIONS,
+  UNIT_OPTIONS
+} from '../../constants/menu-collection';
 
 import ErrorMessageView from '../common/error-message-view';
-import {PROTOCOL_OPTIONS, FREQUENCY_OPTIONS, UNIT_OPTIONS} from '../../constants/menu-collection'
 
 class ModalView extends Component {
   
@@ -108,10 +112,10 @@ class ModalView extends Component {
   handleFrequencyChange(e, { value }){
     let fields = this.state.fields;
     fields['frequency'] = value;
-    if(value !== "30"){
-      unitOptions[0]['disabled'] = true;
+    if(value !== FREQUENCY_OPTIONS[3].value){
+      UNIT_OPTIONS[0]['disabled'] = true;
     } else {
-      unitOptions[0]['disabled'] = false;
+      UNIT_OPTIONS[0]['disabled'] = false;
     }
     this.setState({
       fields
@@ -134,8 +138,8 @@ class ModalView extends Component {
     if(fields['url'] === ''){
       formIsValid = false;
       errors["url"] = "*This field is required.";
-    } else if((fields["frequency"] !== '30') && 
-      (fields["unit"] === 'second')){
+    } else if((fields["frequency"] !== FREQUENCY_OPTIONS[3].value)
+      && (fields["unit"] === 'second')){
       formIsValid = false;
       errors["frequency"] = "*Please select valid unit/frequency.";
     }
