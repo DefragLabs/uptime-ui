@@ -36,6 +36,7 @@ export default class SearchBarView extends Component {
     return(
       <div className="search-bar-wrapper">
           <Input
+            aria-label="Search"
             size='small'
             icon='search'
             placeholder={t('common.searchBarPlaceholder')}
