@@ -158,7 +158,7 @@ class ModalView extends Component {
     return(
       <Dropdown
         value={fields['protocol']}
-        options={protocolOptions}
+        options={PROTOCOL_OPTIONS}
         onChange={this.handleProtocolChange}
       />
     )
@@ -213,7 +213,7 @@ class ModalView extends Component {
                 <Form.Field
                   control={Select}
                   label='Frequency' 
-                  options={frequencyOptions} 
+                  options={FREQUENCY_OPTIONS} 
                   placeholder='Frequency'
                   value={fields["frequency"]}
                   onChange={this.handleFrequencyChange}
@@ -221,7 +221,7 @@ class ModalView extends Component {
                 <Form.Field
                   control={Select}
                   label='Unit' 
-                  options={unitOptions} 
+                  options={UNIT_OPTIONS} 
                   placeholder='Unit'
                   value={fields["unit"]}
                   onChange={this.handleUnitChange}
