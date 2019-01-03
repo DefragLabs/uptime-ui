@@ -1,0 +1,42 @@
+.dashboard-view .main-heading {
+  margin-top: 20px;
+  margin-bottom: 40px;
+  color: #111111;
+  font-size: 30px !important;
+  font-family: QuickSandBold !important;
+  line-height: normal;
+  font-weight: normal;
+  text-align: left; }
+
+.dashboard-view .section-content-wrapper {
+  margin-top: 20px; }
+  .dashboard-view .section-content-wrapper .section-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    margin-bottom: 20px; }
+    .dashboard-view .section-content-wrapper .section-content .card-wrapper {
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: row; }
+      .dashboard-view .section-content-wrapper .section-content .card-wrapper .card-content {
+        margin: 10px; }
+        .dashboard-view .section-content-wrapper .section-content .card-wrapper .card-content .header {
+          color: #111111;
+          font-size: 50px !important;
+          font-family: QuickSandBold !important;
+          line-height: normal;
+          font-weight: bold;
+          text-align: center;
+          background-color: transparent;
+          margin-bottom: 30px; }
+        .dashboard-view .section-content-wrapper .section-content .card-wrapper .card-content .description {
+          color: #111111;
+          font-size: 18px !important;
+          font-family: QuickSandRegular !important;
+          line-height: normal;
+          font-weight: normal;
+          text-align: center; }
