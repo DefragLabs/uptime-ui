@@ -1,0 +1,35 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.dashboard-view{
+  .main-heading{
+    margin-top: $default-margin*2;
+    margin-bottom: $default-margin*4;
+    @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
+  }
+
+  .section-content-wrapper{
+    margin-top: $default-margin*2;
+    .section-content{
+      @include align-item(flex, space-between, center, row);
+      margin-bottom: $default-margin*2;
+
+      .card-wrapper{
+        height: 200px;
+        @include align-item(flex, center, center, row);
+        .card-content{
+          margin: $default-margin;
+          .header{
+            @include set-font(QuickSandBold, $default-font-size*5, $theme-color, normal, center, bold);
+            background-color: transparent;
+            margin-bottom: $default-margin*3;
+          }
+          .description{
+            @include set-font(QuickSandRegular, $default-font-size+8, $theme-color, normal, center, normal);
+          }
+        }
+      }
+    }
+  }
+}

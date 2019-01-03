@@ -5,6 +5,7 @@
 // UPTIME VIEW
 .uptime-view{
   .main-heading{
+    margin-top: $default-margin*2;
     @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
   }
 

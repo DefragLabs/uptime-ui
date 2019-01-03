@@ -26,6 +26,9 @@
     "url": "URL",
     "monitoringDetailsViewHeading": "Monitoring details for "
   },
+  "dashboard": {
+    "Statistics": "Monitoring Statistics"
+  },
   "common": {
     "brandName": "UpTime",
     "submit": "Submit",
