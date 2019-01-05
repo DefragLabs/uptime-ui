@@ -122,3 +122,17 @@
   }
 
 }
+
+.custom-tooltip{
+  padding: $default-padding !important;
+  .time, .response-time, .status{
+    margin: ($default-margin)-5;
+    @include align-item(flex, flex-start, center, row);
+    .key{
+      @include set-font(QuickSandBold, $default-font-size+4, $theme-color, normal, left, normal);
+    }
+    .value{
+      @include set-font(QuickSandRegular, $default-font-size+4, $theme-color, normal, left, normal);
+    }
+  }
+}

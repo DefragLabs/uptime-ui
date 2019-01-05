@@ -49,6 +49,9 @@
     "status": "Status",
     "emptyStateMessage": "No data available..",
     "filterBy": "Filter by",
-    "chooseAnOption": "Choose an option"
+    "chooseAnOption": "Choose an option",
+    "time": "Time",
+    "responseTime": "Response time",
+    "Status" : "status"
   }
 }

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label } from 'recharts';
-
-import CustomizedXAxisTickView from './customized-xAxis-tick';
+import {AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Label} from 'recharts';
+import CustomXAxisTickView from './custom-xAxis-tick';
+import CustomTooltipView from './custom-tooltip';
 
 export default class LineChartView extends Component {
 
@@ -17,7 +17,7 @@ export default class LineChartView extends Component {
         margin={{top: 20, right: 30, left: 10, bottom: 10}}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey="time" tick={<CustomizedXAxisTickView />}>
+        <XAxis dataKey="time" tick={<CustomXAxisTickView />}>
           <Label
             y="1em"
             value={t('uptime.date')}
@@ -32,7 +32,10 @@ export default class LineChartView extends Component {
             position='insideBottomLeft'
           />
         </YAxis>
-        <Tooltip />
+        <Tooltip
+          {...this.props}
+          content={<CustomTooltipView/>}
+        />
         <Area
           type='monotone'
           dataKey='responseTime'
