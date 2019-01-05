@@ -57,6 +57,7 @@ class MonitorUrlDetailsView extends Component {
         <div className="label">{t('common.filterBy')}</div>
         <Dropdown
           selection
+          compact
           wrapSelection={false}
           defaultValue={selectedFilter}
           options={MONITORING_URL_RESULTS_FILTER}
