@@ -20,3 +20,12 @@ export const UNIT_OPTIONS = [
     { key: 'seconds', text: 'seconds', value: 'second', disabled: false },
     { key: 'minute', text: 'minute', value: 'minute', disabled: false }
 ]
+
+export const MONITORING_URL_RESULTS_FILTER = [
+    { key: '1-hour', text: 'Last 1 Hour', value: '1-hour' },
+    { key: '3-hour', text: 'Last 3 Hour', value: '3-hour' },
+    { key: '6-hour', text: 'Last 6 Hour', value: '6-hour' },
+    { key: '1-day', text: 'Last 1 Day', value: '1-day' },
+    { key: '1-week', text: 'Last 1 Week', value: '1-week' },
+    { key: '1-year', text: 'Last 1 Year', value: '1-year' }
+]

@@ -78,6 +78,17 @@
       @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
     }
   }
+  .filters-wrapper{
+    margin: $default-margin 0px;
+    .filters-view{
+      margin-left: $default-margin*6;
+      @include align-item(flex, flex-start, center, row);
+      .label{
+        @include set-font(QuickSandBold, $default-font-size+6, $theme-color, normal, left, normal);
+        margin-right: $default-margin;
+      }
+    }
+  }
 
   .section-content-wrapper{
     .chart-wrapper{

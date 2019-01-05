@@ -72,6 +72,23 @@
     font-weight: normal;
     text-align: left; }
 
+.uptime-details-view .filters-wrapper {
+  margin: 10px 0px; }
+  .uptime-details-view .filters-wrapper .filters-view {
+    margin-left: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row; }
+    .uptime-details-view .filters-wrapper .filters-view .label {
+      color: #111111;
+      font-size: 16px !important;
+      font-family: QuickSandBold !important;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left;
+      margin-right: 10px; }
+
 .uptime-details-view .section-content-wrapper .chart-wrapper {
   min-height: 270px; }
   .uptime-details-view .section-content-wrapper .chart-wrapper .recharts-wrapper {

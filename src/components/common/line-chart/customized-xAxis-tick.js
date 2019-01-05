@@ -4,7 +4,6 @@ import moment from 'moment';
 class CustomizedXAxisTickView extends Component {
   render () {
     const {x, y, payload} = this.props;
-    console.log(payload)
 		
    	return (
     	<g transform={`translate(${x},${y})`}>
