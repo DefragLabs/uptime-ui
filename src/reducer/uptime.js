@@ -12,6 +12,28 @@ const uptime = (state=initialState, action)=> {
   }
 
   switch (action.type) {
+    // Get dashboard stats
+    case ActionTypes.GET_DASHBOARD_STATS_REQUEST_ATTEMPTED: {
+      return {
+        ...state
+      };
+    }
+    case ActionTypes.RECEIVE_GET_DASHBOARD_STATS_REQUEST_SUCCESS: {
+      const dashboardStats = {
+        dashboardStats: action.response.data
+      };
+      return{
+        ...state,
+        dashboardStats : dashboardStats
+      }
+
+    }
+    case ActionTypes.RECEIVE_GET_DASHBOARD_STATS_REQUEST_FAILURE: {
+      return {
+        ...state
+      };
+    }
+
     // Get monitoring urls
     case ActionTypes.GET_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {

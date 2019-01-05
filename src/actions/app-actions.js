@@ -8,7 +8,8 @@ import {
   deleteMonitoringURL, 
   getMonitoringUrlDetails, 
   getMonitoringUrlResults, 
-  updateMonitoringUrls
+  updateMonitoringUrls,
+  getDashboardStats
 } from '../utils/app-api-utils';
 
 // Register
@@ -70,6 +71,28 @@ export function receiveLogoutSuccess(response) {
 export function receiveLogoutFailure(response) {
   return{
     type: ActionTypes.RECEIVE_LOGOUT_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Get dashboard stats
+export function requestGetDashboardStats(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.GET_DASHBOARD_STATS_REQUEST_ATTEMPTED,
+    })
+    getDashboardStats(dispatch, params);
+  }
+}
+export function receiveGetDashboardStatsSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_DASHBOARD_STATS_REQUEST_SUCCESS,
+    response
+  }
+}
+export function receiveGetDashboardStatsFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_DASHBOARD_STATS_REQUEST_FAILURE,
     response
   }
 }

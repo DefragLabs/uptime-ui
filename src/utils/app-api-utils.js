@@ -16,7 +16,9 @@ import {
   receiveUpdateMonitoringUrlsSuccess, 
   receiveUpdateMonitoringUrlsFailure, 
   receiveRegisterSuccess, 
-  receiveRegisterFailure
+  receiveRegisterFailure, 
+  receiveGetDashboardStatsSuccess, 
+  receiveGetDashboardStatsFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
@@ -97,6 +99,32 @@ export function logout(dispatch) {
     }
   });
 };
+
+export function getDashboardStats(dispatch) {
+  let url = `${apiEndPoint()}/dashboard/stats`;
+  axios.get(
+    url,{
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': getAuthToken()
+      },
+    })
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveGetDashboardStatsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveGetDashboardStatsFailure(errorResponse));
+      }
+    }
+  });
+}
 
 export function getMonitoringUrls(dispatch, searchQuery) {
   let url = `${apiEndPoint()}/monitoring-urls`;

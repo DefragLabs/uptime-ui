@@ -27,7 +27,10 @@
     "monitoringDetailsViewHeading": "Monitoring details for "
   },
   "dashboard": {
-    "Statistics": "Monitoring Statistics"
+    "Statistics": "Monitoring Statistics",
+    "monitoringUrls": "Monitoring URLs",
+    "URLsDown": "URLs Down",
+    "URLsUp": "URLs Up"
   },
   "common": {
     "brandName": "UpTime",
