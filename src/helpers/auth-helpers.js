@@ -1,5 +1,3 @@
-let currentInterval;
-
 export function getAuthToken() {
   let auth;
   const userSession = JSON.parse(localStorage.getItem('state'));
@@ -54,6 +52,12 @@ export function isUserActive() {
   }
   return false;
 };
+
+export function getUserName() {
+  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
+  console.log(userDetails);
+  return `${userDetails.first_name} ${userDetails.last_name}`
+}
 
 export function isTokenValid(token) {
   const jwt = decodeJwtToken(token);
