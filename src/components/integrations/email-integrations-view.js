@@ -104,6 +104,7 @@ class EmailIntegrationsView extends Component {
   getIntegrationTableView(integrations) {
     return (
       <IntegrationsTableView
+        {...this.props}
         recordCollection={integrations.Email}
         integrationDeleteCallback={(params)=> this.props.integrationDeleteCallback(params)}
       />

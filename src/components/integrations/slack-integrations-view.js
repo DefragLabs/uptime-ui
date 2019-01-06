@@ -119,7 +119,11 @@ class SlackIntegrationsView extends Component {
 
   getIntegrationTableView(integrations) {
     return (
-      <IntegrationsTableView recordCollection={integrations[SLACK]} />
+      <IntegrationsTableView
+        {...this.props}
+        recordCollection={integrations[SLACK]}
+        integrationDeleteCallback={(params)=> this.props.integrationDeleteCallback(params)}
+      />
     );
   };
 

@@ -8,7 +8,7 @@ export default class IntegrationTableView extends Component {
   }
 
   getTableHeaderView() {
-    const { recordCollection } = this.props;
+    const { recordCollection, t } = this.props;
     const record = recordCollection[0];
     const valueColumn = {
       width: '80%'

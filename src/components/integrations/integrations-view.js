@@ -76,6 +76,7 @@ class IntegrationsView extends Component {
         <SlackIntegrationsView
           integrations={integrations}
           addIntegrationCallback={(params)=> this.handleAddSlackIntegration(params)}
+          integrationDeleteCallback={(params)=> this.handleDeleteIntegration(params)}
         />
       </Tab.Pane>
     )
