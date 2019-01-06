@@ -27,27 +27,26 @@ export function apiEndPoint() {
   return "http://18.235.105.251/api"
 }
 
-export function getHeaders(authToken) {
-  if (authToken){
-    return {
-      'Content-Type': 'application/json',
-      'Authorization': 'Token'
-    }
+export function getHeaders() {
+  return {
+    'Content-Type': 'application/json'
   }
-  else{
-    return{
-      'Content-Type': 'application/json'
+}
+
+export function getAuthHeaders(){
+  return {
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': getAuthToken()
     }
   }
 }
 
 export function register(dispatch, params) {
   let url = `${apiEndPoint()}/auth/register`;
-  axios.post(
-    url,
-    params,{
-      headers: getHeaders(),
-    })
+  const headers = getHeaders();
+
+  axios.post(url, params, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveRegisterSuccess(successResponse));
@@ -62,12 +61,9 @@ export function register(dispatch, params) {
 
 export function login(dispatch, params) {
   let url = `${apiEndPoint()}/auth/login`;
-  axios.post(
-    url,
-    params,{
-      headers: getHeaders(),
-    }
-  )
+  const headers = getHeaders();
+  
+  axios.post(url, params, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveLoginSuccess(successResponse));
@@ -82,13 +78,9 @@ export function login(dispatch, params) {
 
 export function logout(dispatch) {
   let url = `${apiEndPoint()}/auth/logout`;
-  axios.delete(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders;
+
+  axios.delete(url,headers)
   .then(response => {
     const logoutResponse = response.data;
     dispatch(receiveLogoutSuccess(logoutResponse));
@@ -102,13 +94,9 @@ export function logout(dispatch) {
 
 export function getDashboardStats(dispatch) {
   let url = `${apiEndPoint()}/dashboard/stats`;
-  axios.get(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders();
+
+  axios.get(url, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveGetDashboardStatsSuccess(successResponse));
@@ -128,16 +116,12 @@ export function getDashboardStats(dispatch) {
 
 export function getMonitoringUrls(dispatch, searchQuery) {
   let url = `${apiEndPoint()}/monitoring-urls`;
+  const headers = getAuthHeaders();
   if(searchQuery.length > 2){
     url = `${url}?search=${searchQuery}`;
   }
-  axios.get(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+
+  axios.get(url,headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveMonitoringUrlsSuccess(successResponse));
@@ -157,15 +141,9 @@ export function getMonitoringUrls(dispatch, searchQuery) {
 
 export function addMonitoringUrls(dispatch, params) {
   let url = `${apiEndPoint()}/monitoring-urls`;
-  axios.post(
-    url,
-    params,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      }
-    }
-  )
+  const headers = getAuthHeaders();
+
+  axios.post(url, params, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveAddMonitoringUrlsSuccess(successResponse));
@@ -185,15 +163,9 @@ export function addMonitoringUrls(dispatch, params) {
 
 export function updateMonitoringUrls(dispatch, params) {
   let url = `${apiEndPoint()}/monitoring-urls/${params.id}`;
-  axios.put(
-    url,
-    params,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      }
-    }
-  )
+  const headers = getAuthHeaders();
+
+  axios.put(url, params, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveUpdateMonitoringUrlsSuccess(successResponse));
@@ -213,13 +185,9 @@ export function updateMonitoringUrls(dispatch, params) {
 
 export function deleteMonitoringURL(dispatch, urlId) {
   let url = `${apiEndPoint()}/monitoring-urls/${urlId}`;
-  axios.delete(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders();
+
+  axios.delete(url, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveDeleteMonitoringUrlsSuccess(successResponse, urlId));
@@ -239,13 +207,9 @@ export function deleteMonitoringURL(dispatch, urlId) {
 
 export function getMonitoringUrlDetails(dispatch, params) {
   let url = `${apiEndPoint()}/monitoring-urls/${params.urlId}`;
-  axios.get(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders();
+
+  axios.get(url, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveGetUrlDetailsSuccess(successResponse));
@@ -265,13 +229,9 @@ export function getMonitoringUrlDetails(dispatch, params) {
 
 export function getMonitoringUrlResults(dispatch, params) {
   let url = `${apiEndPoint()}/monitoring-urls/${params.urlId}/stats`;
-  axios.get(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders();
+
+  axios.get(url,headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveGetUrlResultsSuccess(successResponse));
