@@ -5,7 +5,7 @@ import { translate } from 'react-i18next';
 import { translateOptions } from '../../i18n/config';
 import { Card } from 'semantic-ui-react';
 import { requestGetDashboardStats } from '../../actions/app-actions';
-import {MONITORING_STATUS_POLLING_DURATION} from '../../constants/misc'
+import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc'
 
 class DashboardView extends Component {
   /***************************
