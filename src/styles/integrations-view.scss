@@ -1,0 +1,54 @@
+@import "varialbes.scss";
+@import "colors.scss";
+@import "mixins.scss";
+
+.integrations-view{
+  .main-heading{
+    margin-top: $default-margin*2;
+    margin-bottom: $default-margin*4;
+    @include set-font(QuickSandBold, $default-font-size*3, $theme-color, normal, left, normal);
+  }
+
+  .section-content-wrapper{
+    margin-top: $default-margin*2;
+    .tabular.menu{
+      .item{
+        width: 200px;
+        border: 1px solid $theme-color;
+        border-radius: 0px;
+        justify-content: center;
+        text-transform: uppercase;
+        &.active{
+          @include set-font(QuickSandBold, $default-font-size+4, $theme-color-shade-one, normal, left, normal);
+          background-color: $theme-color;
+          text-transform: uppercase;
+          border: 1px solid $theme-color;
+          border-radius: 0px !important;
+        }
+        &:nth-child(2) {
+          border-left: 0px;
+          // border-right: 0px;
+        }
+      }
+    }
+    .tab-content-view{
+      min-height: 400px;
+      .email-integration-view-wrapper,
+      .slack-integration-view-wrapper,
+      .pager-duty-integrations-view{
+        padding-top: $default-padding*2;
+        .form{
+          width: 100%;
+          height: 100%;
+          position: relative;
+          .btn-wrapper{
+            margin-top: $default-margin*6;
+            .app-btn{
+              @include app-btn(100px, 50px, $theme-color, $theme-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}

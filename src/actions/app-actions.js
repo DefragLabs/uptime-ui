@@ -8,8 +8,15 @@ import {
   deleteMonitoringURL, 
   getMonitoringUrlDetails, 
   getMonitoringUrlResults, 
+<<<<<<< HEAD
   updateMonitoringUrls,
   getDashboardStats
+=======
+  updateMonitoringUrls, 
+  addIntegration,
+  getIntegrations,
+  deleteIntegration
+>>>>>>> Complete integrations view
 } from '../utils/app-api-utils';
 
 // Register
@@ -233,6 +240,75 @@ export function receiveGetUrlResultsSuccess(response) {
 export function receiveGetUrlResultsFailure(response) {
   return{
     type: ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Get monitoring url results
+export function requestGetIntegrations(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.GET_INTEGRATIONS_REQUEST_ATTEMPTED,
+    })
+
+    getIntegrations(dispatch, params);
+  }
+}
+export function receiveGetIntegrationsSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_INTEGRATIONS_REQUEST_SUCCESS,
+    response
+  }
+}
+export function receiveGetIntegrationsFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_GET_INTEGRATIONS_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Add email integration
+export function requestAddIntegration(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.ADD_INTEGRATION_REQUEST_ATTEMPTED,
+    })
+
+    addIntegration(dispatch, params);
+  }
+}
+export function receiveAddIntegrationRequestSuccess(response) {
+  return{
+    type: ActionTypes.RECEIVE_ADD_INTEGRATION_REQUEST_SUCCESS,
+    response
+  }
+}
+export function receiveAddIntegrationRequestFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_ADD_INTEGRATION_REQUEST_FAILURE,
+    response
+  }
+}
+
+// Add email integration
+export function requestDeleteIntegration(params){
+  return(dispatch) => {
+    dispatch({
+      type: ActionTypes.RECEIVE_DELETE_INTEGRATION_REQUEST_ATTEMPTED,
+    })
+    deleteIntegration(dispatch, params);
+  }
+}
+export function receiveDeleteIntegrationRequestSuccess(response, integrationId) {
+  return{
+    type: ActionTypes.RECEIVE_DELETE_INTEGRATION_REQUEST_SUCCESS,
+    response,
+    integrationId
+  }
+}
+export function receiveDeleteIntegrationRequestFailure(response) {
+  return{
+    type: ActionTypes.RECEIVE_DELETE_INTEGRATION_REQUEST_FAILURE,
     response
   }
 }
