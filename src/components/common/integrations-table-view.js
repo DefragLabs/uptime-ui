@@ -19,10 +19,10 @@ export default class IntegrationTableView extends Component {
     }
     return (
       <Table.Row className="table-row">
-        { record.email && <Table.HeaderCell style={valueColumn}>Email</Table.HeaderCell> }
-        { record.webhookURL && <Table.HeaderCell style={valueColumn}>Webhook url</Table.HeaderCell> }
-        { record.service_key && <Table.HeaderCell style={valueColumn}>Service key</Table.HeaderCell> }
-        <Table.HeaderCell style={actionColumn}>Action</Table.HeaderCell>
+        { record.email && <Table.HeaderCell style={valueColumn}>{t('integrations.email')}</Table.HeaderCell> }
+        { record.webhookURL && <Table.HeaderCell style={valueColumn}>{t('common.webhookURL')}</Table.HeaderCell> }
+        { record.service_key && <Table.HeaderCell style={valueColumn}>{t('integrations.serviceKey')}</Table.HeaderCell> }
+        <Table.HeaderCell style={actionColumn}>{t('common.actions')}</Table.HeaderCell>
       </Table.Row>
     )
   }

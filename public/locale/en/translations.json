@@ -41,7 +41,10 @@
     "pdRoutingKey": "Routing Key",
     "pdAction": "Action",
     "pdSeverity": "Severity",
-    "noIntegrationAvailable": "No Integration Available.."
+    "noIntegrationAvailable": "No Integration Available..",
+    "email": "Email",
+    "serviceKey": "Service key"
+
   },
   "common": {
     "brandName": "UpTime",
