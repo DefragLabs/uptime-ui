@@ -141,7 +141,7 @@ class LoginView extends Component {
                 { serverError && this.getFieldErrorView(serverError)}
               </div>
               <div className="links-wrapper">
-                <Link className="forgot-password-link" to="/forgot-password">{t('auth.forgotPassword')}</Link>
+                {/* <Link className="forgot-password-link" to="/forgot-password">{t('auth.forgotPassword')}</Link> */}
                 <Link className="register-link" to="/register">{t('auth.register')}</Link>
               </div>
               <div className="btn-wrapper">
