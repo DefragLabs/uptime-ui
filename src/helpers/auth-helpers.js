@@ -54,9 +54,11 @@ export function isUserActive() {
 };
 
 export function getUserName() {
-  const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-  if(userDetails){
-    return `${userDetails.first_name} ${userDetails.last_name}`
+  let userSession = JSON.parse(localStorage.getItem('state'));
+  if(userSession){
+    const token = userSession.auth.userSession.token;
+    const tokenDetails = decodeJwtToken(token);
+    return `${tokenDetails.firstName} ${tokenDetails.lastName}`;
   }
   return null;
 }
