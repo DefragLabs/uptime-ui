@@ -72,6 +72,23 @@
     font-weight: normal;
     text-align: left; }
 
+.uptime-details-view .filters-wrapper {
+  margin: 10px 0px; }
+  .uptime-details-view .filters-wrapper .filters-view {
+    margin-left: 60px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row; }
+    .uptime-details-view .filters-wrapper .filters-view .label {
+      color: #111111;
+      font-size: 16px !important;
+      font-family: QuickSandBold !important;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left;
+      margin-right: 10px; }
+
 .uptime-details-view .section-content-wrapper .chart-wrapper {
   min-height: 270px; }
   .uptime-details-view .section-content-wrapper .chart-wrapper .recharts-wrapper {
@@ -114,3 +131,26 @@
         line-height: normal;
         font-weight: normal;
         text-align: left; }
+
+.custom-tooltip {
+  padding: 10px !important; }
+  .custom-tooltip .time, .custom-tooltip .response-time, .custom-tooltip .status {
+    margin: 5px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row; }
+    .custom-tooltip .time .key, .custom-tooltip .response-time .key, .custom-tooltip .status .key {
+      color: #111111;
+      font-size: 14px !important;
+      font-family: QuickSandBold !important;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left; }
+    .custom-tooltip .time .value, .custom-tooltip .response-time .value, .custom-tooltip .status .value {
+      color: #111111;
+      font-size: 14px !important;
+      font-family: QuickSandRegular !important;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left; }

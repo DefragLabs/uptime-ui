@@ -142,8 +142,14 @@ export function getMonitoringUrls(dispatch, searchQuery) {
 export function addMonitoringUrls(dispatch, params) {
   let url = `${apiEndPoint()}/monitoring-urls`;
   const headers = getAuthHeaders();
+  const request = {
+    "protocol": params.protocol,
+    "url": params.url,
+    "frequency": parseInt(params.frequency),
+    "unit": params.unit
+  }
 
-  axios.post(url, params, headers)
+  axios.post(url, request, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveAddMonitoringUrlsSuccess(successResponse));
@@ -228,9 +234,9 @@ export function getMonitoringUrlDetails(dispatch, params) {
 }
 
 export function getMonitoringUrlResults(dispatch, params) {
-  let url = `${apiEndPoint()}/monitoring-urls/${params.urlId}/stats`;
+  let url = `${apiEndPoint()}/monitoring-urls/${params.urlId}/stats?interval=${params.selectedFilter}`;
   const headers = getAuthHeaders();
-
+  
   axios.get(url,headers)
   .then(response => {
     const successResponse = response.data;

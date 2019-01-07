@@ -29,14 +29,14 @@
         }
 
         &:hover{
-            background-color: $black;
+            background-color: $mine-shaft;
             .name{
                 font-weight: bold;
             }
         }
     }
     .active{
-        background-color: $black;
+        background-color: $mine-shaft;
         .name-wrapper{
             .name{
                 font-weight: bold;

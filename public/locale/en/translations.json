@@ -47,6 +47,12 @@
     "frequency": "Frequency",
     "unit": "Unit",
     "status": "Status",
-    "emptyStateMessage": "No data available.."
+    "emptyStateMessage": "No data available..",
+    "filterBy": "Filter by",
+    "chooseAnOption": "Choose an option",
+    "time": "Time",
+    "responseTime": "Response time",
+    "Status" : "status",
+    "up": "Up"
   }
 }

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
-class CustomizedXAxisTickView extends Component {
+class CustomXAxisTickView extends Component {
   render () {
     const {x, y, payload} = this.props;
-    console.log(payload)
 		
    	return (
     	<g transform={`translate(${x},${y})`}>
@@ -16,4 +15,4 @@ class CustomizedXAxisTickView extends Component {
   }
 }
 
-export default CustomizedXAxisTickView;
+export default CustomXAxisTickView;

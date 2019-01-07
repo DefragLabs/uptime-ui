@@ -43,18 +43,18 @@ class HeaderView extends Component {
   }
 
   render(){
+    const { t } = this.props;
     return(
       <header className='header-view'>
-        <Container>
-          <div className="user-info-wrapper">
-            <Popup
-              trigger={<Image circular src={DEFAULT_USER} />}
-              content={this.getPopupContentView()}
-              on='click'
-              hideOnScroll
-            />
-          </div>
-        </Container>
+        <div className="user-info-wrapper">
+          <div className="brand-logo">{t('common.up')}{t('common.time')}</div>
+          <Popup
+            trigger={<Image circular src={DEFAULT_USER} />}
+            content={this.getPopupContentView()}
+            on='click'
+            hideOnScroll
+          />
+        </div>
       </header>
     )
   }
