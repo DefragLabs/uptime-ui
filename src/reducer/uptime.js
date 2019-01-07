@@ -46,11 +46,17 @@ const uptime = (state=initialState, action)=> {
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_FAILURE: {
       return state;
     }
+    case ActionTypes.RECEIVE_RESET_MONITORING_URL_VARIABLES: {
+      return {
+        ...state,
+        isURLResponseModified: false
+      };
+    }
     
     // Add monitoring URL.
     case ActionTypes.ADD_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {
-        ...state, 
+        ...state,
         isLoading: true
       };
     }
@@ -61,7 +67,8 @@ const uptime = (state=initialState, action)=> {
       return {
         ...state, 
         isLoading: false,
-        monitoringURLs: urlsCopy
+        monitoringURLs: urlsCopy,
+        isURLResponseModified: true
       };
     }
     case ActionTypes.RECEIVE_ADD_MONITORING_URLS_REQUEST_FAILURE: {
@@ -91,7 +98,8 @@ const uptime = (state=initialState, action)=> {
       return {
         ...state, 
         isLoading: false,
-        monitoringURLs: urlsCopy
+        monitoringURLs: urlsCopy,
+        isURLResponseModified: true
       };
     }
     case ActionTypes.RECEIVE_UPDATE_MONITORING_URLS_REQUEST_FAILURE: {
@@ -121,7 +129,8 @@ const uptime = (state=initialState, action)=> {
       return {
         ...state, 
         isLoading: false,
-        monitoringURLs: urlsCopy
+        monitoringURLs: urlsCopy,
+        isURLResponseModified: true
       };
     }
     case ActionTypes.RECEIVE_DELETE_MONITORING_URLS_REQUEST_FAILURE: {

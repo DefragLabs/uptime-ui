@@ -17,16 +17,17 @@ class ModalView extends Component {
   /***************************
    *         CONSTRUCTOR
    ***************************/
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
+    
     this.state = {
       open: false,
       isEdit: false,
       
       fields: {
-        protocol: PROTOCOL_OPTIONS[1],
-        frequency: FREQUENCY_OPTIONS[3],
-        unit: UNIT_OPTIONS[0],
+        protocol: PROTOCOL_OPTIONS[1].value,
+        frequency: FREQUENCY_OPTIONS[3].value,
+        unit: UNIT_OPTIONS[0].value,
         url: ''
       },
 
@@ -64,7 +65,9 @@ class ModalView extends Component {
     })
   }
 
-  closeModal = () => this.setState({ open: false })
+  closeModal = () => {
+    this.setState({ open: false });
+  }
 
   addMonitoringUrls = () => {
     const { fields } = this.state;

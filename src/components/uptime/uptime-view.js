@@ -9,7 +9,8 @@ import {
   requestMonitoringUrls,
   requestAddMonitoringUrls,
   requestUpdateMonitoringUrls,
-  requestDeleteMonitoringUrls
+  requestDeleteMonitoringUrls, 
+  requestResetMonitoringUrlsVariable
 } from '../../actions/app-actions';
 import { isEqual } from 'lodash';
 import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
@@ -219,7 +220,11 @@ class UpTimeView extends Component {
 
   componentWillReceiveProps(newProps){
     if(!isEqual(newProps.monitoringURLs, this.monitoringURLs)){
-      this.child.closeModal();
+      if(newProps.isURLResponseModified){
+        this.child.closeModal();
+
+        this.props.requestResetMonitoringUrlsVariable();
+      }
     }
   }
 
@@ -256,7 +261,8 @@ class UpTimeView extends Component {
 
 function mapStateToProps(state) {
   return {
-    monitoringURLs: state.uptime.monitoringURLs
+    monitoringURLs: state.uptime.monitoringURLs,
+    isURLResponseModified: state.uptime.isURLResponseModified
   };
 }
 
@@ -265,7 +271,8 @@ function mapDispatchToProps(dispatch){
     requestAddMonitoringUrls: requestAddMonitoringUrls,
     requestUpdateMonitoringUrls: requestUpdateMonitoringUrls,
     requestMonitoringUrls: requestMonitoringUrls,
-    requestDeleteMonitoringUrls: requestDeleteMonitoringUrls
+    requestDeleteMonitoringUrls: requestDeleteMonitoringUrls,
+    requestResetMonitoringUrlsVariable: requestResetMonitoringUrlsVariable
   },dispatch)
 }
 

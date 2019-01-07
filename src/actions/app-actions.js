@@ -140,6 +140,11 @@ export function receiveAddMonitoringUrlsFailure(response) {
     response
   }
 }
+export function requestResetMonitoringUrlsVariable(){
+  return{
+    type: ActionTypes.RECEIVE_RESET_MONITORING_URL_VARIABLES
+  }
+}
 
 // Update monitoring urls
 export function requestUpdateMonitoringUrls(params){
