@@ -403,15 +403,25 @@
   height: 70px;
   background-color: #FFFFFF;
   box-shadow: #cccccc 0px 1px 2px;
+  padding-right: 20px;
+  padding-left: 20px;
   display: flex;
   justify-content: flex-end;
   align-items: center;
   flex-direction: row; }
   .header-view .user-info-wrapper {
+    width: 100%;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
     align-items: center;
     flex-direction: row; }
+    .header-view .user-info-wrapper .brand-logo {
+      color: #111111;
+      font-size: 40px !important;
+      font-family: QuickSandBold !important;
+      line-height: normal;
+      font-weight: normal;
+      text-align: left; }
     .header-view .user-info-wrapper img {
       width: 40px;
       height: auto;

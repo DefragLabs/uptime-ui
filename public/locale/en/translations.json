@@ -52,6 +52,7 @@
     "chooseAnOption": "Choose an option",
     "time": "Time",
     "responseTime": "Response time",
-    "Status" : "status"
+    "Status" : "status",
+    "up": "Up"
   }
 }

@@ -6,10 +6,16 @@
     height: 70px;
     background-color: $white;
     box-shadow: rgb(204, 204, 204) 0px 1px 2px;
+    padding-right: $default-padding*2;
+    padding-left: $default-padding*2;
     @include align-item(flex, flex-end, center, row);
 
     .user-info-wrapper{
-        @include align-item(flex, flex-end, center, row);
+        width: 100%;
+        @include align-item(flex, space-between, center, row);
+        .brand-logo{
+            @include set-font(QuickSandBold, $default-font-size*4, $theme-color, normal, left, normal);
+        }
         img{
             width: 40px;
             height: auto;
@@ -43,13 +49,5 @@
             left,
             normal
         );
-    }
-
-    .profile-link{
-
-    }
-
-    .logout-btn{
-
     }
 }
