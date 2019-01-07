@@ -55,8 +55,10 @@ export function isUserActive() {
 
 export function getUserName() {
   const userDetails = JSON.parse(localStorage.getItem('userDetails'));
-  console.log(userDetails);
-  return `${userDetails.first_name} ${userDetails.last_name}`
+  if(userDetails){
+    return `${userDetails.first_name} ${userDetails.last_name}`
+  }
+  return null;
 }
 
 export function isTokenValid(token) {
