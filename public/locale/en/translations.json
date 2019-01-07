@@ -25,7 +25,9 @@
     "addMonitoringUrl": "Add Monitoring URL",
     "addURL": "Add URL",
     "url": "URL",
-    "monitoringDetailsViewHeading": "Monitoring details for "
+    "monitoringDetailsViewHeading": "Monitoring details for",
+    "date": "Date",
+    "responseTime": "Response time (millisecond)"
   },
   "dashboard": {
     "Statistics": "Monitoring Statistics",
