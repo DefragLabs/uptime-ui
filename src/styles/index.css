@@ -475,12 +475,12 @@
     font-weight: normal;
     text-align: left; }
   .menu-collection .menu:hover {
-    background-color: #000000; }
+    background-color: #3C3C3C; }
     .menu-collection .menu:hover .name {
       font-weight: bold; }
 
 .menu-collection .active {
-  background-color: #000000; }
+  background-color: #3C3C3C; }
   .menu-collection .active .name-wrapper .name {
     font-weight: bold; }
 
