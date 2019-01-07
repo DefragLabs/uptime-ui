@@ -3,13 +3,10 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { translate } from 'react-i18next';
 import { translateOptions } from '../../i18n/config';
-
 import { Image, Container, Popup } from 'semantic-ui-react';
-import { Link } from 'react-router-dom';
-
 import { DEFAULT_USER } from '../../constants/image-references';
 import { requestLogout } from '../../actions/app-actions'
-import { isUserSessionActive, clearLocalStorage } from '../../helpers/auth-helpers'
+import { isUserSessionActive, clearLocalStorage , getUserName } from '../../helpers/auth-helpers'
 
 class HeaderView extends Component {
 
@@ -24,11 +21,13 @@ class HeaderView extends Component {
    *          VIEWS
    ***************************/
   getPopupContentView = () => {
+    const { t } = this.props;
+
     return(
       <div className="user-profile-popup-content-view">
-        <div className="user-name">Pravin Parkhi</div>
-        <Link to="/profile" className="popup-link profile-link">Profile</Link>
-        <div className="popup-link logout-link" onClick={this.logout}>Logout</div>
+        <div className="user-name">{getUserName()}</div>
+        {/* <Link to="/profile" className="popup-link profile-link">Profile</Link> */}
+        <div className="popup-link logout-link" onClick={this.logout}>{t('auth.logout')}</div>
       </div>
     )
   }

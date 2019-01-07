@@ -1,5 +1,4 @@
 import ActionTypes from '../constants/action-type';
-import { SEARCH_CHARACTER_LIMIT } from '../constants/misc';
 
 export const initialState =  {
   isLoading: false
@@ -12,11 +11,27 @@ const uptime = (state=initialState, action)=> {
   }
 
   switch (action.type) {
+    // Get dashboard stats
+    case ActionTypes.GET_DASHBOARD_STATS_REQUEST_ATTEMPTED: {
+      return state;
+    }
+    case ActionTypes.RECEIVE_GET_DASHBOARD_STATS_REQUEST_SUCCESS: {
+      const dashboardStats = {
+        dashboardStats: action.response.data
+      };
+      return{
+        ...state,
+        dashboardStats : dashboardStats
+      }
+
+    }
+    case ActionTypes.RECEIVE_GET_DASHBOARD_STATS_REQUEST_FAILURE: {
+      return state;
+    }
+
     // Get monitoring urls
     case ActionTypes.GET_MONITORING_URLS_REQUEST_ATTEMPTED: {
-      return {
-        ...state
-      };
+      return state;
     }
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS: {
       const monitoringURLs = {
@@ -29,9 +44,7 @@ const uptime = (state=initialState, action)=> {
 
     }
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_FAILURE: {
-      return {
-        ...state
-      };
+      return state;
     }
     
     // Add monitoring URL.

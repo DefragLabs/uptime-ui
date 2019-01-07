@@ -1,6 +1,7 @@
 {
   "auth": {
     "login": "Login",
+    "logout": "Logout",
     "emailAddress": "Email Address",
     "password": "Password",
     "forgotPassword": "Forgot password?",
@@ -27,7 +28,10 @@
     "monitoringDetailsViewHeading": "Monitoring details for "
   },
   "dashboard": {
-    "Statistics": "Monitoring Statistics"
+    "Statistics": "Monitoring Statistics",
+    "monitoringUrls": "Monitoring URLs",
+    "URLsDown": "URLs Down",
+    "URLsUp": "URLs Up"
   },
   "common": {
     "brandName": "UpTime",
