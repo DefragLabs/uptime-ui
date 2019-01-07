@@ -78,7 +78,7 @@ export function login(dispatch, params) {
 
 export function logout(dispatch) {
   let url = `${apiEndPoint()}/auth/logout`;
-  const headers = getAuthHeaders;
+  const headers = getAuthHeaders();
 
   axios.delete(url,headers)
   .then(response => {
