@@ -84,7 +84,7 @@ class MonitorUrlDetailsView extends Component {
           
         <div className="section-content-wrapper">
           <div className="chart-wrapper">
-            {monitoringURLResults && <LineChartView data={monitoringURLResults} />}
+            {monitoringURLResults && <LineChartView {...this.props} data={monitoringURLResults} />}
           </div>
           
           <div className="summary-wrapper">
