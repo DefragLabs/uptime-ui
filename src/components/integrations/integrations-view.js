@@ -32,9 +32,9 @@ class IntegrationsView extends Component {
     this.props.requestAddIntegration(params);
   }
 
-  // handleAddPagerDutyIntegration = (params) => {
-  //   this.props.requestAddIntegration(params);
-  // }
+  handleAddPagerDutyIntegration = (params) => {
+    this.props.requestAddIntegration(params);
+  }
 
   handleDeleteIntegration = (params) => {
     this.props.requestDeleteIntegration(params)
@@ -46,7 +46,7 @@ class IntegrationsView extends Component {
     const panes = [
       { menuItem: EMAIL, render: () =>  this.getEmailIntegrationsView() },
       { menuItem: SLACK, render: () =>  this.getSlackIntegrationsView() },
-      // { menuItem: PAGER_DUTY, render: () => this.getPagerDutyIntegrationsView() }
+      { menuItem: PAGER_DUTY, render: () => this.getPagerDutyIntegrationsView() }
     ];
 
     return(
