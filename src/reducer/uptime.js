@@ -36,7 +36,7 @@ const uptime = (state=initialState, action)=> {
     }
     case ActionTypes.RECEIVE_GET_MONITORING_URLS_REQUEST_SUCCESS: {
       const monitoringURLs = {
-        monitoringURLs: action.response.data.monitoringURLs
+        monitoringURLs: action.response.data
       };
       return{
         ...state,
