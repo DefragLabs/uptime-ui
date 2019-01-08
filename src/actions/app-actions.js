@@ -8,15 +8,11 @@ import {
   deleteMonitoringURL, 
   getMonitoringUrlDetails, 
   getMonitoringUrlResults, 
-<<<<<<< HEAD
-  updateMonitoringUrls,
-  getDashboardStats
-=======
+  getDashboardStats,
   updateMonitoringUrls, 
   addIntegration,
   getIntegrations,
   deleteIntegration
->>>>>>> Complete integrations view
 } from '../utils/app-api-utils';
 
 // Register
