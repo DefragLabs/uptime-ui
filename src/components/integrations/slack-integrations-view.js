@@ -84,7 +84,7 @@ class SlackIntegrationsView extends Component {
     }
   }
 
-  getEmailIntegrationFormView() {
+  getAddIntegrationFormView() {
     const { t } = this.props;
     const { webhookURL, errors } = this.state;
     return (
@@ -94,6 +94,7 @@ class SlackIntegrationsView extends Component {
             <input
               name='webhookURL'
               type='text'
+              aria-label="Webhook URL"
               placeholder={t('integrations.webhookURL')}
               onChange={this.handleChange}
               value={webhookURL}
@@ -150,7 +151,7 @@ class SlackIntegrationsView extends Component {
       <Grid className='slack-integration-view-wrapper' divided='vertically'>
         <Grid.Row >
           <Grid.Column width={6} className="integration-form-section">
-            { this.getEmailIntegrationFormView() }
+            { this.getAddIntegrationFormView() }
           </Grid.Column>
           <Grid.Column width={10} className="integration-list-section">
             { integrations[SLACK] ? this.getIntegrationTableView(integrations) : this.getTableEmptyState()}

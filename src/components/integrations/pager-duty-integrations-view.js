@@ -102,6 +102,7 @@ class PagerDutyIntegrationsView extends Component {
             <input
               name='pdRoutingKey'
               type='text'
+              aria-label="Routing key"
               placeholder={t('integrations.pdRoutingKey')}
               onChange={this.handleChange}
               value={pdRoutingKey}
@@ -113,6 +114,7 @@ class PagerDutyIntegrationsView extends Component {
             <input
               name='pdAction'
               type='text'
+              aria-label="Action"
               placeholder={t('integrations.pdAction')}
               onChange={this.handleChange}
               value={pdAction}
@@ -124,6 +126,7 @@ class PagerDutyIntegrationsView extends Component {
             <input
               name='pdSeverity'
               type='text'
+              aria-label="Severity"
               placeholder={t('integrations.pdSeverity')}
               onChange={this.handleChange}
               value={pdSeverity}

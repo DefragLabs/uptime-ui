@@ -78,6 +78,7 @@ class EmailIntegrationsView extends Component {
             <input
               name='email'
               type='email'
+              aria-label="Email"
               placeholder={t('auth.emailAddress')}
               onChange={this.handleChange}
               value={email}
