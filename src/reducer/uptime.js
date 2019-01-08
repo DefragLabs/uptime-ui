@@ -1,4 +1,5 @@
 import ActionTypes from '../constants/action-type';
+import { EMAIL , SLACK} from '../constants/misc';
 
 export const initialState =  {
   isLoading: false
@@ -78,7 +79,7 @@ const uptime = (state=initialState, action)=> {
       };
     }
 
-    // Add monitoring URL.
+    // Update monitoring URL.
     case ActionTypes.UPDATE_MONITORING_URLS_REQUEST_ATTEMPTED: {
       return {
         ...state, 
@@ -176,6 +177,97 @@ const uptime = (state=initialState, action)=> {
       };
     }
     case ActionTypes.RECEIVE_GET_URL_RESULTS_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
+    // Get integrations
+    case ActionTypes.GET_INTEGRATIONS_REQUEST_ATTEMPTED: {
+      return {
+        ...state, 
+        isLoading: true
+      };
+    }
+    case ActionTypes.RECEIVE_GET_INTEGRATIONS_REQUEST_SUCCESS: {
+      return {
+        ...state, 
+        isLoading: false,
+        integrations: action.response.data
+      };
+    }
+    case ActionTypes.RECEIVE_GET_INTEGRATIONS_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
+    // Add integration
+    case ActionTypes.RECEIVE_ADD_INTEGRATION_REQUEST_ATTEMPTED: {
+      return{
+        ...state,
+        isLoading: true
+      }
+    }
+    case ActionTypes.RECEIVE_ADD_INTEGRATION_REQUEST_SUCCESS: {
+      let integrationsCopy = JSON.parse(JSON.stringify(state.integrations));
+      const newIntegration = action.response.data;
+      const integrationType = newIntegration.type;
+      if(integrationsCopy.hasOwnProperty(integrationType)){
+        integrationsCopy[integrationType].splice(0, 0, newIntegration);
+      } else {
+        integrationsCopy[integrationType] = [];
+        integrationsCopy[integrationType].push(newIntegration);
+      }
+
+      return {
+        ...state, 
+        isLoading: false,
+        integrations: integrationsCopy
+      };
+    }
+    case ActionTypes.RECEIVE_ADD_INTEGRATION_REQUEST_FAILURE: {
+      return {
+        ...state, 
+        isLoading: false
+      };
+    }
+
+    // Delete integration.
+    case ActionTypes.RECEIVE_DELETE_INTEGRATION_REQUEST_ATTEMPTED: {
+      return {
+        ...state, 
+        isLoading: true
+      };
+    }
+    case ActionTypes.RECEIVE_DELETE_INTEGRATION_REQUEST_SUCCESS: {
+      let integrationsCopy = JSON.parse(JSON.stringify(state.integrations));
+      for(let type in integrationsCopy){
+        let isIntegrationFound = false;
+        let integrationTypeList = integrationsCopy[type];
+        const listLen = integrationTypeList.length;
+        for(let integrationIndx=0; integrationIndx<listLen; integrationIndx++){
+          let integrationDetails = integrationTypeList[integrationIndx];
+          if(integrationDetails.id === action.integrationId){
+            integrationTypeList.splice(integrationIndx, 1);
+            isIntegrationFound = true;
+            break;
+          }
+        }
+        if(isIntegrationFound){
+          break;
+        }
+      }
+
+      return {
+        ...state, 
+        isLoading: false,
+        integrations: integrationsCopy
+      };
+    }
+    case ActionTypes.RECEIVE_DELETE_INTEGRATION_REQUEST_FAILURE: {
       return {
         ...state, 
         isLoading: false

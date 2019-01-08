@@ -18,7 +18,13 @@ import {
   receiveRegisterSuccess, 
   receiveRegisterFailure, 
   receiveGetDashboardStatsSuccess, 
-  receiveGetDashboardStatsFailure
+  receiveGetDashboardStatsFailure,
+  receiveAddIntegrationRequestSuccess, 
+  receiveAddIntegrationRequestFailure, 
+  receiveGetIntegrationsSuccess, 
+  receiveGetIntegrationsFailure, 
+  receiveDeleteIntegrationRequestSuccess, 
+  receiveDeleteIntegrationRequestFailure
 } from '../actions/app-actions';
 import { getAuthToken } from '../helpers/auth-helpers';
 
@@ -254,3 +260,64 @@ export function getMonitoringUrlResults(dispatch, params) {
     }
   });
 }
+
+export function getIntegrations(dispatch) {
+  let url = `${apiEndPoint()}/integrations`;
+  const headers = getAuthHeaders();
+
+  axios.get(url,headers)
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveGetIntegrationsSuccess(successResponse));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveGetIntegrationsFailure(errorResponse));
+      }
+    }
+  });
+}
+
+export function addIntegration(dispatch, params) {
+  let url = `${apiEndPoint()}/integrations`;
+  const headers = getAuthHeaders();
+
+  axios.post(url, params, headers)
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveAddIntegrationRequestSuccess(successResponse));
+  })
+  .catch(error => {
+    if(error){
+      const errorResponse = error.response;
+      dispatch(receiveAddIntegrationRequestFailure(errorResponse));
+    }
+  })
+}
+
+export function deleteIntegration(dispatch, params) {
+  let url = `${apiEndPoint()}/integrations/${params.id}`;
+  const headers = getAuthHeaders();
+  
+  axios.delete(url,headers)
+  .then(response => {
+    const successResponse = response.data;
+    dispatch(receiveDeleteIntegrationRequestSuccess(successResponse, params.id));
+  })
+  .catch(error => {
+    if (error) {
+      if (error.response.status === 401) {
+        logout(dispatch);
+      }
+      else {
+        const errorResponse = error.response;
+        dispatch(receiveDeleteIntegrationRequestFailure(errorResponse));
+      }
+    }
+  });
+};

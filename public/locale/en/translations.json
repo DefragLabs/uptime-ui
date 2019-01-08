@@ -35,6 +35,17 @@
     "URLsDown": "URLs Down",
     "URLsUp": "URLs Up"
   },
+  "integrations": {
+    "heading": "Integrations",
+    "webhookURL": "Webhook URL",
+    "pdRoutingKey": "Routing Key",
+    "pdAction": "Action",
+    "pdSeverity": "Severity",
+    "noIntegrationAvailable": "No Integration Available..",
+    "email": "Email",
+    "serviceKey": "Service key"
+
+  },
   "common": {
     "brandName": "UpTime",
     "submit": "Submit",

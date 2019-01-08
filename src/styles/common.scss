@@ -24,3 +24,25 @@
   height: 200px;
   @include align-item(flex, center, center, row);
 }
+
+// Integrations table view
+.integration-collection-wrapper{
+  .table{
+    .table-header, .table-body{
+      .table-row{
+        .extra-large-column{
+          width: 80%;
+          word-break: break-all;
+        }
+        .small-column{
+          width: 20%;
+          text-align: center;
+          .delete-action-btn{
+            color: $wild-water-melon;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}
