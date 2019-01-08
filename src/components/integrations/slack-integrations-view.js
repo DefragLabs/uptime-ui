@@ -86,7 +86,7 @@ class SlackIntegrationsView extends Component {
 
   getAddIntegrationFormView() {
     const { t } = this.props;
-    const { webhookURL, errors } = this.state;
+    const { webhookURL, errors, integrationAddResponse, isError, isSuccess } = this.state;
     return (
       <div className="add-integration-form-wrapper">
         <Form name="form" onSubmit={this.handleSubmit}>
@@ -104,8 +104,8 @@ class SlackIntegrationsView extends Component {
           </Form.Field>
 
           <div className="error-msg-container">
-            {this.state.isError && <div className="auth-error-msg">{this.state.integrationAddResponse}</div>}
-            {this.state.isSuccess && <div className="auth-success-msg">{this.state.integrationAddResponse}</div>}
+            {isError && <div className="auth-error-msg">{integrationAddResponse}</div>}
+            {isSuccess && <div className="auth-success-msg">{integrationAddResponse}</div>}
           </div>
 
           <div className="btn-wrapper">

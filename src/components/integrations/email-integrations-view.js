@@ -70,7 +70,7 @@ class EmailIntegrationsView extends Component {
    ***************************/
   getEmailIntegrationFormView() {
     const { t } = this.props;
-    const { email, errors } = this.state;
+    const { email, errors, integrationAddResponse, isSuccess, isError } = this.state;
     return (
       <div className="add-email-integration-form-wrapper">
         <Form name="form" onSubmit={this.handleSubmit}>
@@ -88,8 +88,8 @@ class EmailIntegrationsView extends Component {
           </Form.Field>
 
           <div className="error-msg-container">
-            {this.state.isError && <div className="auth-error-msg">{this.state.integrationAddResponse}</div>}
-            {this.state.isSuccess && <div className="auth-success-msg">{this.state.integrationAddResponse}</div>}
+            {isError && <div className="auth-error-msg">{integrationAddResponse}</div>}
+            {isSuccess && <div className="auth-success-msg">{integrationAddResponse}</div>}
           </div>
 
           <div className="btn-wrapper">
