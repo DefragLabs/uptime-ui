@@ -213,27 +213,13 @@ const uptime = (state=initialState, action)=> {
     }
     case ActionTypes.RECEIVE_ADD_INTEGRATION_REQUEST_SUCCESS: {
       let integrationsCopy = JSON.parse(JSON.stringify(state.integrations));
-      if(action.response.data.type === EMAIL){
-        if(integrationsCopy.hasOwnProperty(EMAIL)){
-          integrationsCopy[EMAIL].splice(0, 0, action.response.data);
-        } else {
-          integrationsCopy[EMAIL] = [];
-          integrationsCopy[EMAIL].push(action.response.data);
-        }
-      } else if(action.response.data.type === SLACK){
-        if(integrationsCopy.hasOwnProperty(SLACK)){
-          integrationsCopy[SLACK].splice(0, 0, action.response.data);
-        } else {
-          integrationsCopy[SLACK] = [];
-          integrationsCopy[SLACK].push(action.response.data);
-        }
-      } else if(action.response.data.type === 'pagerduty'){
-        if(integrationsCopy.hasOwnProperty('pagerduty')){
-          integrationsCopy['pagerduty'].splice(0, 0, action.response.data);
-        } else {
-          integrationsCopy['pagerduty'] = [];
-          integrationsCopy['pagerduty'].push(action.response.data);
-        }
+      const newIntegration = action.response.data;
+      const integrationType = newIntegration.type;
+      if(integrationsCopy.hasOwnProperty(integrationType)){
+        integrationsCopy[integrationType].splice(0, 0, newIntegration);
+      } else {
+        integrationsCopy[integrationType] = [];
+        integrationsCopy[integrationType].push(newIntegration);
       }
 
       return {

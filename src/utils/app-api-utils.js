@@ -263,13 +263,9 @@ export function getMonitoringUrlResults(dispatch, params) {
 
 export function getIntegrations(dispatch) {
   let url = `${apiEndPoint()}/integrations`;
-  axios.get(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders();
+
+  axios.get(url,headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveGetIntegrationsSuccess(successResponse));
@@ -289,15 +285,9 @@ export function getIntegrations(dispatch) {
 
 export function addIntegration(dispatch, params) {
   let url = `${apiEndPoint()}/integrations`;
-  axios.post(
-    url,
-    params,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      }
-    }
-  )
+  const headers = getAuthHeaders();
+
+  axios.post(url, params, headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveAddIntegrationRequestSuccess(successResponse));
@@ -312,13 +302,9 @@ export function addIntegration(dispatch, params) {
 
 export function deleteIntegration(dispatch, params) {
   let url = `${apiEndPoint()}/integrations/${params.id}`;
-  axios.delete(
-    url,{
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': getAuthToken()
-      },
-    })
+  const headers = getAuthHeaders();
+  
+  axios.delete(url,headers)
   .then(response => {
     const successResponse = response.data;
     dispatch(receiveDeleteIntegrationRequestSuccess(successResponse, params.id));

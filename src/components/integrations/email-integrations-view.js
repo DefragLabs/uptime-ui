@@ -45,6 +45,10 @@ class EmailIntegrationsView extends Component {
         type: EMAIL
       };
       this.props.addIntegrationCallback(params);
+      this.setState({
+        email: '',
+        errors: {}
+      });
     }else{
       this.setState({errors:formValidationFeedback.errors});
     }

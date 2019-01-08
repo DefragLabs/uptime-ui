@@ -47,6 +47,12 @@ class PagerDutyIntegrationsView extends Component {
         type: "pagerduty"
       };
       this.props.addIntegrationCallback(params);
+      this.setState({
+        pdAction: '',
+        pdSeverity: '',
+        pdRoutingKey: '',
+        errors: {}
+      });
     }else{
       this.setState({errors:formValidationFeedback.errors});
     }

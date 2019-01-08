@@ -45,6 +45,10 @@ class SlackIntegrationsView extends Component {
         type: SLACK
       };
       this.props.addIntegrationCallback(params);
+      this.setState({
+        webhookURL: '',
+        errors: {}
+      });
     }else{
       this.setState({errors:formValidationFeedback.errors});
     }
