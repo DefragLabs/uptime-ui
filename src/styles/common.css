@@ -23,3 +23,14 @@
   justify-content: center;
   align-items: center;
   flex-direction: row; }
+
+.integration-collection-wrapper .table .table-header .table-row .extra-large-column, .integration-collection-wrapper .table .table-body .table-row .extra-large-column {
+  width: 80%;
+  word-break: break-all; }
+
+.integration-collection-wrapper .table .table-header .table-row .small-column, .integration-collection-wrapper .table .table-body .table-row .small-column {
+  width: 20%;
+  text-align: center; }
+  .integration-collection-wrapper .table .table-header .table-row .small-column .delete-action-btn, .integration-collection-wrapper .table .table-body .table-row .small-column .delete-action-btn {
+    color: #ff5066;
+    cursor: pointer; }

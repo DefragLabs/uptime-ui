@@ -2,56 +2,47 @@ import React, { Component } from 'react';
 import { Table, Icon } from 'semantic-ui-react';
 
 export default class IntegrationTableView extends Component {
-  constructor() {
-    super();
-    this.state = {};
+  
+  /***************************
+   *       METHODS
+   ***************************/
+  deleteIntegration(integration) {
+    let params = {
+      id: integration.id
+    }
+    this.props.integrationDeleteCallback(params)
   }
 
+  /***************************
+   *       VIEWS
+   ***************************/
   getTableHeaderView() {
     const { recordCollection, t } = this.props;
     const record = recordCollection[0];
-    const valueColumn = {
-      width: '80%'
-    }
-    const actionColumn = {
-      width: '20%',
-      textAlign: 'center'
-    }
+
     return (
       <Table.Row className="table-row">
-        { record.email && <Table.HeaderCell style={valueColumn}>{t('integrations.email')}</Table.HeaderCell> }
-        { record.webhookURL && <Table.HeaderCell style={valueColumn}>{t('common.webhookURL')}</Table.HeaderCell> }
-        { record.service_key && <Table.HeaderCell style={valueColumn}>{t('integrations.serviceKey')}</Table.HeaderCell> }
-        <Table.HeaderCell style={actionColumn}>{t('common.actions')}</Table.HeaderCell>
+        { record.email && <Table.HeaderCell className="extra-large-column">{t('integrations.email')}</Table.HeaderCell> }
+        { record.webhookURL && <Table.HeaderCell className="extra-large-column">{t('common.webhookURL')}</Table.HeaderCell> }
+        { record.service_key && <Table.HeaderCell className="extra-large-column">{t('integrations.serviceKey')}</Table.HeaderCell> }
+        <Table.HeaderCell className="small-column">{t('common.actions')}</Table.HeaderCell>
       </Table.Row>
     )
   }
 
   getTableView() {
     const {recordCollection} = this.props;
-    const deleteBtnStyles = {
-      color: '#db2547',
-      cursor: 'pointer'
-    };
-    const workBreakStyles = {
-      wordBreak: 'break-all',
-      width: '80%'
-    }
-    const actionCell = {
-      width: '20%',
-      textAlign: 'center'
-    }
+    
     return (
       recordCollection.map((record) => {
         return (
           <Table.Row className="table-row" key={record.id}>
-            { record.email && <Table.Cell style={workBreakStyles}>{ record.email }</Table.Cell> }
-            { record.webhookURL && <Table.Cell style={workBreakStyles}>{ record.webhookURL }</Table.Cell> }
-            { record.service_key && <Table.Cell style={workBreakStyles}>{ record.service_key }</Table.Cell> }
-            <Table.Cell style={actionCell} className='text-center'>
+            { record.email && <Table.Cell className="extra-large-column">{ record.email }</Table.Cell> }
+            { record.webhookURL && <Table.Cell className="extra-large-column">{ record.webhookURL }</Table.Cell> }
+            { record.service_key && <Table.Cell className="extra-large-column">{ record.service_key }</Table.Cell> }
+            <Table.Cell className='small-column'>
               <Icon
-                name="trash alternate outline"
-                style={deleteBtnStyles}
+                name="trash alternate outline delete-action-btn"
                 onClick={()=> this.deleteIntegration(record)}
               />
             </Table.Cell>
@@ -61,13 +52,9 @@ export default class IntegrationTableView extends Component {
     );
   };
 
-  deleteIntegration(integration) {
-    let params = {
-      id: integration.id
-    }
-    this.props.integrationDeleteCallback(params)
-  }
-
+  /***************************
+   *       LIFECYCLE
+   ***************************/
   render() {
     const { recordCollection } = this.props;
 
