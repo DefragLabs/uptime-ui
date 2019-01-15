@@ -27,7 +27,8 @@
     "url": "URL",
     "monitoringDetailsViewHeading": "Monitoring details for",
     "date": "Date",
-    "responseTime": "Response time (millisecond)"
+    "responseTime": "Response time (millisecond)",
+    "name": "Name"
   },
   "dashboard": {
     "Statistics": "Monitoring Statistics",
