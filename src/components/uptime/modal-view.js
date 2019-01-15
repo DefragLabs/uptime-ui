@@ -203,31 +203,30 @@ class ModalView extends Component {
           <Modal.Content>
             <Form className="login-form" onSubmit= {this.handleSubmit}>
               <Form.Field>
-                <label>{t('uptime.url')}</label>
-                <Input
-                  name='url'
-                  label={this.getProtocolOptionsView()}
-                  labelPosition='left'
-                  placeholder='Add URL'
-                  onChange={this.handleInputChange}
-                  value={fields["url"]}
-                  className={`${errors['url'] && 'highlight-input'}`}
-                />
-                {errors['url'] && this.getFieldErrorView(errors["url"])}
-              </Form.Field>
-              <Form.Field>
                 <label>{t('uptime.name')}</label>
                 <Input
                   name='name'
                   labelPosition='left'
-                  placeholder='URL Name'
+                  placeholder='Url Name'
                   onChange={this.handleInputChange}
                   value={fields["name"]}
                   className={`${errors['name'] && 'highlight-input'}`}
                 />
                 {errors['name'] && this.getFieldErrorView(errors["name"])}
               </Form.Field>
-              
+              <Form.Field>
+                <label>{t('uptime.url')}</label>
+                <Input
+                  name='url'
+                  label={this.getProtocolOptionsView()}
+                  labelPosition='left'
+                  placeholder='Add Url'
+                  onChange={this.handleInputChange}
+                  value={fields["url"]}
+                  className={`${errors['url'] && 'highlight-input'}`}
+                />
+                {errors['url'] && this.getFieldErrorView(errors["url"])}
+              </Form.Field>
               <Form.Group widths='equal'>
                 <Form.Field
                   control={Select}
