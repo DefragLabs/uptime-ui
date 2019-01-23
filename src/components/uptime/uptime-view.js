@@ -118,14 +118,14 @@ class UpTimeView extends Component {
       </Table.Row>
     )
   }
-
+  
   getStatusIcon = (status) => {
     if(status === 'UP'){
-      return <Icon className="status-icon up" name="arrow alternate circle up" />
+      return <div className="status-icon up"></div>
     } else if(status === 'DOWN'){
-      return <Icon className="status-icon down" name="arrow alternate circle down" />
+      return <div className="status-icon down"></div>
     }
-    return <Icon className="status-icon unknown" name="times circle" />
+    return <div className="status-icon unknown"></div>
   }
 
   getEmptyStateView = () => {
