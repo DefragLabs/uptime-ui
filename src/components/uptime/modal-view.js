@@ -218,6 +218,7 @@ class ModalView extends Component {
                 <label>{t('uptime.url')}</label>
                 <Input
                   name='url'
+                  aria-label="url"
                   label={this.getProtocolOptionsView()}
                   labelPosition='left'
                   placeholder='Add Url'
