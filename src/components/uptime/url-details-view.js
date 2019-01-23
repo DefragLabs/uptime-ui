@@ -3,7 +3,7 @@ import { translate } from 'react-i18next';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { translateOptions } from '../../i18n/config';
-import { Icon, Dropdown, Label  } from 'semantic-ui-react';
+import { Icon, Dropdown } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 import { requestGetUrlDetails , requestGetUrlResults} from '../../actions/app-actions';
 
@@ -42,8 +42,8 @@ class MonitorUrlDetailsView extends Component {
 
     return(
       <div className="main-heading">
-        {t('uptime.monitoringDetailsViewHeading')} 
-        <a>{details.url}</a>
+        {t('uptime.monitoringDetailsViewHeading')}&nbsp;
+        <a>{details.name}</a>
       </div>
     )
   }
