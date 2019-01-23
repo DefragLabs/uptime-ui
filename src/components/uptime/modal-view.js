@@ -25,17 +25,18 @@ class ModalView extends Component {
       isEdit: false,
       
       fields: {
-        protocol: PROTOCOL_OPTIONS[1].value,
-        frequency: FREQUENCY_OPTIONS[3].value,
+        url: '',
+        name: '',
         unit: UNIT_OPTIONS[0].value,
-        url: ''
+        protocol: PROTOCOL_OPTIONS[1].value,
+        frequency: FREQUENCY_OPTIONS[3].value
       },
 
       serverError: "",
       errors: {}
     }
 
-    this.handleUrlChange = this.handleUrlChange.bind(this);
+    this.handleInputChange = this.handleInputChange.bind(this);
     this.handleProtocolChange = this.handleProtocolChange.bind(this);
     this.handleFrequencyChange = this.handleFrequencyChange.bind(this);
     this.handleUnitChange = this.handleUnitChange.bind(this);
@@ -48,6 +49,7 @@ class ModalView extends Component {
     const { protocol, frequency, unit } = this.state.fields;
     let fields = this.state.fields;
 
+    fields['name'] = urlDetails ? urlDetails.name : '';
     fields['protocol'] = urlDetails ? urlDetails.protocol : protocol;
     fields['url'] = urlDetails ? urlDetails.url : '';
     fields['frequency'] = urlDetails ? urlDetails.frequency.toString() : frequency.toString();
@@ -93,7 +95,7 @@ class ModalView extends Component {
     }
   }
 
-  handleUrlChange(e){
+  handleInputChange(e){
     let fields = this.state.fields;
     const field = e.target.name;
     fields[field] = e.target.value;
@@ -138,13 +140,16 @@ class ModalView extends Component {
     let formIsValid = true;
     let result = {};
 
-    if(fields['url'] === ''){
+    if(fields['name'] === ''){
       formIsValid = false;
-      errors["url"] = "*This field is required.";
+      errors["name"] = "This field is required.";
+    } else if(fields['url'] === ''){
+      formIsValid = false;
+      errors["url"] = "This field is required.";
     } else if((fields["frequency"] !== FREQUENCY_OPTIONS[3].value)
       && (fields["unit"] === 'second')){
       formIsValid = false;
-      errors["frequency"] = "*Please select valid unit/frequency.";
+      errors["frequency"] = "Please select valid unit/frequency.";
     }
 
     result['errors'] = errors;
@@ -198,20 +203,31 @@ class ModalView extends Component {
           <Modal.Content>
             <Form className="login-form" onSubmit= {this.handleSubmit}>
               <Form.Field>
+                <label>{t('uptime.name')}</label>
+                <Input
+                  name='name'
+                  labelPosition='left'
+                  placeholder='Url Name'
+                  onChange={this.handleInputChange}
+                  value={fields["name"]}
+                  className={`${errors['name'] && 'highlight-input'}`}
+                />
+                {errors['name'] && this.getFieldErrorView(errors["name"])}
+              </Form.Field>
+              <Form.Field>
                 <label>{t('uptime.url')}</label>
                 <Input
                   name='url'
+                  aria-label="url"
                   label={this.getProtocolOptionsView()}
-                  aria-label="URL"
                   labelPosition='left'
-                  placeholder='Add URL'
-                  onChange={this.handleUrlChange}
+                  placeholder='Add Url'
+                  onChange={this.handleInputChange}
                   value={fields["url"]}
                   className={`${errors['url'] && 'highlight-input'}`}
                 />
-                  {errors['url'] && this.getFieldErrorView(errors["url"])}
-                </Form.Field>
-              
+                {errors['url'] && this.getFieldErrorView(errors["url"])}
+              </Form.Field>
               <Form.Group widths='equal'>
                 <Form.Field
                   control={Select}

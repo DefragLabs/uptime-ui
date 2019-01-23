@@ -24,10 +24,11 @@
     "uptimeMonitoring": "Uptime Monitoring",
     "addMonitoringUrl": "Add Monitoring URL",
     "addURL": "Add URL",
-    "url": "URL",
-    "monitoringDetailsViewHeading": "Monitoring details for",
+    "url": "Url",
+    "monitoringDetailsViewHeading": "Details for",
     "date": "Date",
-    "responseTime": "Response time (millisecond)"
+    "responseTime": "Response time (millisecond)",
+    "name": "Url name"
   },
   "dashboard": {
     "Statistics": "Monitoring Statistics",

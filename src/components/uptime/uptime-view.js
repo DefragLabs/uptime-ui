@@ -59,7 +59,7 @@ class UpTimeView extends Component {
 
     return(
       <div className="section-content">
-        <Table celled inverted selectable>
+        <Table celled selectable>
           <Table.Header>
             { this.getTableHeaderView(headers) }
           </Table.Header>

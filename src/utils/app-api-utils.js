@@ -149,6 +149,7 @@ export function addMonitoringUrls(dispatch, params) {
   let url = `${apiEndPoint()}/monitoring-urls`;
   const headers = getAuthHeaders();
   const request = {
+    "name": params.name,
     "protocol": params.protocol,
     "url": params.url,
     "frequency": parseInt(params.frequency),
