@@ -1,5 +1,4 @@
 import ActionTypes from '../constants/action-type';
-import { EMAIL , SLACK} from '../constants/misc';
 
 export const initialState =  {
   isLoading: false

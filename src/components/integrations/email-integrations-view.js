@@ -111,7 +111,7 @@ class EmailIntegrationsView extends Component {
     return (
       <IntegrationsTableView
         {...this.props}
-        recordCollection={integrations.Email}
+        recordCollection={integrations.email}
         integrationDeleteCallback={(params)=> this.props.integrationDeleteCallback(params)}
       />
     );
@@ -154,7 +154,7 @@ class EmailIntegrationsView extends Component {
   
   render() {
     const { integrations } = this.props;
-    const dataAvailableCheck = (integrations != undefined && integrations.Email);
+    const dataAvailableCheck = (integrations != undefined && integrations.email);
 
     return (
       <Grid className='email-integration-view-wrapper' divided='vertically'>

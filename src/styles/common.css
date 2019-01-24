@@ -17,6 +17,9 @@
 .cursor {
   cursor: pointer; }
 
+.align-left {
+  text-align: left !important; }
+
 .empty-state-wrapper {
   height: 200px;
   display: flex;

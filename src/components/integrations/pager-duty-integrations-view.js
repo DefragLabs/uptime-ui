@@ -38,6 +38,7 @@ class PagerDutyIntegrationsView extends Component {
   }
 
   handleSubmit = (e)=> {
+    const integrationType = trimAndLowerCaseString(PAGER_DUTY)
     e.preventDefault();
     const formValidationFeedback = this.handleFormValidation(this.state);
     if(formValidationFeedback.isFormValid){
@@ -46,7 +47,7 @@ class PagerDutyIntegrationsView extends Component {
         pdRoutingKey,
         pdAction,
         pdSeverity,
-        type: trimAndLowerCaseString(PAGER_DUTY)
+        type: trimAndLowerCaseString(integrationType)
       };
       this.props.addIntegrationCallback(params);
       this.setState({
