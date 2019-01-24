@@ -3,6 +3,7 @@ import { translate } from 'react-i18next';
 import { translateOptions } from '../../i18n/config';
 import { Grid, Form, Button } from 'semantic-ui-react';
 import { EMAIL } from '../../constants/misc';
+import { trimAndLowerCaseString } from '../../utils/string-utils';
 
 import IntegrationsTableView from '../common/integrations-table-view';
 import ErrorMessageView from '../common/error-message-view';
@@ -42,7 +43,7 @@ class EmailIntegrationsView extends Component {
       const { email } = this.state;
       const params ={
         email: email,
-        type: EMAIL
+        type: trimAndLowerCaseString(EMAIL)
       };
       this.props.addIntegrationCallback(params);
       this.setState({

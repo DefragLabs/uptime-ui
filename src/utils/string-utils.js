@@ -16,3 +16,7 @@ export function getErrorMessage(error) {
 
   return errorString;
 }
+
+export function trimAndLowerCaseString(str){
+  return str.toLowerCase().trim();
+}
