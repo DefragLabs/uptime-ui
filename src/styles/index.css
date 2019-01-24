@@ -543,13 +543,13 @@
     margin-left: 20px; }
   .uptime-view .section-content-wrapper .section-content .up {
     background: #00cc33 !important;
-    box-shadow: 0 1px 1px 0 rgba(0, 148, 83, 0.5), 0 2px 1px 0 rgba(0, 148, 83, 0.5); }
+    box-shadow: 0 1px 1px 0 rgba(0, 148, 83, 0.5), 0 0 1px 0 rgba(0, 148, 83, 0.5); }
   .uptime-view .section-content-wrapper .section-content .down {
     background: #ff0000 !important;
-    box-shadow: 0 1px 1px 0 rgba(255, 186, 186, 0.5), 0 2px 1px 0 #ffbaba; }
+    box-shadow: 0 1px 1px 0 rgba(255, 186, 186, 0.5), 0 0 1px 0 #ffbaba; }
   .uptime-view .section-content-wrapper .section-content .unknown {
     background: grey;
-    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 2px 1px 0 black; }
+    box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2), 0 0 1px 0 black; }
 
 .uptime-details-view .heading-wrapper {
   display: flex;
