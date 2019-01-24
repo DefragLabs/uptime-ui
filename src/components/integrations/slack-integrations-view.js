@@ -124,10 +124,11 @@ class SlackIntegrationsView extends Component {
   };
 
   getIntegrationTableView(integrations) {
+    const integrationType = trimAndLowerCaseString(SLACK)
     return (
       <IntegrationsTableView
         {...this.props}
-        recordCollection={integrations[SLACK]}
+        recordCollection={integrations[integrationType]}
         integrationDeleteCallback={(params)=> this.props.integrationDeleteCallback(params)}
       />
     );
@@ -151,6 +152,7 @@ class SlackIntegrationsView extends Component {
 
   render() {
     const { integrations } = this.props;
+    const integrationType = trimAndLowerCaseString(SLACK)
 
     return (
       <Grid className='slack-integration-view-wrapper' divided='vertically'>
@@ -159,7 +161,7 @@ class SlackIntegrationsView extends Component {
             { this.getAddIntegrationFormView() }
           </Grid.Column>
           <Grid.Column width={10} className="integration-list-section">
-            { integrations[SLACK] ? this.getIntegrationTableView(integrations) : this.getTableEmptyState()}
+            { integrations[integrationType] ? this.getIntegrationTableView(integrations) : this.getTableEmptyState()}
           </Grid.Column>
         </Grid.Row>
       </Grid>

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import { Table, Icon } from 'semantic-ui-react';
+import { translate } from 'react-i18next';
+import { translateOptions } from '../../i18n/config';
 
-export default class IntegrationTableView extends Component {
+class IntegrationTableView extends Component {
   
   /***************************
    *       METHODS
@@ -24,7 +26,9 @@ export default class IntegrationTableView extends Component {
       <Table.Row className="table-row">
         { record.email && <Table.HeaderCell className="extra-large-column">{t('integrations.email')}</Table.HeaderCell> }
         { record.webhookURL && <Table.HeaderCell className="extra-large-column">{t('common.webhookURL')}</Table.HeaderCell> }
-        { record.service_key && <Table.HeaderCell className="extra-large-column">{t('integrations.serviceKey')}</Table.HeaderCell> }
+        { record.pdRoutingKey && <Table.HeaderCell className="small-column align-left">{t('integrations.pdRoutingKey')}</Table.HeaderCell> }
+        { record.pdSeverity && <Table.HeaderCell className="small-column align-left">{t('integrations.pdSeverity')}</Table.HeaderCell> }
+        { record.pdAction && <Table.HeaderCell className="small-column align-left">{t('integrations.pdAction')}</Table.HeaderCell> }
         <Table.HeaderCell className="small-column">{t('common.actions')}</Table.HeaderCell>
       </Table.Row>
     )
@@ -39,10 +43,13 @@ export default class IntegrationTableView extends Component {
           <Table.Row className="table-row" key={record.id}>
             { record.email && <Table.Cell className="extra-large-column">{ record.email }</Table.Cell> }
             { record.webhookURL && <Table.Cell className="extra-large-column">{ record.webhookURL }</Table.Cell> }
-            { record.service_key && <Table.Cell className="extra-large-column">{ record.service_key }</Table.Cell> }
+            { record.pdRoutingKey && <Table.Cell className="small-column align-left">{ record.pdRoutingKey }</Table.Cell> }
+            { record.pdSeverity && <Table.Cell className="small-column align-left">{ record.pdSeverity }</Table.Cell> }
+            { record.pdAction && <Table.Cell className="small-column align-left">{ record.pdAction }</Table.Cell> }
             <Table.Cell className='small-column'>
               <Icon
-                name="trash alternate outline delete-action-btn"
+                name="trash alternate outline"
+                className="delete-action-btn"
                 onClick={()=> this.deleteIntegration(record)}
               />
             </Table.Cell>
@@ -72,3 +79,5 @@ export default class IntegrationTableView extends Component {
     );
   }
 }
+
+export default translate(['translations'], translateOptions)(IntegrationTableView);
