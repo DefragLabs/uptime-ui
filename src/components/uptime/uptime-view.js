@@ -26,7 +26,8 @@ class UpTimeView extends Component {
     super();
 
     this.state = {
-      searchQuery: ""
+      searchQuery: "",
+      isModalVisible: false
     }
   }
 
@@ -44,7 +45,7 @@ class UpTimeView extends Component {
         <Button
           className="app-btn add-monitoring-url-btn"
           type='button'
-          onClick={()=> this.child.show()}
+          onClick={()=> this.showModal()}
         >
           {t('uptime.addURL')}
         </Button>
@@ -77,6 +78,7 @@ class UpTimeView extends Component {
     const { t } = this.props;
     return(
       <Table.Row>
+        <Table.HeaderCell className="uppercase" key="name">{t('uptime.name')}</Table.HeaderCell>
         <Table.HeaderCell className="uppercase" key="protocol">{t('common.protocol')}</Table.HeaderCell>
         <Table.HeaderCell className="uppercase" key="url">{t('common.url')}</Table.HeaderCell>
         <Table.HeaderCell className="uppercase" key="frequency">{t('common.frequency')}</Table.HeaderCell>
@@ -96,6 +98,7 @@ class UpTimeView extends Component {
   getTableBodyRowView = (URLDetails) => {
     return(
       <Table.Row className="table-row cursor" key={URLDetails.id} onClick={()=> this.navigateToUrlDetailView(URLDetails.id)}>
+        <Table.Cell>{URLDetails.name}</Table.Cell>
         <Table.Cell>{URLDetails.protocol}</Table.Cell>
         <Table.Cell>{URLDetails.url}</Table.Cell>
         <Table.Cell>{URLDetails.frequency}</Table.Cell>
@@ -139,6 +142,7 @@ class UpTimeView extends Component {
       </Table.Row>
     )
   }
+
   /***************************
    *         METHODS
    ***************************/
@@ -178,7 +182,7 @@ class UpTimeView extends Component {
     const { monitoringURLs } = this.props.monitoringURLs;
     const urlId = event.currentTarget.dataset.id;
     let details;
-    
+
     for(let urlIndx=0; urlIndx<monitoringURLs.length; urlIndx){
       const URLDetails = monitoringURLs[urlIndx];
       if(URLDetails.id === urlId){
@@ -187,7 +191,7 @@ class UpTimeView extends Component {
       }
     }
 
-    this.child.show(details);
+    this.showModal(details);
   }
 
   handleUpdateUrl(params, urlId){
@@ -206,6 +210,17 @@ class UpTimeView extends Component {
     })
   }
 
+  showModal = (details) => {
+    this.setState({
+      isModalVisible: true,
+      editDetails: details
+    });
+  }
+
+  hideModal = () => {
+    this.setState({isModalVisible: false});
+  }
+
   /***************************
    *         LIFECYCLE
    ***************************/
@@ -221,7 +236,7 @@ class UpTimeView extends Component {
   componentWillReceiveProps(newProps){
     if(!isEqual(newProps.monitoringURLs, this.monitoringURLs)){
       if(newProps.isURLResponseModified){
-        this.child.closeModal();
+        this.hideModal();
 
         this.props.requestResetMonitoringUrlsVariable();
       }
@@ -237,6 +252,8 @@ class UpTimeView extends Component {
 
   render(){
     const { monitoringURLs, t } = this.props;
+    const { isModalVisible, editDetails } = this.state;
+
     return(
       <div className="uptime-view">
         <div className="main-heading">{t('uptime.uptimeMonitoring')}</div>
@@ -249,11 +266,14 @@ class UpTimeView extends Component {
           { monitoringURLs && this.getSectionContentView() }
         </div>
 
-        <ModalView
+        {isModalVisible && <ModalView
+          isModalVisible={isModalVisible}
           onRef={ref => (this.child = ref)}
           addMonitoringUrls={(params)=> this.handleAddUrl(params)}
           updateMonitoringUrls={(params, urlId)=> this.handleUpdateUrl(params, urlId)}
-        />
+          hideModalCallback={()=> this.hideModal()}
+          editDetails={editDetails}
+        />}
       </div>
     )
   }
