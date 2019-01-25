@@ -19,19 +19,18 @@ class ModalView extends Component {
    ***************************/
   constructor(props){
     super(props);
-    
-    this.state = {
-      open: false,
-      isEdit: false,
-      
-      fields: {
-        url: '',
-        name: '',
-        unit: UNIT_OPTIONS[0].value,
-        protocol: PROTOCOL_OPTIONS[1].value,
-        frequency: FREQUENCY_OPTIONS[3].value
-      },
+    const { editDetails } = this.props;
 
+    this.state = {
+      fields: {
+        urlId: editDetails ? editDetails.id : undefined,
+        url: editDetails ? editDetails.url : '',
+        name: editDetails ? editDetails.name : '',
+        unit: editDetails ? editDetails.unit : UNIT_OPTIONS[0].value,
+        protocol: editDetails ? editDetails.protocol : PROTOCOL_OPTIONS[1].value,
+        frequency: editDetails ? editDetails.frequency.toString() : FREQUENCY_OPTIONS[3].value
+      },
+      isEditView: editDetails ? true : false,
       serverError: "",
       errors: {}
     }
@@ -45,30 +44,8 @@ class ModalView extends Component {
   /***************************
    *         METHODS
    ***************************/
-  show = (urlDetails) => {
-    const { protocol, frequency, unit } = this.state.fields;
-    let fields = this.state.fields;
-
-    fields['name'] = urlDetails ? urlDetails.name : '';
-    fields['protocol'] = urlDetails ? urlDetails.protocol : protocol;
-    fields['url'] = urlDetails ? urlDetails.url : '';
-    fields['frequency'] = urlDetails ? urlDetails.frequency.toString() : frequency.toString();
-    fields['unit'] = urlDetails ? urlDetails.unit : unit;
-
-    if(urlDetails !== undefined){
-      this.setState({
-        isEdit: true,
-        urlId: urlDetails.id
-      })
-    }
-    this.setState({
-      open: true,
-      fields
-    })
-  }
-
   closeModal = () => {
-    this.setState({ open: false });
+    this.props.hideModalCallback();
   }
 
   addMonitoringUrls = () => {
@@ -84,10 +61,10 @@ class ModalView extends Component {
   }
 
   updateMonitoringUrls = () => {
-    const { fields, urlId } = this.state;
+    const { fields } = this.state;
     const formValidationFeedback = this.handleFormValidation(fields);
     if(formValidationFeedback.isFormValid){
-      this.props.updateMonitoringUrls(fields, urlId);
+      this.props.updateMonitoringUrls(fields, fields.urlId);
     } else {
       this.setState({
         errors: formValidationFeedback.errors
@@ -183,22 +160,24 @@ class ModalView extends Component {
    ***************************/
   componentDidMount() {
     this.props.onRef(this);
+
+
   }
 
   componentWillUnmount() {
     this.props.onRef(undefined);
     this.setState({
-      isEdit: false,
-      urlId: undefined
+      isEditView: false,
+      editDetails: this.props.editDetails
     })
   }
 
   render(){
-    const { open, fields, errors, serverError, isEdit } = this.state;
-    const { t } = this.props;
+    const { fields, errors, serverError, isEditView } = this.state;
+    const { t, isModalVisible } = this.props;
 
     return(
-      <Modal open={open} onClose={this.closeModal} size="tiny">
+      <Modal open={isModalVisible} onClose={this.closeModal} size="tiny">
           <Modal.Header>{t('uptime.addMonitoringUrl')}</Modal.Header>
           <Modal.Content>
             <Form className="login-form" onSubmit= {this.handleSubmit}>
@@ -215,7 +194,6 @@ class ModalView extends Component {
                 {errors['name'] && this.getFieldErrorView(errors["name"])}
               </Form.Field>
               <Form.Field>
-                <label>{t('uptime.url')}</label>
                 <Input
                   name='url'
                   aria-label="url"
@@ -255,7 +233,7 @@ class ModalView extends Component {
           </Modal.Content>
           <Modal.Actions>
             <Button color='black' onClick={this.closeModal}>{t('common.cancel')}</Button>
-            {isEdit ? <Button
+            {isEditView ? <Button
               positive
               content="Save"
               onClick={()=> this.updateMonitoringUrls()}
