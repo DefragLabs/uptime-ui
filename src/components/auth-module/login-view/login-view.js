@@ -170,4 +170,5 @@ function mapDispatchToProps(dispatch){
   },dispatch)
 }
 
-export default translate(['translations'], translateOptions)(connect(mapStateToProps, mapDispatchToProps)(LoginView));
+export const LoginViewComponent = translate(['translations'], translateOptions)(LoginView);
+export default (connect(mapStateToProps, mapDispatchToProps)(LoginViewComponent));

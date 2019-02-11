@@ -18,7 +18,7 @@ import { MONITORING_STATUS_POLLING_DURATION } from '../../constants/misc';
 import ModalView from './modal-view';
 import SearchBarView from '../common/search-bar-view';
 
-class UpTimeView extends Component {
+export class UpTimeView extends Component {
   /***************************
    *         CONSTRUCTOR
    ***************************/
@@ -43,9 +43,10 @@ class UpTimeView extends Component {
           searchQueryCallback={(searchQuery)=> this.handleSearchQuery(searchQuery)}
         />
         <Button
+          data-test-id='add-button'
           className="app-btn add-monitoring-url-btn"
           type='button'
-          onClick={()=> this.showModal()}
+          onClick={this.showModal}
         >
           {t('uptime.addURL')}
         </Button>

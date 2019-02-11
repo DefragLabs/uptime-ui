@@ -83,13 +83,14 @@
       "src/**/*.{js,jsx,mjs}"
     ],
     "setupFiles": [
-      "<rootDir>/config/polyfills.js"
+      "<rootDir>/config/polyfills.js",
+      "<rootDir>/config/jest/setup.js"
     ],
     "testMatch": [
       "<rootDir>/src/**/__tests__/**/*.{js,jsx,mjs}",
       "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,mjs}"
     ],
-    "testEnvironment": "node",
+    "testEnvironment": "jsdom",
     "testURL": "http://localhost",
     "transform": {
       "^.+\\.(js|jsx|mjs)$": "<rootDir>/node_modules/babel-jest",
@@ -100,7 +101,8 @@
       "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|mjs)$"
     ],
     "moduleNameMapper": {
-      "^react-native$": "react-native-web"
+      "^react-native$": "react-native-web",
+      "react-i18next": "<rootDir>/_mocks_/reacti18next.js"
     },
     "moduleFileExtensions": [
       "web.js",
@@ -110,6 +112,13 @@
       "web.jsx",
       "jsx",
       "node"
+    ],
+    "moduleDirectories": [
+      ".",
+      "<rootDir>/_mocks_",
+      "src",
+      "src/util",
+      "node_modules"
     ]
   },
   "babel": {
