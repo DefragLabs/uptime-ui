@@ -8,7 +8,7 @@ import HeaderView from '../common/header-view';
 import SideBarView from '../common/side-bar-view';
 import AppLoaderView from '../common/app-loader-view';
 
-class BaseLayoutView extends Component {
+export class BaseLayoutView extends Component {
 
   /***************************
    *         LIFECYCLE

@@ -19,16 +19,15 @@ class ModalView extends Component {
    ***************************/
   constructor(props){
     super(props);
-    const { editDetails } = this.props;
-
+    const { editDetails={} } = this.props;
     this.state = {
       fields: {
-        urlId: editDetails ? editDetails.id : undefined,
-        url: editDetails ? editDetails.url : '',
-        name: editDetails ? editDetails.name : '',
-        unit: editDetails ? editDetails.unit : UNIT_OPTIONS[0].value,
-        protocol: editDetails ? editDetails.protocol : PROTOCOL_OPTIONS[1].value,
-        frequency: editDetails ? editDetails.frequency.toString() : FREQUENCY_OPTIONS[3].value
+        urlId: editDetails.id ? editDetails.id : undefined,
+        url: editDetails.url ? editDetails.url : '',
+        name: editDetails.name ? editDetails.name : '',
+        unit: editDetails.unit ? editDetails.unit : UNIT_OPTIONS[0].value,
+        protocol: editDetails.protocol ? editDetails.protocol : PROTOCOL_OPTIONS[1].value,
+        frequency: editDetails.frequency ? editDetails.frequency.toString() : FREQUENCY_OPTIONS[3].value
       },
       isEditView: editDetails ? true : false,
       serverError: "",
